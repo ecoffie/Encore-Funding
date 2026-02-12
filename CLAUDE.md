@@ -153,6 +153,38 @@ HTML proposal document for Encore Funding x GovCon Giants 2026 Strategic Partner
 
 ---
 
+## Encore Marketing Report Dashboard
+
+**Live URL:** https://encore-funding.vercel.app/
+
+**Deployment:** Vercel via GitHub integration (auto-deploys on push to `main`)
+
+**Repo:** https://github.com/ecoffie/Encore-Funding
+
+### Files
+| File | Purpose |
+|------|---------|
+| `index.html` | Root redirect → `Encore_Report.html` |
+| `Encore_Report.html` | Executive dashboard (KPIs, sparkline, channel bars, top content, month cards, deliverable tracker) |
+| `monthly-report.html` | Individual month drill-down (trend chart, channel mix, filterable activity table, CSV export) |
+| `report-data.js` | Data layer — all content items, monthly aggregates, time series |
+| `scripts/build_report_data.py` | Python script to rebuild `report-data.js` from source data |
+
+### Data Coverage
+- **Period:** March 2025 – January 2026 (11 months)
+- **Channels:** YouTube, LinkedIn, FHC (Webinars), Instagram, Podcast
+- **Content items:** 85 total
+- **Key metrics:** Impressions, views, engagements, clicks, attendees, email sends, podcast downloads
+
+### Architecture
+- Pure static site — HTML + JS, no build step
+- `report-data.js` sets `window.REPORT_DATA` consumed by both HTML files
+- Dashboard has 3 tab views: Overview, Monthly Reports, Deliverables
+- Monthly report uses `?month=YYYY-MM` query param for navigation
+- All charts rendered as inline SVG (no external charting library)
+
+---
+
 ## Pending Tasks (Encore Funding Proposal)
 - [x] ~~Capture and add screenshots to `images/` folder for Rights & Benefits section~~
 - [ ] Add extra images to sections (fhc linkedin stats, total impressions linkedin, Post 9)
