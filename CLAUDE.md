@@ -84,6 +84,78 @@ HTML proposal document for Encore Funding x GovCon Giants 2026 Strategic Partner
 
 ---
 
-## Pending Tasks
+## TempNet Staffing Handout (February 2026)
+
+**Main File:** `/Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-handout.html`
+
+**PDF Output:** `/Users/ericcoffie/Downloads/TempNet_Staffing_Handout.pdf`
+
+**Images Folder:** `/Users/ericcoffie/Projects/Bootcamp/presentations/images/`
+
+**Source Images:** `/Users/ericcoffie/Downloads/encore/tempnet/`
+
+### Overview
+- Converted from slide presentation (v1) into a print-ready letter-size handout
+- Target audience: older American baby boomers at TempNet conference
+- 16 numbered sections + cover page, TOC, and back cover
+- Partner logos: GovCon Giants (black), Encore Funding, TempNet
+
+### Sections (16 total)
+01. The Staffing Market & Getting Started
+02. Am I a "Small Business" for Staffing?
+03. Your NAICS Strategy
+04. The GSA Schedule Path
+05. Quick Glossary & How Buys Work
+06. Getting on GSA MAS & eBuy
+07. Compliance & What Agencies Care About
+08. Three Free Websites You Must Know
+09. SAM.gov Notice Types
+10. Who Buys Staffing
+11. How to Find the Right Opportunities
+12. AI Prompts for GovCon Staffing
+13. Capability Statements & DSBS
+14. Pricing, Teaming & Common Mistakes
+15. First 30 Days & Resources
+16. Beginner Foundation Checklist
+
+### Image Files
+| Filename | Used In |
+|----------|---------|
+| `am-i-small-business.png` | Section 02 |
+| `your-naics-strategy.png` | Section 03 |
+| `filter-naics.png` | Section 03 |
+| `gsa-mas.png` | Section 04 |
+| `gsa-mas-contractor-listing.png` | Section 06 |
+| `gsa-ebuy.png` | Section 08 |
+| `usaspending.png` | Section 08 |
+| `early-stage-notice.png` | Section 09 |
+| `bid-stage-notice.png` | Section 09 |
+| `post-award-notice.png` | Section 09 |
+| `sam-notice-types.png` | Section 09 |
+| `usaspending-filter-naics.png` | Section 11 |
+| `sam-gov.png` | Section 11 |
+| `sources-sought-rfi.png` | Section 11 |
+
+### Key Technical Notes
+- Chrome headless PDF: use `--allow-file-access-from-files` flag for local images
+- All image `src` attributes use absolute `file:///` paths (relative paths fail in headless PDF)
+- Page breaks use explicit `<div class="pb"></div>` dividers (CSS-only page-break was unreliable)
+- Combined sections use `<hr class="sub-divider">` (green accent line) between subsections
+
+### PDF Generation Command
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --allow-file-access-from-files --print-to-pdf="/Users/ericcoffie/Downloads/TempNet_Staffing_Handout.pdf" "file:///Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-handout.html"
+```
+
+### Related Files
+- **Slide presentation (v1):** `/Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-presentation-v1.html`
+- **Future task:** Build a separate storytelling presentation for the actual talk
+
+---
+
+## Pending Tasks (Encore Funding Proposal)
 - [x] ~~Capture and add screenshots to `images/` folder for Rights & Benefits section~~
 - [ ] Add extra images to sections (fhc linkedin stats, total impressions linkedin, Post 9)
+
+## Pending Tasks (TempNet Handout)
+- [ ] Build storytelling presentation for TempNet conference talk
