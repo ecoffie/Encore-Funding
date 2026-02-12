@@ -16,9 +16,9 @@
       --text-muted: #a1a1aa;
       --accent: #6366f1;
       --accent-light: #818cf8;
-      --youtube: #ff0000;
-      --linkedin: #0a66c2;
-      --instagram: #e4405f;
+      --green: #86efac;
+      --yellow: #fde68a;
+      --red: #fca5a5;
       --border: #27272a;
     }
 
@@ -42,215 +42,206 @@
     header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
     header p { color: var(--text-muted); font-size: 1rem; }
 
-    /* Controls */
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
+    /* KPI Metrics Row */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 1rem;
-      align-items: center;
-      margin: 2rem 0;
+      margin: 1.5rem 0;
+    }
+    .metric-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
       padding: 1rem;
-      background: var(--surface);
-      border-radius: 12px;
-      border: 1px solid var(--border);
     }
-
-    .search-wrap {
-      flex: 1;
-      min-width: 200px;
-    }
-    .search-wrap input {
-      width: 100%;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-    .search-wrap input:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .search-wrap input::placeholder {
+    .metric-box .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       color: var(--text-muted);
     }
-
-    .month-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .month-tab {
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .month-tab:hover {
-      background: var(--surface-hover);
-      color: var(--text);
-      border-color: var(--accent);
-    }
-    .month-tab.active {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-
-    .channel-filters {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .channel-filter {
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .channel-filter:hover, .channel-filter.active {
-      opacity: 1;
-    }
-    .channel-filter.active { border-color: currentColor; }
-
-    .channel-filter[data-channel="Youtube"] { color: #ff6b6b; }
-    .channel-filter[data-channel="Youtube"].active { background: rgba(255,0,0,0.2); }
-    .channel-filter[data-channel="LinkedIn"] { color: #60a5fa; }
-    .channel-filter[data-channel="LinkedIn"].active { background: rgba(10,102,194,0.2); }
-    .channel-filter[data-channel="FHC"] { color: var(--accent-light); }
-    .channel-filter[data-channel="FHC"].active { background: rgba(99,102,241,0.2); }
-    .channel-filter[data-channel="Instagram"] { color: #f472b6; }
-    .channel-filter[data-channel="Instagram"].active { background: rgba(228,64,95,0.2); }
-
-    /* Month sections - collapsible */
-    .month-section {
-      margin-bottom: 1rem;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      overflow: hidden;
-    }
-
-    .month-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
-      cursor: pointer;
-      transition: background 0.2s;
-      user-select: none;
-    }
-    .month-header:hover {
-      background: var(--surface-hover);
-    }
-    .month-header h3 {
-      font-size: 1.1rem;
+    .metric-box .value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.35rem;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      margin-top: 0.25rem;
     }
-    .month-header .chevron {
-      transition: transform 0.2s;
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-    .month-section.collapsed .chevron {
-      transform: rotate(-90deg);
-    }
-    .month-section.collapsed .month-content {
-      display: none;
-    }
-    .month-badge {
+    .metric-box .sub {
       font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 6px;
-      background: var(--border);
       color: var(--text-muted);
+      margin-top: 0.2rem;
     }
 
-    .month-content {
-      border-top: 1px solid var(--border);
-      padding: 0;
+    /* View Tabs */
+    .view-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
     }
+    .view-tab {
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .view-tab:hover { background: var(--surface-hover); color: var(--text); }
+    .view-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
 
-    .table-wrap {
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 0.75rem 1rem;
-      text-align: left;
+    /* Section headers */
+    .section { margin: 2rem 0; }
+    .section h2 {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border);
     }
+
+    /* Sparkline chart card */
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      overflow: hidden;
+    }
+    .chart-card h3 {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Two-column layout */
+    .grid-2 { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1rem; }
+
+    /* Channel bars */
+    .bar-list { display: grid; gap: 0.6rem; }
+    .bar-row { display: grid; grid-template-columns: 80px 1fr 84px; gap: 0.75rem; align-items: center; }
+    .bar-row .name { font-size: 0.85rem; color: var(--text-muted); }
+    .bar-track { height: 16px; background: var(--border); border-radius: 6px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 6px; }
+    .bar-fill.youtube { background: linear-gradient(90deg, #dc2626, #ff6b6b); }
+    .bar-fill.linkedin { background: linear-gradient(90deg, #0a66c2, #60a5fa); }
+    .bar-fill.fhc { background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
+    .bar-fill.instagram { background: linear-gradient(90deg, #c026d3, #f472b6); }
+    .bar-fill.podcast { background: linear-gradient(90deg, #059669, #86efac); }
+    .bar-fill.default { background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
+    .bar-val { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Month cards grid */
+    .month-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+    .month-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .month-link:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      color: var(--accent-light);
+      text-decoration: none;
+    }
+    .month-link .month-name { font-weight: 600; font-size: 1rem; }
+    .month-link .month-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .month-link.empty { opacity: 0.35; }
+    .month-link.empty .month-stat { font-style: italic; }
+
+    /* Deliverable Tracker */
+    .tracker-list {
+      display: grid;
+      gap: 0.75rem;
+      max-width: 700px;
+    }
+    .tracker-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .tracker-group h4 {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .progress-row {
+      display: grid;
+      grid-template-columns: 1fr 150px 80px;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.4rem 0;
+    }
+    .progress-label { font-size: 0.9rem; }
+    .progress-bar {
+      height: 10px;
+      background: var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      transition: width 0.5s;
+    }
+    .progress-fill.full { background: linear-gradient(90deg, #059669, var(--green)); }
+    .progress-fill.warn { background: linear-gradient(90deg, #d97706, var(--yellow)); }
+    .progress-count {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Top content table */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
     th {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-muted);
       font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      user-select: none;
     }
-    th:hover {
-      color: var(--accent-light);
-    }
-    th .sort-icon {
-      opacity: 0.5;
-      margin-left: 0.25rem;
-    }
-    th.sorted .sort-icon { opacity: 1; }
-    th.sorted-desc .sort-icon { transform: rotate(180deg); }
-
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: var(--surface-hover); }
-
-    .channel-badge {
-      display: inline-block;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
+    .channel-badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
     .channel-youtube { background: rgba(255,0,0,0.2); color: #ff6b6b; }
     .channel-linkedin { background: rgba(10,102,194,0.2); color: #60a5fa; }
     .channel-instagram { background: rgba(228,64,95,0.2); color: #f472b6; }
     .channel-fhc { background: rgba(99,102,241,0.2); color: var(--accent-light); }
-
+    .channel-podcast { background: rgba(5,150,105,0.2); color: #86efac; }
     .num { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
     a { color: var(--accent-light); text-decoration: none; }
     a:hover { text-decoration: underline; }
-
-    .empty-state {
-      padding: 3rem 2rem;
-      text-align: center;
-      color: var(--text-muted);
-    }
-
-    .stats-bar {
-      display: flex;
-      gap: 1rem;
-      padding: 0.5rem 1.25rem;
-      background: rgba(0,0,0,0.2);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .stats-bar span { font-family: 'JetBrains Mono', monospace; }
 
     footer {
       text-align: center;
@@ -259,9 +250,20 @@
       font-size: 0.85rem;
     }
 
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
     @media (max-width: 768px) {
       .container { padding: 1rem; }
-      .controls { flex-direction: column; align-items: stretch; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+      .progress-row { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+
+    @media print {
+      body { background: white; color: black; }
+      .view-tabs { display: none; }
+      .metric-box { border: 1px solid #ccc; background: #f9f9f9; }
+      .metric-box .label, .metric-box .sub { color: #666; }
+      .chart-card { break-inside: avoid; border: 1px solid #ccc; background: #f9f9f9; }
+      a { color: black; }
     }
   </style>
 </head>
@@ -269,352 +271,305 @@
   <div class="container">
     <header>
       <h1>Encore Marketing Report</h1>
-      <p>GovCon Giants Partnership · Organized by action date</p>
+      <p>GovCon Giants Partnership &middot; Executive Dashboard</p>
     </header>
 
-    <div class="controls">
-      <div class="search-wrap">
-        <input type="text" id="search" placeholder="Search titles, channels..." autocomplete="off">
-      </div>
-      <div class="month-tabs" id="month-tabs"></div>
-      <div class="channel-filters" id="channel-filters"></div>
+    <!-- Executive KPIs -->
+    <div id="exec-kpis" class="metrics-row"></div>
+
+    <!-- View Tabs -->
+    <div class="view-tabs">
+      <button class="view-tab active" data-view="overview">Overview</button>
+      <button class="view-tab" data-view="months">Monthly Reports</button>
+      <button class="view-tab" data-view="deliverables">Deliverables</button>
     </div>
 
-    <main id="report-content"></main>
+    <!-- Overview View -->
+    <div id="overview-view">
+      <div class="grid-2">
+        <div class="chart-card">
+          <h3>Impressions Trend</h3>
+          <div id="sparkline-chart"></div>
+        </div>
+        <div class="chart-card">
+          <h3>Channel Performance (All Time)</h3>
+          <div class="bar-list" id="channel-summary"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Top Performing Content</h2>
+        <div class="table-wrap" id="top-content"></div>
+      </div>
+    </div>
+
+    <!-- Monthly Reports View -->
+    <div id="months-view" style="display:none">
+      <div class="month-links" id="month-links"></div>
+    </div>
+
+    <!-- Deliverables View -->
+    <div id="deliverables-view" style="display:none">
+      <div class="tracker-list" id="deliverable-tracker"></div>
+    </div>
 
     <footer>
-      Encore × GovCon Giants Partnership Report · Actions from March 2025 – January 2026
+      Encore &times; GovCon Giants Partnership Report &middot; March 2025 &ndash; January 2026
     </footer>
   </div>
 
+  <script src="report-data.js"></script>
   <script>
-    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const data = window.REPORT_DATA || { months: [], items: [], aggregates: {}, series: {} };
+    const months = data.months || [];
 
-    function parseDate(dateStr) {
-      if (!dateStr || !dateStr.trim()) return null;
-      const d = new Date(dateStr);
-      return isNaN(d.getTime()) ? null : d;
-    }
-
-    function getMonthKey(d) {
-      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
-    }
-
-    function formatDate(d) {
-      return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear();
-    }
-
-    function formatMonthKey(key) {
+    function fmtMonth(key) {
       const [y, m] = key.split('-');
-      return MONTHS[parseInt(m) - 1] + ' ' + y;
+      return MONTH_NAMES[parseInt(m, 10) - 1] + ' ' + y;
     }
 
-    const RAW_DATA = [
-      {channel:'Youtube',type:'Sponsored',date:'',title:'10 Things No One Tells You About Government Contracting',imp:11200,views:801,eng:'',clicks:'',link:'https://youtu.be/XKo6uoedzwk',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'STOP Bidding Blind! $1B GovCon Expert Reveals Pricing Secrets',imp:13400,views:1100,eng:'',clicks:'',link:'https://youtu.be/wLjAAE3Yaws',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'She Had NO MONEY... Now She\'s Beating 8(a)s!',imp:15600,views:1300,eng:'',clicks:'',link:'https://youtu.be/1a_7mhQN-g8',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'REJECTED 38 TIMES... Then The City Manager Called!',imp:10500,views:813,eng:'',clicks:'',link:'https://youtu.be/9lCMcTe-gcA',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'They Thought China Wouldn\'t Notice...',imp:12400,views:1300,eng:'',clicks:'',link:'https://youtu.be/nUz3H7bRvRA',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'SBA Finally ALLOWS This... MASSIVE OPPORTUNITY',imp:23500,views:2400,eng:'',clicks:'',link:'https://youtu.be/aXG5o7yXzlA',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Her First Contract Came Without Funding or Past Performance - Erica Dobbs',imp:30400,views:2700,eng:'',clicks:'',link:'https://youtu.be/-zv8RHXN6cE',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'World\'s Fastest Proposal Writer vs AI proposal writer (not ChatGPT)',imp:15300,views:951,eng:'',clicks:'',link:'https://www.youtube.com/watch?v=jJrVAr4PuJw',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'',title:'Bank Said NO... Then He Made MILLIONS!',imp:26000,views:2300,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'',title:'Millions of dollars in funding for minority entrepreneurs',imp:13700,views:1200,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'',title:'How to get unlimited funding to build your business',imp:13300,views:890,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Why Most Businesses Stall After $1M - And How She Broke Through',imp:13600,views:874,eng:'',clicks:'',link:'https://youtu.be/70pAKA7HrX0',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Factories Are Fleeing China—But Not Where You Think',imp:29100,views:2800,eng:'',clicks:'',link:'https://youtu.be/W49tW6Hw2hQ',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'The 5-Slide Strategy That Wins Government Contracts in 2025',imp:37200,views:3500,eng:'',clicks:'',link:'https://youtu.be/2qP5u3Wz2GI',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Hollywood Star REVEALS Government Contract SECRETS! - Malik Yoba',imp:52000,views:5500,eng:'',clicks:'',link:'https://youtu.be/fBAIdqLJUv8',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Start Winning Construction Contracts with Zero Past Performance',imp:16900,views:1300,eng:'',clicks:'',link:'https://youtu.be/50NAAX_TJcE',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'How to Get Startup Funding For a Small Business',imp:36200,views:2800,eng:'',clicks:'',link:'https://youtu.be/dtEpfEFrreQ',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'50 Game Changing Government Contracting Tips in 15 Minutes',imp:13600,views:1600,eng:'',clicks:'',link:'https://youtu.be/Dw-JAPwFAlg',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'The Gov\'t Just Changed Everything for Small Businesses',imp:13500,views:1300,eng:'',clicks:'',link:'https://youtu.be/q4YfZgJoA2k',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Veterans Can Win Contracts Without Bidding — Here\'s How',imp:22700,views:2200,eng:'',clicks:'',link:'https://youtu.be/BWjHEhpGqzU',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'The #1 Mistake New Government Contractors Make',imp:17400,views:1100,eng:'',clicks:'',link:'https://youtu.be/xC65bKbJulc',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'What to do after you win a contract?',imp:16200,views:1100,eng:'',clicks:'',link:'https://youtu.be/tdNJCAnv_-8',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'The Feds Just Quietly Changed the Rules – What It Means for YOU',imp:28100,views:2600,eng:'',clicks:'',link:'https://youtu.be/zpvM1bU269Y',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'David Rosenberg: A Day of Reckoning Is Coming — Nobody\'s Ready',imp:29300,views:1900,eng:'',clicks:'',link:'https://youtu.be/AXd1jOJzxa0',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Avoid These Mistakes When Bidding on Defense Contracts',imp:14500,views:1000,eng:'',clicks:'',link:'https://youtu.be/Cvx_RvyAu2Y',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'How I Scaled My Business with Government Contracts',imp:13600,views:1200,eng:'',clicks:'',link:'https://youtu.be/94tKpNzKhC0',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Small Business? Here\'s How to Get on FEMA\'s Radar',imp:16600,views:1300,eng:'',clicks:'',link:'https://youtu.be/GKa8HzP664U',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'How to Land Your First DLA Contract (Step-by-Step Guide)',imp:31800,views:3000,eng:'',clicks:'',link:'https://youtu.be/p_ULAZT5qjc',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'9 Easiest Agencies to Win Government Contracts in 2025',imp:14600,views:1300,eng:'',clicks:'',link:'https://www.youtube.com/watch?v=TXWOMsgdbeg',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Get SBA certified in 2025 - Step by Step to Winning Government Contracts',imp:26000,views:2700,eng:'',clicks:'',link:'https://youtu.be/v7yt8TfZO7s',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'$90K/Month City Pools – No Certifications (2025)',imp:2300,views:2500,eng:'',clicks:'',link:'https://youtu.be/F-FfsZyySfw',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'3 CEOs Share Exactly How to Scale in Government Contracting',imp:14300,views:1200,eng:'',clicks:'',link:'https://youtu.be/TJpV4f172vk',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'The Government Doesn\'t Care About Your Small Business',imp:14500,views:1100,eng:'',clicks:'',link:'https://youtu.be/TXlJztOZQH8',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'State and Local Contracts: Complete Beginner\'s Guide for Small Business',imp:11400,views:1100,eng:'',clicks:'',link:'https://youtu.be/ps6HWsWywN4',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'How Small Businesses Can Win Big in Defense — From the Navy\'s Former #2',imp:11300,views:962,eng:'',clicks:'',link:'https://youtu.be/cqXv5149F_Y',attendees:'',chat:''},
-      {channel:'FHC',type:'Webinar',date:'9 Apr 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:36,chat:87},
-      {channel:'FHC',type:'Webinar',date:'30 Apr 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:26,chat:51},
-      {channel:'FHC',type:'Webinar',date:'9 Jul 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:13,chat:15},
-      {channel:'FHC',type:'Webinar',date:'14 Jul 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:11,chat:8},
-      {channel:'FHC',type:'Webinar',date:'30 Jul 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:12,chat:13},
-      {channel:'FHC',type:'Webinar',date:'14 Aug 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:11,chat:34},
-      {channel:'FHC',type:'Webinar',date:'3 Sep 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:11,chat:4},
-      {channel:'FHC',type:'Webinar',date:'14 Oct 2025',title:'Webinar',imp:'',views:'',eng:'',clicks:'',link:'',attendees:7,chat:10},
-      {channel:'LinkedIn',type:'Post',date:'27 Jun 2025',title:'You can pay someone...',imp:578,views:'',eng:55,clicks:27,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'14 Jun 2025',title:'Most banks le...',imp:374,views:'',eng:19,clicks:11,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'31 May 2025',title:'Think small...',imp:204,views:'',eng:10,clicks:8,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'30 May 2025',title:'Joel Adelman...',imp:263,views:'',eng:19,clicks:11,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'14 May 2025',title:'Just rolled up...',imp:2096,views:'',eng:114,clicks:35,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'14 Mar 2025',title:'We\'re excited...',imp:267,views:'',eng:44,clicks:27,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'10 Jul 2025',title:'Most small bu...',imp:2495,views:'',eng:71,clicks:24,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'22 Apr 2025',title:'Banks Hate...',imp:200,views:'',eng:13,clicks:9,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'24 Jul 2025',title:'EP 285: The Hi...',imp:511,views:'',eng:41,clicks:23,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'22 May 2025',title:'Subcontracting...',imp:243,views:'',eng:10,clicks:6,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'21 Jul 2025',title:'From Janitor t...',imp:469,views:'',eng:41,clicks:20,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'9 Jul 2025',title:'Here\'s the tou...',imp:487,views:'',eng:39,clicks:13,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'29 Apr 2025',title:'Struggling wit...',imp:489,views:'',eng:192,clicks:176,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'23 Apr 2025',title:'Rejected… T...',imp:402,views:'',eng:37,clicks:15,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'6 Oct 2025',title:'If you missed...',imp:3978,views:'',eng:157,clicks:'',link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'7 Oct 2025',title:'The Scale With...',imp:938,views:'',eng:252,clicks:176,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'3 Oct 2025',title:'Just 1 day left...',imp:81,views:'',eng:6,clicks:2,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'3 Oct 2025',title:'SWC 2025 is...',imp:1261,views:'',eng:97,clicks:44,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'3 Oct 2025',title:'Meet another...',imp:188,views:'',eng:9,clicks:3,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'2 Oct 2025',title:'Just 2 Days Le...',imp:127,views:'',eng:5,clicks:1,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'2 Oct 2025',title:'Meet another...',imp:422,views:'',eng:39,clicks:19,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'1 Oct 2025',title:'Only 3 days lef...',imp:72,views:'',eng:4,clicks:2,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'30 Sep 2025',title:'The countdow...',imp:163,views:'',eng:13,clicks:6,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'30 Sep 2025',title:'Venus Quates...',imp:174,views:'',eng:22,clicks:10,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'29 Sep 2025',title:'Only 5 days lef...',imp:118,views:'',eng:7,clicks:4,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'29 Sep 2025',title:'At the Scale W...',imp:186,views:'',eng:19,clicks:6,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'29 Sep 2025',title:'Scale With Cer...',imp:2438,views:'',eng:237,clicks:124,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'28 Sep 2025',title:'Just 6 Days Le...',imp:119,views:'',eng:9,clicks:4,link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'19 Apr 2025',title:'Bank Said NO... Then He Made MILLIONS!',imp:4,views:'',eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'22 May 2025',title:'Millions of dollars in funding for minority entrepreneurs',imp:9,views:'',eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'10 Jun 2025',title:'How to get unlimited funding to build your business',imp:15,views:'',eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'5 Jan 2026',title:'The Line-Item Strategy That Quietly Wins Government Work',imp:12300,views:1000,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'12 Jan 2026',title:'She Built a Government Contracting Business With Spare Change',imp:15100,views:1200,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'12 Jan 2026',title:'GovCon Contrac...',imp:1927,views:'',eng:132,clicks:98,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'20 Jan 2026',title:'GovCon Contrac...',imp:538,views:'',eng:23,clicks:14,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'26 Jan 2026',title:'Most people talk...',imp:1798,views:'',eng:91,clicks:51,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'30 Jan 2026',title:'Federal Contract...',imp:5116,views:'',eng:397,clicks:279,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'6 Jan 2026',title:'Federal Contract...',imp:1510,views:'',eng:70,clicks:1,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'12 Jan 2026',title:'You don\'t worry...',imp:878,views:'',eng:38,clicks:38,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Article',date:'12 Jan 2026',title:'Why the Govern...',imp:3902,views:6215,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Instagram',type:'Post',date:'20 Jan 2026',title:'GovconGiants on In...',imp:'',views:2999,eng:33,clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Instagram',type:'Post',date:'26 Jan 2026',title:'GovconGiants on In...',imp:'',views:3116,eng:26,clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'',title:'Bank Said NO... Then He Made MILLIONS!',imp:24100,views:2200,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'',title:'Millions of dollars in funding for minority entrepreneurs',imp:11300,views:1000,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'',title:'How to get unlimited funding to build your business',imp:11200,views:770,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Custom',date:'',title:'How I Scaled My Business with Government Contracts',imp:9900,views:877,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'10 Things No One Tells You About Government Contracting',imp:10300,views:766,eng:'',clicks:'',link:'https://www.youtube.com/watch?v=XKo6uoedzwk',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'STOP Bidding Blind! $1B GovCon Expert Reveals Pricing Secrets',imp:12400,views:1100,eng:'',clicks:'',link:'https://studio.youtube.com/video/wLjAAE3Yaws/edit',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'REJECTED 38 TIMES... Then The City Manager Called!',imp:9600,views:780,eng:'',clicks:'',link:'https://youtu.be/9lCMcTe-gcA',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'They Thought China Wouldn\'t Notice...',imp:11500,views:1200,eng:'',clicks:'',link:'https://youtu.be/nUz3H7bRvRA',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Her First Contract Came Without Funding or Past Performance - Erica Dobbs',imp:25700,views:2300,eng:'',clicks:'',link:'https://youtu.be/-zv8RHXN6cE',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'World\'s Fastest Proposal Writer vs AI proposal writer (not ChatGPT)',imp:14100,views:898,eng:'',clicks:'',link:'https://youtu.be/jJrVAr4PuJw',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'Why Most Businesses Stall After $1M - And How She Broke Through',imp:11600,views:758,eng:'',clicks:'',link:'https://youtu.be/70pAKA7HrX0',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'David Rosenberg: A Day of Reckoning Is Coming — Nobody\'s Ready',imp:6900,views:558,eng:'',clicks:'',link:'https://youtu.be/AXd1jOJzxa0',attendees:'',chat:''},
-      {channel:'Youtube',type:'Sponsored',date:'',title:'7 Secrets to Make Your Business Sell for Millions',imp:5200,views:288,eng:'',clicks:'',link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'You can pay someone a lot...',imp:467,views:'',eng:46,clicks:21,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Most banks lend money to protect...',imp:354,views:'',eng:19,clicks:11,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Think small businesses are just...',imp:190,views:'',eng:8,clicks:6,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Joel Adelman\'s favorite book?...',imp:325,views:'',eng:19,clicks:11,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Just rolled up to Vets25 here in Orlando...',imp:2005,views:'',eng:90,clicks:35,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'We\'re excited to partner with Encore...',imp:364,views:'',eng:44,clicks:27,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Most small businesses don\'t fail because...',imp:2276,views:'',eng:46,clicks:24,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Banks Hate This Secret (But You\')...',imp:467,views:'',eng:46,clicks:21,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'EP 285: The Hidden Contract Claus...',imp:351,views:'',eng:29,clicks:13,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Subcontracting? | Govcon Giants...',imp:237,views:'',eng:10,clicks:6,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Here\'s the tough part no one prepa...',imp:442,views:'',eng:35,clicks:10,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Struggling with cash flow delays on...',imp:455,views:'',eng:178,clicks:162,link:'',attendees:'',chat:''},
-      {channel:'LinkedIn',type:'Post',date:'',title:'Rejected… Then This Happened!...',imp:396,views:'',eng:36,clicks:15,link:'',attendees:'',chat:''},
-    ];
+    function n(v) { return (v || 0).toLocaleString(); }
 
-    let dataByMonth = {};
-    RAW_DATA.forEach(row => {
-      const d = parseDate(row.date);
-      const key = d ? getMonthKey(d) : '_nodate';
-      if (!dataByMonth[key]) dataByMonth[key] = [];
-      dataByMonth[key].push({ ...row, _date: d, _key: key });
-    });
-
-    const MONTH_KEYS = Object.keys(dataByMonth)
-      .filter(k => k !== '_nodate')
-      .sort();
-    if (dataByMonth['_nodate']) MONTH_KEYS.push('_nodate');
-
-    const CHANNELS = [...new Set(RAW_DATA.map(r => r.channel))];
-
-    let state = { activeMonth: 'all', activeChannels: new Set(CHANNELS), search: '' };
-
-    function fmtNum(n) {
-      if (n === '' || n == null) return '—';
-      if (typeof n === 'number') {
-        if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-        return String(n);
-      }
-      return n;
-    }
-
-    function renderRow(r) {
-      const ch = r.channel.toLowerCase();
-      const chClass = ch === 'youtube' ? 'youtube' : ch === 'linkedin' ? 'linkedin' : ch === 'instagram' ? 'instagram' : 'fhc';
-      const dateStr = r._date ? formatDate(r._date) : '—';
-      const linkCell = r.link
-        ? `<a href="${r.link}" target="_blank" rel="noopener">Watch</a>`
-        : (r.attendees ? `${r.attendees} attendees · ${r.chat} chats` : '—');
-      return `
-        <tr data-month="${r._key}" data-channel="${r.channel}" data-title="${(r.title||'').toLowerCase()}">
-          <td>${dateStr}</td>
-          <td><span class="channel-badge channel-${chClass}">${r.channel}</span></td>
-          <td>${r.type}</td>
-          <td>${r.title}</td>
-          <td class="num">${fmtNum(r.imp)}</td>
-          <td class="num">${fmtNum(r.views)}</td>
-          <td class="num">${fmtNum(r.eng)}</td>
-          <td class="num">${fmtNum(r.clicks)}</td>
-          <td>${linkCell}</td>
-        </tr>
-      `;
-    }
-
-    function filterRows(rows) {
-      return rows.filter(r => {
-        if (state.activeMonth !== 'all' && r._key !== state.activeMonth) return false;
-        if (!state.activeChannels.has(r.channel)) return false;
-        if (state.search) {
-          const q = state.search.toLowerCase();
-          if (!r.title.toLowerCase().includes(q) && !r.channel.toLowerCase().includes(q) && !r.type.toLowerCase().includes(q)) return false;
-        }
-        return true;
+    // ── Executive KPIs ──
+    (function renderKPIs() {
+      let imp = 0, views = 0, eng = 0, clicks = 0, attend = 0, webinarChats = 0, emailSends = 0, articleViews = 0, podcastDownloads = 0, podcastListeners = 0, items = 0;
+      months.forEach(m => {
+        const agg = data.aggregates[m] || {};
+        const t = agg.totals || {};
+        const byCh = agg.by_channel || {};
+        imp += t.impressions || 0;
+        views += t.views || 0;
+        eng += t.engagements || 0;
+        clicks += t.clicks || 0;
+        attend += t.attendees || 0;
+        emailSends += t.email_sends || 0;
+        articleViews += t.article_views || 0;
+        items += t.items || 0;
+        // Only count chat_count from FHC (webinars), not from other channels
+        webinarChats += (byCh.FHC || {}).chat_count || 0;
+        // Podcast: impressions = downloads, views = unique listeners
+        podcastDownloads += (byCh.Podcast || {}).impressions || 0;
+        podcastListeners += (byCh.Podcast || {}).views || 0;
       });
-    }
+      const activeMonths = months.filter(m => {
+        const t = (data.aggregates[m] || {}).totals || {};
+        return (t.items || 0) > 0;
+      }).length;
 
-    function render() {
-      const container = document.getElementById('report-content');
-      const tabs = document.getElementById('month-tabs');
-      const chFilters = document.getElementById('channel-filters');
+      let html = `
+        <div class="metric-box"><div class="label">Total Impressions</div><div class="value">${n(imp)}</div><div class="sub">${activeMonths} active months</div></div>
+        <div class="metric-box"><div class="label">Total Views</div><div class="value">${n(views)}</div><div class="sub">${((views/Math.max(imp,1))*100).toFixed(1)}% view rate</div></div>
+        <div class="metric-box"><div class="label">Engagements</div><div class="value">${n(eng)}</div><div class="sub">${n(clicks)} clicks</div></div>
+        <div class="metric-box"><div class="label">Content Pieces</div><div class="value">${n(items)}</div><div class="sub">across ${months.length} months</div></div>
+        <div class="metric-box"><div class="label">Webinar Attendees</div><div class="value">${n(attend)}</div><div class="sub">${n(webinarChats)} chat messages</div></div>`;
+      if (emailSends > 0) {
+        html += `<div class="metric-box"><div class="label">Email Sends</div><div class="value">${n(emailSends)}</div><div class="sub">${articleViews > 0 ? n(articleViews) + ' article views' : 'Newsletter distribution'}</div></div>`;
+      }
+      if (podcastDownloads > 0) {
+        html += `<div class="metric-box"><div class="label">Podcast Downloads</div><div class="value">${n(podcastDownloads)}</div><div class="sub">${podcastListeners > 0 ? n(podcastListeners) + ' unique listeners' : 'Total downloads'}</div></div>`;
+      }
+      document.getElementById('exec-kpis').innerHTML = html;
+    })();
 
-      tabs.innerHTML = '<button class="month-tab active" data-month="all">All months</button>' +
-        MONTH_KEYS.filter(k => k !== '_nodate').map(k =>
-          `<button class="month-tab" data-month="${k}">${formatMonthKey(k)}</button>`
-        ).join('') +
-        (dataByMonth['_nodate'] ? '<button class="month-tab" data-month="_nodate">No date</button>' : '');
+    // ── Sparkline Chart ──
+    (function renderSparkline() {
+      const values = data.series.impressions || months.map(() => 0);
+      const w = 760, h = 180;
+      const pad = { l: 50, r: 16, t: 12, b: 28 };
+      const innerW = w - pad.l - pad.r;
+      const innerH = h - pad.t - pad.b;
+      const maxV = Math.max(...values, 1);
+      const x = (i) => pad.l + (innerW * (values.length <= 1 ? 0 : i / (values.length - 1)));
+      const y = (v) => pad.t + innerH - (innerH * (v / maxV));
 
-      chFilters.innerHTML = CHANNELS.map(c =>
-        `<button class="channel-filter ${state.activeChannels.has(c) ? 'active' : ''}" data-channel="${c}">${c}</button>`
+      const pts = values.map((v, i) => `${x(i)},${y(v)}`).join(' ');
+      const areaPts = pts + ` ${x(values.length-1)},${h-pad.b} ${x(0)},${h-pad.b}`;
+
+      const circles = values.map((v, i) =>
+        `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="#6366f1" opacity="0.9"><title>${fmtMonth(months[i])}: ${n(v)}</title></circle>`
       ).join('');
 
-      let html = '';
-      const monthsToShow = state.activeMonth === 'all' ? MONTH_KEYS : [state.activeMonth];
+      const labels = values.map((v, i) => {
+        const [yy, mm] = months[i].split('-');
+        return `<text x="${x(i)}" y="${h - 8}" text-anchor="middle" font-size="10" fill="#a1a1aa">${MONTH_NAMES[parseInt(mm,10)-1]}</text>`;
+      }).join('');
 
-      monthsToShow.forEach(key => {
-        const rows = (dataByMonth[key] || []).slice();
-        const filtered = filterRows(rows);
-        if (filtered.length === 0) return;
+      // Y-axis ticks
+      const yTicks = [0, Math.round(maxV/2), maxV].map(v =>
+        `<text x="${pad.l - 8}" y="${y(v) + 3}" text-anchor="end" font-size="9" fill="#52525b">${(v/1000).toFixed(0)}k</text>
+         <line x1="${pad.l}" y1="${y(v)}" x2="${w - pad.r}" y2="${y(v)}" stroke="#27272a" stroke-dasharray="3 3" />`
+      ).join('');
 
-        const label = key === '_nodate' ? 'No date' : formatMonthKey(key);
-        const count = filtered.length;
-        html += `
-          <div class="month-section" data-month="${key}">
-            <div class="month-header">
-              <h3>${label} <span class="month-badge">${count} item${count !== 1 ? 's' : ''}</span></h3>
-              <span class="chevron">▼</span>
-            </div>
-            <div class="month-content">
-              <div class="table-wrap">
-                <table>
-                  <thead>
-                    <tr>
-                      <th data-sort="date">Date ⇅</th>
-                      <th data-sort="channel">Channel ⇅</th>
-                      <th data-sort="type">Type ⇅</th>
-                      <th data-sort="title">Title ⇅</th>
-                      <th data-sort="imp">Impressions ⇅</th>
-                      <th data-sort="views">Views ⇅</th>
-                      <th data-sort="eng">Engagements ⇅</th>
-                      <th data-sort="clicks">Clicks ⇅</th>
-                      <th>Link / Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>${filtered.map(renderRow).join('')}</tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        `;
-      });
+      document.getElementById('sparkline-chart').innerHTML = `
+        <svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}">
+          ${yTicks}
+          <polygon points="${areaPts}" fill="url(#sparkGrad)" opacity="0.15" />
+          <polyline points="${pts}" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linejoin="round" />
+          ${circles}
+          ${labels}
+          <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
+        </svg>
+      `;
+    })();
 
-      if (!html) {
-        html = '<div class="empty-state">No data matches your filters. Try a different month or channel, or clear the search.</div>';
-      }
-      container.innerHTML = html;
-
-      container.querySelectorAll('.month-header').forEach(el => {
-        el.addEventListener('click', () => el.closest('.month-section').classList.toggle('collapsed'));
-      });
-
-      document.getElementById('month-tabs').querySelectorAll('.month-tab').forEach(btn => {
-        btn.addEventListener('click', () => {
-          state.activeMonth = btn.dataset.month;
-          document.querySelectorAll('.month-tab').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          render();
+    // ── Channel Performance Summary ──
+    (function renderChannelSummary() {
+      const chTotals = {};
+      months.forEach(m => {
+        const byCh = ((data.aggregates[m] || {}).by_channel) || {};
+        Object.keys(byCh).forEach(ch => {
+          if (!chTotals[ch]) chTotals[ch] = { impressions: 0, views: 0, items: 0 };
+          chTotals[ch].impressions += byCh[ch].impressions || 0;
+          chTotals[ch].views += byCh[ch].views || 0;
+          chTotals[ch].items += byCh[ch].items || 0;
         });
       });
+      const rows = Object.entries(chTotals).sort((a, b) => b[1].impressions - a[1].impressions);
+      const maxImp = Math.max(...rows.map(r => r[1].impressions), 1);
+      const chClass = { Youtube: 'youtube', LinkedIn: 'linkedin', FHC: 'fhc', Instagram: 'instagram', Podcast: 'podcast' };
 
-      document.getElementById('channel-filters').querySelectorAll('.channel-filter').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const c = btn.dataset.channel;
-          if (state.activeChannels.has(c)) {
-            if (state.activeChannels.size === 1) return;
-            state.activeChannels.delete(c);
-          } else {
-            state.activeChannels.add(c);
-          }
-          render();
-        });
+      document.getElementById('channel-summary').innerHTML = rows.map(([ch, d]) => {
+        const pct = (d.impressions / maxImp * 100).toFixed(1);
+        const cls = chClass[ch] || 'default';
+        return `
+          <div class="bar-row">
+            <div class="name">${ch}</div>
+            <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pct}%"></div></div>
+            <div class="bar-val">${n(d.impressions)}</div>
+          </div>`;
+      }).join('');
+    })();
+
+    // ── Top 5 Content ──
+    (function renderTopContent() {
+      const top = [...data.items]
+        .filter(i => i.impressions != null && i.impressions > 0)
+        .sort((a, b) => (b.impressions || 0) - (a.impressions || 0))
+        .slice(0, 10);
+
+      const chMap = { Youtube: 'youtube', LinkedIn: 'linkedin', Instagram: 'instagram', FHC: 'fhc', Podcast: 'podcast' };
+      const trs = top.map((it, idx) => {
+        const ch = chMap[it.channel] || 'fhc';
+        const titleText = it.title || '(untitled)';
+        const title = (it.link && it.link_type === 'direct')
+          ? `<a href="${it.link}" target="_blank" rel="noopener">${titleText}</a>`
+          : it.link
+            ? `${titleText} <a href="${it.link}" target="_blank" rel="noopener" style="opacity:0.5;font-size:0.8em">${it.channel} &#8599;</a>`
+            : titleText;
+        // Build extra info for non-standard metrics
+        let extra = '';
+        if (it.email_sends) extra += `${n(it.email_sends)} sends`;
+        if (it.article_views) extra += `${extra ? ' · ' : ''}${n(it.article_views)} reads`;
+        if (it.attendees) extra += `${extra ? ' · ' : ''}${n(it.attendees)} attendees`;
+        return `<tr>
+          <td class="num">${idx + 1}</td>
+          <td>${title}</td>
+          <td><span class="channel-badge channel-${ch}">${it.channel}</span></td>
+          <td>${it.type || ''}</td>
+          <td class="num">${n(it.impressions)}</td>
+          <td class="num">${it.views != null ? n(it.views) : (extra || '-')}</td>
+          <td>${fmtMonth(it.month)}</td>
+        </tr>`;
+      }).join('');
+
+      document.getElementById('top-content').innerHTML = `
+        <table>
+          <thead><tr><th>#</th><th>Title</th><th>Channel</th><th>Type</th><th>Impressions</th><th>Views</th><th>Month</th></tr></thead>
+          <tbody>${trs}</tbody>
+        </table>`;
+    })();
+
+    // ── Month Cards ──
+    (function renderMonthCards() {
+      const cards = months.map(k => {
+        const agg = (data.aggregates[k] || {}).totals || {};
+        const isEmpty = (agg.items || 0) === 0;
+        const imp = n(agg.impressions || 0);
+        const itemCount = agg.items || 0;
+        return `
+          <a href="monthly-report.html?month=${k}" class="month-link ${isEmpty ? 'empty' : ''}">
+            <div class="month-name">${fmtMonth(k)}</div>
+            <div class="month-stat">${isEmpty ? 'No data' : imp + ' impressions'}</div>
+            <div class="month-stat">${isEmpty ? '' : itemCount + ' items'}</div>
+          </a>`;
       });
+      document.getElementById('month-links').innerHTML = cards.join('');
+    })();
 
-      container.querySelectorAll('th[data-sort]').forEach(th => {
-        th.addEventListener('click', () => {
-          const col = th.dataset.sort;
-          const table = th.closest('table');
-          const tbody = table.querySelector('tbody');
-          const rows = [...tbody.querySelectorAll('tr')];
-          const desc = th.classList.contains('sorted') && !th.classList.contains('sorted-desc');
-          th.closest('thead').querySelectorAll('th').forEach(h => {
-            h.classList.remove('sorted', 'sorted-desc');
-            h.innerHTML = h.textContent.replace(' ⇅', '') + ' <span class="sort-icon">⇅</span>';
-          });
-          th.classList.add('sorted', desc ? 'sorted-desc' : '');
-          th.innerHTML = th.textContent.replace(' ⇅', '') + ' <span class="sort-icon">⇅</span>';
+    // ── Deliverable Tracker ──
+    (function renderTracker() {
+      const items = data.items || [];
+      const trackers = [
+        {
+          group: 'YouTube',
+          rows: [
+            { name: 'Sponsored Videos (2/mo)', target: 24,
+              actual: items.filter(i => i.channel === 'Youtube' && i.type === 'Sponsored Video').length },
+            { name: 'Custom Videos (5/yr)', target: 5,
+              actual: items.filter(i => i.channel === 'Youtube' && i.type === 'Custom Video').length },
+          ]
+        },
+        {
+          group: 'LinkedIn',
+          rows: [
+            { name: 'Sponsored Posts (2/mo)', target: 24,
+              actual: items.filter(i => i.channel === 'LinkedIn' && i.type === 'Sponsored Post').length },
+            { name: 'Articles (1/mo)', target: 12,
+              actual: items.filter(i => i.channel === 'LinkedIn' && i.type === 'Article').length },
+          ]
+        },
+        {
+          group: 'Federal Help Center',
+          rows: [
+            { name: 'Webinars (2/mo)', target: 24,
+              actual: items.filter(i => i.channel === 'FHC' && i.type === 'Webinar').length },
+          ]
+        },
+        {
+          group: 'Instagram',
+          rows: [
+            { name: 'Posts', target: null,
+              actual: items.filter(i => i.channel === 'Instagram').length },
+          ]
+        },
+        {
+          group: 'Podcast',
+          rows: [
+            { name: 'Sponsored Episodes (1/mo)', target: 12,
+              actual: items.filter(i => i.channel === 'Podcast' && i.type === 'Sponsored Episode').length },
+            { name: 'Ad Spots', target: null,
+              actual: items.filter(i => i.channel === 'Podcast' && i.type === 'Ad Spot').length },
+          ]
+        },
+      ];
 
-          const getVal = (row, c) => {
-            const idx = ['date','channel','type','title','imp','views','eng','clicks'].indexOf(c);
-            const cell = row.cells[idx];
-            const t = (cell?.textContent || '').trim();
-            const n = parseFloat(t.replace(/[K,]/g, '')) * (t.includes('K') ? 1000 : 1);
-            return isNaN(n) ? t : n;
-          };
-          rows.sort((a, b) => {
-            const va = getVal(a, col);
-            const vb = getVal(b, col);
-            const cmp = typeof va === 'number' && typeof vb === 'number' ? va - vb : String(va).localeCompare(String(vb));
-            return desc ? -cmp : cmp;
-          });
-          rows.forEach(r => tbody.appendChild(r));
-        });
+      document.getElementById('deliverable-tracker').innerHTML = trackers.map(t => {
+        const rowsHTML = t.rows.map(r => {
+          const pct = r.target ? Math.min((r.actual / r.target) * 100, 100) : 100;
+          const fillCls = r.target == null ? '' : (pct >= 100 ? 'full' : pct >= 50 ? '' : 'warn');
+          const countText = r.target ? `${r.actual}/${r.target}` : `${r.actual}`;
+          return `
+            <div class="progress-row">
+              <div class="progress-label">${r.name}</div>
+              <div class="progress-bar"><div class="progress-fill ${fillCls}" style="width:${pct.toFixed(0)}%"></div></div>
+              <div class="progress-count">${countText}</div>
+            </div>`;
+        }).join('');
+        return `<div class="tracker-group"><h4>${t.group}</h4>${rowsHTML}</div>`;
+      }).join('');
+    })();
+
+    // ── Tab Switching ──
+    const views = { overview: 'overview-view', months: 'months-view', deliverables: 'deliverables-view' };
+    document.querySelectorAll('.view-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        Object.values(views).forEach(id => document.getElementById(id).style.display = 'none');
+        document.getElementById(views[btn.dataset.view]).style.display = 'block';
       });
-    }
-
-    document.getElementById('search').addEventListener('input', e => {
-      state.search = e.target.value.trim();
-      render();
     });
-
-    document.getElementById('search').addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        e.target.value = '';
-        state.search = '';
-        render();
-      }
-    });
-
-    render();
   </script>
 </body>
 </html>
