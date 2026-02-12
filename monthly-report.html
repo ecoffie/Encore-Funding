@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monthly Report | Encore × GovCon Giants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --surface: #18181c;
+      --surface-hover: #222228;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --border: #27272a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Navigation */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { border-color: var(--accent); color: var(--accent-light); text-decoration: none; }
+    .nav-btn.disabled { opacity: 0.3; pointer-events: none; }
+
+    header { padding: 0 0 2rem; border-bottom: 1px solid var(--border); }
+    header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    header p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .metric-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
+    .metric-box .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .metric-box .value { font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; font-weight: 600; margin-top: 0.25rem; }
+    .metric-box .delta { margin-top: 0.35rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-muted); }
+    .delta.up { color: #86efac; }
+    .delta.down { color: #fca5a5; }
+
+    .section { margin: 2rem 0; }
+    .section h2 { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+
+    .controls-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0.5rem 0 1rem; }
+    .pill { padding: 0.45rem 0.8rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer; font-size: 0.85rem; font-family: inherit; }
+    .pill:hover { border-color: var(--accent); color: var(--text); }
+    .pill.active { border-color: var(--accent); background: rgba(99,102,241,0.2); color: var(--text); }
+
+    .charts-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 1rem; }
+    .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; overflow: hidden; }
+    .chart-card h3 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .chart-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+    .bar-list { display: grid; gap: 0.6rem; }
+    .bar-row { display: grid; grid-template-columns: 92px 1fr 84px; gap: 0.75rem; align-items: center; }
+    .bar-row .name { font-size: 0.85rem; color: var(--text-muted); }
+    .bar-track { height: 16px; background: var(--border); border-radius: 6px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
+    .bar-val { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Filter & Search toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .toolbar-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .search-input {
+      flex: 1;
+      min-width: 180px;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+    }
+    .search-input:focus { outline: none; border-color: var(--accent); }
+    .search-input::placeholder { color: var(--text-muted); }
+    .ch-pill { padding: 0.35rem 0.7rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: 0.8rem; font-family: inherit; transition: all 0.15s; }
+    .ch-pill:hover { border-color: var(--accent); }
+    .ch-pill.active { border-color: currentColor; }
+    .ch-pill[data-ch="Youtube"] { color: #ff6b6b; }
+    .ch-pill[data-ch="Youtube"].active { background: rgba(255,0,0,0.15); }
+    .ch-pill[data-ch="LinkedIn"] { color: #60a5fa; }
+    .ch-pill[data-ch="LinkedIn"].active { background: rgba(10,102,194,0.15); }
+    .ch-pill[data-ch="FHC"] { color: var(--accent-light); }
+    .ch-pill[data-ch="FHC"].active { background: rgba(99,102,241,0.15); }
+    .ch-pill[data-ch="Instagram"] { color: #f472b6; }
+    .ch-pill[data-ch="Instagram"].active { background: rgba(228,64,95,0.15); }
+    .ch-pill[data-ch="Podcast"] { color: #86efac; }
+    .ch-pill[data-ch="Podcast"].active { background: rgba(5,150,105,0.15); }
+    .export-btn {
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .export-btn:hover { border-color: var(--accent); color: var(--accent-light); }
+
+    .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600; cursor: pointer; user-select: none; white-space: nowrap; }
+    th:hover { color: var(--accent-light); }
+    th .sort-icon { opacity: 0.5; margin-left: 0.25rem; display: inline-block; }
+    th.sorted .sort-icon, th.sorted-desc .sort-icon { opacity: 1; }
+    th.sorted-desc .sort-icon { transform: rotate(180deg); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--surface-hover); }
+    .channel-badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+    .channel-youtube { background: rgba(255,0,0,0.2); color: #ff6b6b; }
+    .channel-linkedin { background: rgba(10,102,194,0.2); color: #60a5fa; }
+    .channel-instagram { background: rgba(228,64,95,0.2); color: #f472b6; }
+    .channel-fhc { background: rgba(99,102,241,0.2); color: var(--accent-light); }
+    .channel-podcast { background: rgba(5,150,105,0.2); color: #86efac; }
+    .platform-link { opacity: 0.6; font-style: italic; }
+    .platform-link:hover { opacity: 1; }
+    .num { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+    .empty-msg { padding: 2rem; text-align: center; color: var(--text-muted); }
+    .item-count { font-size: 0.85rem; color: var(--text-muted); margin-left: auto; }
+
+    @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .container { padding: 1rem; }
+      .toolbar { flex-direction: column; align-items: stretch; }
+    }
+    @media print {
+      body { background: white; color: black; }
+      .top-nav, .toolbar, .export-btn { display: none; }
+      .metric-box { border: 1px solid #ccc; background: #f9f9f9; }
+      .metric-box .label, .metric-box .delta { color: #666; }
+      .chart-card { break-inside: avoid; border: 1px solid #ccc; background: #f9f9f9; }
+      a { color: black; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <div class="top-nav" id="top-nav"></div>
+
+    <header>
+      <h1 id="month-title">Monthly Report</h1>
+      <p id="month-subtitle">Encore × GovCon Giants Partnership</p>
+    </header>
+
+    <div id="metrics" class="metrics-row"></div>
+
+    <div class="section">
+      <h2>Month-to-month performance</h2>
+      <div class="controls-row" id="metric-pills"></div>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 id="trend-title">Trend</h3>
+          <div id="trend-chart"></div>
+          <div class="chart-sub">Selected month is highlighted. Use the pills to switch the metric.</div>
+        </div>
+        <div class="chart-card">
+          <h3 id="mix-title">Channel mix (selected month)</h3>
+          <div class="bar-list" id="channel-bars"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content"></div>
+  </div>
+
+  <script src="report-data.js"></script>
+  <script>
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    function monthLabel(key) {
+      const [y, m] = key.split('-');
+      return MONTHS[parseInt(m, 10) - 1] + ' ' + y;
+    }
+
+    function formatIsoDate(iso) {
+      if (!iso) return '\u2014';
+      const d = new Date(iso + 'T00:00:00');
+      if (isNaN(d.getTime())) return iso;
+      return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear();
+    }
+
+    function fmtDelta(cur, prev) {
+      if (prev == null || prev === 0) return { text: '\u2014', cls: '' };
+      const diff = cur - prev;
+      const pct = (diff / prev) * 100;
+      const sign = diff > 0 ? '+' : '';
+      return {
+        text: sign + diff.toLocaleString() + ' (' + sign + pct.toFixed(1) + '%)',
+        cls: diff > 0 ? 'up' : diff < 0 ? 'down' : ''
+      };
+    }
+
+    function svgLineChart({ months, values, selectedIndex, width = 760, height = 220 }) {
+      const pad = { l: 36, r: 16, t: 12, b: 28 };
+      const w = width, h = height;
+      const innerW = w - pad.l - pad.r;
+      const innerH = h - pad.t - pad.b;
+      const maxV = Math.max(...values, 1);
+      const minV = Math.min(...values, 0);
+      const range = Math.max(maxV - minV, 1);
+      const x = (i) => pad.l + (innerW * (values.length === 1 ? 0 : i / (values.length - 1)));
+      const y = (v) => pad.t + innerH - (innerH * ((v - minV) / range));
+      const pts = values.map((v, i) => x(i) + ',' + y(v)).join(' ');
+
+      const circles = values.map((v, i) => {
+        const sel = i === selectedIndex;
+        return '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="' + (sel ? 4.5 : 3) + '" fill="' + (sel ? '#818cf8' : '#6366f1') + '" opacity="' + (sel ? 1 : 0.75) + '"><title>' + monthLabel(months[i]) + ': ' + (v||0).toLocaleString() + '</title></circle>';
+      }).join('');
+
+      const xLabels = values.map((v, i) => {
+        const mm = months[i].split('-')[1];
+        return '<text x="' + x(i) + '" y="' + (h - 10) + '" text-anchor="middle" font-size="10" fill="#a1a1aa">' + MONTHS[parseInt(mm,10)-1] + '</text>';
+      }).join('');
+
+      const selX = selectedIndex >= 0 ? x(selectedIndex) : -999;
+      const selLine = selectedIndex >= 0 ? '<line x1="' + selX + '" y1="' + pad.t + '" x2="' + selX + '" y2="' + (h-pad.b) + '" stroke="#27272a" stroke-dasharray="4 4" />' : '';
+
+      return '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" height="' + h + '" role="img" aria-label="Trend chart">' +
+        selLine +
+        '<polyline points="' + pts + '" fill="none" stroke="#6366f1" stroke-width="2" />' +
+        circles + xLabels + '</svg>';
+    }
+
+    // ── Setup ──
+    const params = new URLSearchParams(location.search);
+    const monthKey = params.get('month') || '';
+    const data = window.REPORT_DATA || { months: [], items: [], aggregates: {}, series: {} };
+    const allMonths = data.months || [];
+
+    if (!monthKey || !allMonths.includes(monthKey)) {
+      location.href = 'Encore_Report.html';
+      throw new Error('redirect');
+    }
+
+    const idx = allMonths.indexOf(monthKey);
+    const prevMonthKey = idx > 0 ? allMonths[idx - 1] : null;
+    const nextMonthKey = idx < allMonths.length - 1 ? allMonths[idx + 1] : null;
+
+    // ── Navigation ──
+    document.getElementById('top-nav').innerHTML =
+      (prevMonthKey
+        ? '<a href="monthly-report.html?month=' + prevMonthKey + '" class="nav-btn">&larr; ' + monthLabel(prevMonthKey) + '</a>'
+        : '<span class="nav-btn disabled">&larr; Prev</span>') +
+      '<a href="Encore_Report.html" class="nav-btn">All Months</a>' +
+      (nextMonthKey
+        ? '<a href="monthly-report.html?month=' + nextMonthKey + '" class="nav-btn">' + monthLabel(nextMonthKey) + ' &rarr;</a>'
+        : '<span class="nav-btn disabled">Next &rarr;</span>');
+
+    document.getElementById('month-title').textContent = monthLabel(monthKey) + ' Report';
+    document.title = monthLabel(monthKey) + ' Report | Encore \u00d7 GovCon Giants';
+
+    // ── KPI Metrics ──
+    const curAgg = (data.aggregates && data.aggregates[monthKey]) || { totals: {}, by_channel: {} };
+    const prevAgg = (prevMonthKey && data.aggregates && data.aggregates[prevMonthKey]) || null;
+    const totals = curAgg.totals || {};
+    const prevTotals = prevAgg ? (prevAgg.totals || {}) : null;
+    const isEmpty = curAgg.is_empty || (totals.items || 0) === 0;
+
+    const deltas = {
+      impressions: prevTotals ? fmtDelta(totals.impressions || 0, prevTotals.impressions || 0) : { text: '\u2014', cls: '' },
+      views: prevTotals ? fmtDelta(totals.views || 0, prevTotals.views || 0) : { text: '\u2014', cls: '' },
+      engagements: prevTotals ? fmtDelta(totals.engagements || 0, prevTotals.engagements || 0) : { text: '\u2014', cls: '' },
+      clicks: prevTotals ? fmtDelta(totals.clicks || 0, prevTotals.clicks || 0) : { text: '\u2014', cls: '' },
+    };
+
+    // Get FHC-only chat count (webinar chats) — don't mix in LinkedIn article chat_count
+    var byCh = curAgg.by_channel || {};
+    var webinarChats = (byCh.FHC || {}).chat_count || 0;
+
+    let metricsHTML = '' +
+      '<div class="metric-box"><div class="label">Content Items</div><div class="value">' + (totals.items || 0).toLocaleString() + '</div><div class="delta">vs prev: ' + (prevTotals ? (prevTotals.items || 0).toLocaleString() : '\u2014') + '</div></div>' +
+      '<div class="metric-box"><div class="label">Impressions</div><div class="value">' + (totals.impressions || 0).toLocaleString() + '</div><div class="delta ' + deltas.impressions.cls + '">' + deltas.impressions.text + '</div></div>' +
+      '<div class="metric-box"><div class="label">Views</div><div class="value">' + (totals.views || 0).toLocaleString() + '</div><div class="delta ' + deltas.views.cls + '">' + deltas.views.text + '</div></div>' +
+      '<div class="metric-box"><div class="label">Engagements</div><div class="value">' + (totals.engagements || 0).toLocaleString() + '</div><div class="delta ' + deltas.engagements.cls + '">' + deltas.engagements.text + '</div></div>' +
+      '<div class="metric-box"><div class="label">Clicks</div><div class="value">' + (totals.clicks || 0).toLocaleString() + '</div><div class="delta ' + deltas.clicks.cls + '">' + deltas.clicks.text + '</div></div>';
+
+    // Webinar metrics — only show when FHC webinar data exists
+    if ((totals.attendees || 0) > 0 || webinarChats > 0) {
+      metricsHTML +=
+        '<div class="metric-box"><div class="label">Webinar Attendees</div><div class="value">' + (totals.attendees || 0).toLocaleString() + '</div><div class="delta">' + webinarChats.toLocaleString() + ' chat messages</div></div>';
+    }
+
+    // Email / Article metrics — show when newsletter or article data exists
+    if ((totals.email_sends || 0) > 0) {
+      metricsHTML +=
+        '<div class="metric-box"><div class="label">Email Sends</div><div class="value">' + (totals.email_sends || 0).toLocaleString() + '</div><div class="delta">Newsletter distribution</div></div>';
+    }
+    if ((totals.article_views || 0) > 0) {
+      metricsHTML +=
+        '<div class="metric-box"><div class="label">Article Views</div><div class="value">' + (totals.article_views || 0).toLocaleString() + '</div><div class="delta">LinkedIn articles</div></div>';
+    }
+
+    // Podcast metrics — show when podcast data exists for this month
+    var podcastData = byCh.Podcast || {};
+    if ((podcastData.impressions || 0) > 0) {
+      metricsHTML +=
+        '<div class="metric-box"><div class="label">Podcast Downloads</div><div class="value">' + (podcastData.impressions || 0).toLocaleString() + '</div><div class="delta">' + (podcastData.views > 0 ? podcastData.views.toLocaleString() + ' unique listeners' : 'Total downloads') + '</div></div>';
+    }
+
+    if (isEmpty) {
+      metricsHTML = '<div class="metric-box" style="grid-column:1/-1;text-align:center"><div class="label">Status</div><div class="value" style="font-size:1rem">' + (curAgg.note || 'No new content published this month') + '</div></div>';
+    }
+
+    document.getElementById('metrics').innerHTML = metricsHTML;
+
+    // ── Trend Charts ──
+    const metricDefs = [
+      { key: 'impressions', label: 'Impressions' },
+      { key: 'views', label: 'Views' },
+      { key: 'engagements', label: 'Engagements' },
+      { key: 'clicks', label: 'Clicks' },
+    ];
+    let selectedMetric = 'impressions';
+    const pills = document.getElementById('metric-pills');
+    pills.innerHTML = metricDefs.map(function(m) {
+      return '<button class="pill ' + (m.key === selectedMetric ? 'active' : '') + '" data-m="' + m.key + '">' + m.label + '</button>';
+    }).join('');
+
+    function renderCharts() {
+      var seriesValues = (data.series && data.series[selectedMetric]) ? data.series[selectedMetric] : allMonths.map(function() { return 0; });
+      document.getElementById('trend-title').textContent = 'Trend: ' + metricDefs.find(function(m) { return m.key === selectedMetric; }).label;
+      document.getElementById('trend-chart').innerHTML = svgLineChart({ months: allMonths, values: seriesValues, selectedIndex: idx });
+
+      var byCh = curAgg.by_channel || {};
+      var rows = Object.keys(byCh).map(function(ch) { return { ch: ch, v: byCh[ch][selectedMetric] || 0 }; }).sort(function(a,b) { return b.v - a.v; });
+      var maxV = Math.max.apply(null, rows.map(function(r) { return r.v; }).concat([1]));
+      document.getElementById('channel-bars').innerHTML = rows.length ? rows.map(function(r) {
+        var pct = (r.v / maxV) * 100;
+        return '<div class="bar-row"><div class="name">' + r.ch + '</div><div class="bar-track"><div class="bar-fill" style="width:' + pct.toFixed(1) + '%"></div></div><div class="bar-val">' + r.v.toLocaleString() + '</div></div>';
+      }).join('') : '<div class="empty-msg">No channel data for this month.</div>';
+    }
+
+    pills.querySelectorAll('button[data-m]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        selectedMetric = b.dataset.m;
+        pills.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
+        b.classList.add('active');
+        renderCharts();
+      });
+    });
+    renderCharts();
+
+    // ── Activity Table with Filters ──
+    var monthItems = data.items.filter(function(it) { return it.month === monthKey; });
+    var chMap = { Youtube: 'youtube', LinkedIn: 'linkedin', Instagram: 'instagram', FHC: 'fhc', Podcast: 'podcast' };
+    var activeChannels = new Set();
+    var searchQuery = '';
+    var sortCol = 'impressions';
+    var sortDesc = true;
+
+    function sortVal(it, col) {
+      if (col === 'date') return (it.date_iso || '');
+      if (col === 'impressions') return it.impressions != null ? it.impressions : -1;
+      if (col === 'views') return it.views != null ? it.views : -1;
+      if (col === 'engagements') return it.engagements != null ? it.engagements : -1;
+      if (col === 'clicks') return it.clicks != null ? it.clicks : -1;
+      if (col === 'channel') return (it.channel || '').toLowerCase();
+      if (col === 'type') return (it.type || '').toLowerCase();
+      if (col === 'title') return (it.title || '').toLowerCase();
+      return 0;
+    }
+
+    function getFilteredItems() {
+      var items = monthItems;
+      if (activeChannels.size > 0) {
+        items = items.filter(function(it) { return activeChannels.has(it.channel); });
+      }
+      if (searchQuery) {
+        var q = searchQuery.toLowerCase();
+        items = items.filter(function(it) { return (it.title || '').toLowerCase().indexOf(q) >= 0; });
+      }
+      return items;
+    }
+
+    function exportCSV() {
+      var items = getFilteredItems();
+      var headers = ['Date','Channel','Type','Title','Impressions','Views','Engagements','Clicks','Attendees','Chat Messages','Email Sends','Article Views','Link'];
+      var rows = items.map(function(it) {
+        return [
+          it.date_iso || '',
+          it.channel || '',
+          it.type || '',
+          '"' + (it.title || '').replace(/"/g, '""') + '"',
+          it.impressions != null ? it.impressions : '',
+          it.views != null ? it.views : '',
+          it.engagements != null ? it.engagements : '',
+          it.clicks != null ? it.clicks : '',
+          it.attendees != null ? it.attendees : '',
+          it.chat_count != null ? it.chat_count : '',
+          it.email_sends != null ? it.email_sends : '',
+          it.article_views != null ? it.article_views : '',
+          it.link || ''
+        ].join(',');
+      });
+      var csv = [headers.join(',')].concat(rows).join('\n');
+      var blob = new Blob([csv], { type: 'text/csv' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'encore-report-' + monthKey + '.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function renderContent() {
+      if (monthItems.length === 0) {
+        document.getElementById('content').innerHTML = '<div class="empty-msg">' + (isEmpty ? (curAgg.note || 'No new content published this month.') : 'No activity recorded for this month.') + '</div>';
+        return;
+      }
+
+      var filtered = getFilteredItems();
+      var sorted = filtered.slice().sort(function(a, b) {
+        var va = sortVal(a, sortCol);
+        var vb = sortVal(b, sortCol);
+        var cmp = typeof va === 'string' ? va.localeCompare(String(vb)) : (va - vb);
+        return sortDesc ? -cmp : cmp;
+      });
+
+      // Channels for filter pills
+      var channels = [];
+      var seen = {};
+      monthItems.forEach(function(it) {
+        if (!seen[it.channel]) { channels.push(it.channel); seen[it.channel] = true; }
+      });
+
+      var chPills = channels.map(function(ch) {
+        var count = monthItems.filter(function(it) { return it.channel === ch; }).length;
+        var cls = activeChannels.has(ch) ? 'active' : '';
+        return '<button class="ch-pill ' + cls + '" data-ch="' + ch + '">' + ch + ' (' + count + ')</button>';
+      }).join('');
+
+      var trs = sorted.map(function(it) {
+        var ch = chMap[it.channel] || 'fhc';
+        var dateText = formatIsoDate(it.date_iso);
+        var dateCell = (it.link && it.link_type === 'direct')
+          ? '<a href="' + it.link + '" target="_blank" rel="noopener" title="' + it.date_source + '">' + dateText + '</a>'
+          : '<span title="' + it.date_source + '">' + dateText + '</span>';
+        // Build details column based on content type
+        var details = [];
+        if (it.link) {
+          if (it.link_type === 'platform') {
+            var plabel = it.channel === 'FHC' ? 'FHC' : it.channel;
+            details.push('<a href="' + it.link + '" target="_blank" rel="noopener" class="platform-link">' + plabel + ' \u2197</a>');
+          } else {
+            var label = it.channel === 'Youtube' ? 'Watch' : it.channel === 'Podcast' ? 'Listen' : 'View';
+            details.push('<a href="' + it.link + '" target="_blank" rel="noopener">' + label + '</a>');
+          }
+        }
+        if (it.attendees) details.push(it.attendees + ' attendees');
+        if (it.chat_count && it.channel === 'FHC') details.push((it.chat_count || 0) + ' chats');
+        if (it.email_sends) details.push(it.email_sends.toLocaleString() + ' sends');
+        if (it.article_views) details.push(it.article_views.toLocaleString() + ' reads');
+        if (it.channel === 'Podcast' && it.impressions) details.push(it.impressions.toLocaleString() + ' downloads');
+        if (it.channel === 'Podcast' && it.views) details.push(it.views.toLocaleString() + ' listeners');
+        var detailsCell = details.length > 0 ? details.join(' \u00b7 ') : '\u2014';
+        return '<tr>' +
+          '<td>' + dateCell + '</td>' +
+          '<td><span class="channel-badge channel-' + ch + '">' + it.channel + '</span></td>' +
+          '<td>' + (it.type || '\u2014') + '</td>' +
+          '<td>' + (it.title || '\u2014') + '</td>' +
+          '<td class="num">' + (it.impressions != null ? it.impressions.toLocaleString() : '\u2014') + '</td>' +
+          '<td class="num">' + (it.views != null ? it.views.toLocaleString() : '\u2014') + '</td>' +
+          '<td class="num">' + (it.engagements != null ? it.engagements.toLocaleString() : '\u2014') + '</td>' +
+          '<td class="num">' + (it.clicks != null ? it.clicks.toLocaleString() : '\u2014') + '</td>' +
+          '<td>' + detailsCell + '</td>' +
+          '</tr>';
+      }).join('');
+
+      var thClass = function(col) {
+        if (col !== sortCol) return '';
+        return sortDesc ? 'sorted-desc' : 'sorted';
+      };
+
+      document.getElementById('content').innerHTML =
+        '<div class="section">' +
+          '<h2>Activity this month</h2>' +
+          '<div class="toolbar">' +
+            '<span class="toolbar-label">Filter:</span>' +
+            chPills +
+            '<input type="text" class="search-input" id="search-input" placeholder="Search titles..." value="' + (searchQuery || '') + '" />' +
+            '<button class="export-btn" id="export-btn">Export CSV</button>' +
+            '<span class="item-count">' + filtered.length + ' of ' + monthItems.length + ' items</span>' +
+          '</div>' +
+          '<div class="table-wrap">' +
+            '<table><thead><tr>' +
+              '<th class="' + thClass('date') + '" data-sort="date">Date <span class="sort-icon">\u25be</span></th>' +
+              '<th class="' + thClass('channel') + '" data-sort="channel">Channel <span class="sort-icon">\u25be</span></th>' +
+              '<th class="' + thClass('type') + '" data-sort="type">Type <span class="sort-icon">\u25be</span></th>' +
+              '<th class="' + thClass('title') + '" data-sort="title">Title <span class="sort-icon">\u25be</span></th>' +
+              '<th class="' + thClass('impressions') + '" data-sort="impressions">Impressions <span class="sort-icon">\u25be</span></th>' +
+              '<th class="' + thClass('views') + '" data-sort="views">Views <span class="sort-icon">\u25be</span></th>' +
+              '<th class="' + thClass('engagements') + '" data-sort="engagements">Engagements <span class="sort-icon">\u25be</span></th>' +
+              '<th class="' + thClass('clicks') + '" data-sort="clicks">Clicks <span class="sort-icon">\u25be</span></th>' +
+              '<th>Details</th>' +
+            '</tr></thead>' +
+            '<tbody>' + (trs || '<tr><td colspan="9" class="empty-msg">No items match your filters.</td></tr>') + '</tbody>' +
+          '</table></div>' +
+        '</div>';
+
+      // Wire up events
+      document.querySelectorAll('#content th[data-sort]').forEach(function(th) {
+        th.addEventListener('click', function() {
+          var col = th.dataset.sort;
+          if (sortCol === col) sortDesc = !sortDesc;
+          else { sortCol = col; sortDesc = col === 'date' ? false : true; }
+          renderContent();
+        });
+      });
+
+      document.querySelectorAll('#content .ch-pill').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var ch = btn.dataset.ch;
+          if (activeChannels.has(ch)) activeChannels.delete(ch);
+          else activeChannels.add(ch);
+          renderContent();
+        });
+      });
+
+      var searchEl = document.getElementById('search-input');
+      if (searchEl) {
+        searchEl.addEventListener('input', function() {
+          searchQuery = searchEl.value;
+          renderContent();
+          // Re-focus after re-render
+          var newSearchEl = document.getElementById('search-input');
+          if (newSearchEl) {
+            newSearchEl.focus();
+            newSearchEl.setSelectionRange(newSearchEl.value.length, newSearchEl.value.length);
+          }
+        });
+      }
+
+      var exportBtn = document.getElementById('export-btn');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', exportCSV);
+      }
+    }
+
+    renderContent();
+  </script>
+</body>
+</html>
