@@ -3,9 +3,15 @@
 ## Project Overview
 HTML proposal document for Encore Funding x GovCon Giants 2026 Strategic Partnership.
 
-**Main File:** `/Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My Drive/GOVCON EDU/ENCORE FUNDING/Encore_Funding_2026_Sponsorship_Proposal.html`
+**Original File (browser-first):** `/Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My Drive/GOVCON EDU/ENCORE FUNDING/Encore_Funding_2026_Sponsorship_Proposal.html`
+
+**Print-First PDF File:** `/Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My Drive/GOVCON EDU/ENCORE FUNDING/Encore_Funding_2026_Proposal_PDF.html`
 
 **PDF Output:** `/Users/ericcoffie/Downloads/Encore_Funding_2026_Proposal_PRINT_READY.pdf`
+
+**Git Remotes:**
+- `origin` → https://github.com/ecoffie/Encore-Funding (dashboard/Vercel)
+- `encoregov` → https://github.com/ecoffie/encoregov
 
 ---
 
@@ -25,7 +31,8 @@ HTML proposal document for Encore Funding x GovCon Giants 2026 Strategic Partner
 | `podcast.png` | Podcast episode with Encore sponsorship |
 | `webinar.png` | Webinar registration page with co-branding |
 | `email.png` | Newsletter with Encore logo |
-| `preferred-partner.png` | FHC Preferred Partners page |
+| `preferred-partner.png` | FHC Preferred Partners page (replaced on page 15) |
+| `website-encore.png` | Encore Funding website screenshot (now used on page 15) |
 | `social-media.png` | Instagram/LinkedIn post featuring Encore |
 | `brand-ambassador.png` | Eric Coffie at GovCon conference |
 | `linkedin-management.png` | Encore GovCon LinkedIn page |
@@ -75,11 +82,52 @@ HTML proposal document for Encore Funding x GovCon Giants 2026 Strategic Partner
   4. Platform Performance Deep Dive
   5. Lead Generation Performance
 
+### Print-First PDF Rebuild (February 2026)
+- Created new `Encore_Funding_2026_Proposal_PDF.html` — designed exclusively for PDF output
+- Every page is a fixed `<div class="page">` at 8.5in x 11in with 0.5in padding
+- CSS: `@page { size: letter; margin: 0; }` — margins baked into each page div
+- Images use absolute `file:///` paths for Playwright compatibility
+- PDF generated with Playwright (zero margins, `print_background=True`)
+- 37 pages total (Lead Generation page removed)
+- Page numbers via CSS counters (`counter-reset`, `counter-increment`, `::after`)
+
+### Print-First PDF Changes
+- **Cover page**: "GovCon Giants & Encore Funding" on 3 separate lines
+- **Page 6**: Redesigned 2026 Partnership Structure with 4 numbered priority cards (added #04 Google Analytics)
+- **Page 8**: Added "Google Analytics Reporting & Insights" to NEW for 2026 list
+- **Page 15**: Replaced `preferred-partner.png` with `website-encore.png`
+- **Page 24**: Added item #05 "Access to Google Analytics" to Encore To Provide
+- **Page 24**: Fixed typo "personnel" → "personal" referral
+- **Page 25-26**: Strategic Partnership Summary expanded with larger fonts and proper bullet lists
+- **Page 26**: Added #12 "Google Analytics Reporting & Insights", changed "FREE for Clients" → "FREE for Encore Clients"
+- **Page 27**: Investment & Value Summary — larger fonts, more breathing room
+- **Page 29**: Timeline starts March 2026 (was January), quarters shifted accordingly
+- **Page 32**: 2025 Branding cards — increased padding and font sizes
+- **Page 35-36**: Platform Deep Dive split across two pages for breathing room
+- **Page 37**: Areas for Improvement redesigned from table to 3 visual cards
+- **Page 38 (Lead Generation)**: Removed from proposal
+
+### Updated Financials (Print-First PDF)
+- Total package value: **$207,400**
+- Investment: **$69,200/year** ($5,767/month)
+- Savings: **$138,200** (67% discount)
+- Value ratio: **3:1**
+
 ---
 
-## PDF Generation Command
-```bash
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="/Users/ericcoffie/Downloads/Encore_Funding_2026_Proposal_PRINT_READY.pdf" "file:///Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My%20Drive/GOVCON%20EDU/ENCORE%20FUNDING/Encore_Funding_2026_Sponsorship_Proposal.html"
+## PDF Generation (Playwright — preferred method)
+```python
+from playwright.sync_api import sync_playwright
+import urllib.parse
+html_path = '/Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My Drive/GOVCON EDU/ENCORE FUNDING/Encore_Funding_2026_Proposal_PDF.html'
+pdf_path = '/Users/ericcoffie/Downloads/Encore_Funding_2026_Proposal_PRINT_READY.pdf'
+file_url = 'file://' + urllib.parse.quote(html_path)
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
+    page.goto(file_url, wait_until='networkidle')
+    page.pdf(path=pdf_path, format='Letter', margin={'top':'0','right':'0','bottom':'0','left':'0'}, print_background=True)
+    browser.close()
 ```
 
 ---
