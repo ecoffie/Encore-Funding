@@ -191,21 +191,10 @@
     .bar-pct { width: 50px; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
 
     .slide-footer {
-      position: absolute;
-      bottom: 15px;
-      left: 50px;
-      font-size: 0.85rem;
-      color: var(--gray);
-      font-weight: 500;
+      display: none;
     }
-    .slide-footer a { color: var(--green-dark); text-decoration: none; }
-    .slide-footer a:hover { text-decoration: underline; }
     .slide-num {
-      position: absolute;
-      bottom: 15px;
-      right: 25px;
-      font-size: 0.9rem;
-      color: #999;
+      display: none;
     }
 
     /* Slide viewer */
@@ -220,19 +209,7 @@
     #slide-viewer .slide { scroll-snap-align: start; scroll-snap-stop: always; }
 
     #nav-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--nav);
-      color: white;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 22px;
-      z-index: 100;
-      font-size: 1rem;
+      display: none;
     }
     #nav-bar button {
       background: var(--green);
@@ -578,7 +555,7 @@
       No theory. Just results.
     </p>
     <p style="font-size: 1.15rem; color: var(--gray); margin-top: 16px; max-width: 780px;">
-      Two people who've been in the trenches — one built a staffing firm into a government contractor, the other sat on the other side of the table awarding the contracts.
+      Two people who've been in the trenches — one built a government contracting firm from the ground up, the other sat on the other side of the table awarding the contracts.
     </p>
   </div>
 
@@ -591,9 +568,9 @@
     <div style="display: flex; justify-content: center; gap: 60px; margin-top: 30px;">
       <div style="text-align: center; max-width: 320px;">
         <img src="images/tracy-balazs-headshot.jpeg" alt="Tracy Balazs" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--green); margin-bottom: 14px;">
-        <h3 style="color: var(--green); font-size: 1.3rem; margin-bottom: 6px;">Tracy Balazs</h3>
+        <h3 style="color: var(--green); font-size: 1.3rem; margin-bottom: 6px;">Tracy Balazs, RN</h3>
         <p style="font-size: 1.05rem; color: #ccc;">CEO & President, Compass Government Solutions</p>
-        <p style="font-size: 0.95rem; color: #999; margin-top: 8px;">Staffing firm turned government contractor</p>
+        <p style="font-size: 0.95rem; color: #999; margin-top: 8px;">RN turned Government Contractor</p>
       </div>
       <div style="text-align: center; max-width: 320px;">
         <img src="images/tracy-marcinowski-headshot.jpeg" alt="Tracy Marcinowski" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--green); margin-bottom: 14px;">
@@ -638,46 +615,25 @@
   <!-- SLIDE: CLOSING — SPEAKERS + ENCORE CONTACT -->
   <!-- ============================================================ -->
   <div class="slide slide-title" style="background: var(--orange); color: white;">
-    <div style="display: flex; justify-content: center; align-items: center; gap: 50px; width: 100%;">
+    <img src="images/EncoreLogo_Primary_Reversed.png" alt="Encore Funding" style="height: 80px; margin-bottom: 30px;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 80px; flex: 1;">
       <!-- Tracy Balazs -->
-      <div style="text-align: center; max-width: 260px;">
-        <img src="images/tracy-balazs-headshot.jpeg" alt="Tracy Balazs" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-bottom: 14px;">
-        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 6px;">Tracy Balazs</h3>
+      <div style="text-align: center;">
+        <img src="images/tracy-balazs-headshot.jpeg" alt="Tracy Balazs" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-bottom: 14px;">
+        <h3 style="color: white; font-size: 1.5rem; margin-bottom: 6px;">Tracy Balazs, RN</h3>
         <p style="font-size: 1.1rem; color: rgba(255,255,255,0.85);">CEO & President, Compass Government Solutions</p>
       </div>
-      <!-- Encore Contact -->
-      <div style="text-align: center; max-width: 380px;">
-        <img src="images/EncoreLogo_Primary_Reversed.png" alt="Encore Funding" style="height: 65px; margin-bottom: 18px;">
-        <h3 style="color: white; font-size: 1.8rem; margin-bottom: 14px;">Let's Talk Funding</h3>
-        <p style="font-size: 1.3rem;"><strong>Office:</strong> (216) 998-9900</p>
-        <p style="font-size: 1.3rem;"><strong>Direct:</strong> (216) 798-3844</p>
-        <p style="font-size: 1.3rem;">ssweedler@encore-funding.com</p>
-        <p style="font-size: 1.3rem; margin-top: 8px; font-weight: 700;">encoregov.com</p>
-      </div>
       <!-- Tracy Marcinowski -->
-      <div style="text-align: center; max-width: 260px;">
-        <img src="images/tracy-marcinowski-headshot.jpeg" alt="Tracy Marcinowski" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-bottom: 14px;">
-        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 6px;">Tracy Marcinowski</h3>
+      <div style="text-align: center;">
+        <img src="images/tracy-marcinowski-headshot.jpeg" alt="Tracy Marcinowski" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-bottom: 14px;">
+        <h3 style="color: white; font-size: 1.5rem; margin-bottom: 6px;">Tracy Marcinowski</h3>
         <p style="font-size: 1.1rem; color: rgba(255,255,255,0.85);">Strategic Acquisition Solutions</p>
       </div>
     </div>
+    <p style="font-size: 1.4rem; font-weight: 700; margin-top: auto;">encoregov.com</p>
   </div>
 
-  <!-- ============================================================ -->
-  <!-- SLIDE: CLOSING — ENCORE FUNDING CONTACT -->
-  <!-- ============================================================ -->
-  <div class="slide slide-title" style="background: var(--orange); color: white;">
-    <img src="images/EncoreLogo_Primary_Reversed.png" alt="Encore Funding" style="height: 65px; margin-bottom: 30px;">
-    <h1 style="color: white; font-size: 2.6rem;">Let's Talk Funding</h1>
-    <div style="margin-top: 30px; font-size: 1.3rem; line-height: 2;">
-      <p style="font-size: 1.25rem;"><strong>Office:</strong> (216) 998-9900</p>
-      <p style="font-size: 1.25rem;"><strong>Direct:</strong> (216) 798-3844</p>
-      <p style="font-size: 1.25rem;">ssweedler@encore-funding.com</p>
-      <p style="font-size: 1.25rem; margin-top: 10px; font-weight: 700;">encoregov.com</p>
-    </div>
-  </div>
-
-</div><!-- /#slide-viewer -->
+  </div><!-- /#slide-viewer -->
 
 <div id="nav-bar">
   <button type="button" id="btn-prev" aria-label="Previous slide">← Prev</button>
