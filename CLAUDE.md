@@ -238,4 +238,34 @@ with sync_playwright() as p:
 - [ ] Add extra images to sections (fhc linkedin stats, total impressions linkedin, Post 9)
 
 ## Pending Tasks (TempNet Handout)
-- [ ] Build storytelling presentation for TempNet conference talk
+- [x] ~~Build storytelling presentation for TempNet conference talk~~
+
+---
+
+## TempNet Presentation v4 (March 2026)
+
+**Main File:** `/Users/ericcoffie/Encore Funding/tempnet-staffing-presentation-v4.html`
+
+**Live URL:** https://encore-funding.vercel.app/tempnet-staffing-presentation-v4.html
+
+**PowerPoint Export:** `/Users/ericcoffie/Downloads/TempNet_Presentation_v4.pptx`
+
+**Export Script:** `/Users/ericcoffie/Encore Funding/export_to_pptx.py`
+
+### Overview
+- 20 slides, 16:9 aspect ratio (960x540)
+- Topic: "Fact vs. Fiction in Government Contracting" for staffing companies
+- Fireside chat with Tracy Balazs, RN and Tracy Marcinowski
+
+### Changes Made (March 2026)
+- Page 17: Changed to "built a government contracting firm from the ground up"
+- Page 18: Tracy Balazs, RN — "RN turned Government Contractor"
+- Page 20: Redesigned closing slide — Encore logo at top, two photos centered, encoregov.com at bottom
+- Removed standalone Encore contact slide (was page 21)
+- Hidden nav bar and slide footers for cleaner presentation
+
+### PowerPoint Export
+```bash
+cd "/Users/ericcoffie/Encore Funding" && python3 export_to_pptx.py
+```
+Uses Playwright to screenshot each slide, then python-pptx to assemble into PPTX.
