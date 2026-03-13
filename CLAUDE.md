@@ -9,6 +9,12 @@ HTML proposal document for Encore Funding x GovCon Giants 2026 Strategic Partner
 
 **PDF Output:** `/Users/ericcoffie/Downloads/Encore_Funding_2026_Proposal_PRINT_READY.pdf`
 
+**2026 Letter Contract (.docx):** `/Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My Drive/GOVCON EDU/ENCORE FUNDING/GCG Encore Funding Letter Contract 2026.docx`
+
+**2026 Letter Contract (HTML draft):** `/Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My Drive/GOVCON EDU/ENCORE FUNDING/Encore_Funding_2026_Letter_Contract.html`
+
+**Previous Letter Contracts:** `/Users/ericcoffie/Library/CloudStorage/GoogleDrive-evankoffdev@gmail.com/My Drive/GOVCON EDU/ENCORE FUNDING/GCG Encore Funding Letter Contract.pdf` (2024), `GCG Encore Funding Letter Contract rev1.pdf` (2025)
+
 **Git Remotes:**
 - `origin` → https://github.com/ecoffie/Encore-Funding (dashboard/Vercel)
 - `encoregov` → https://github.com/ecoffie/encoregov
@@ -132,6 +138,36 @@ with sync_playwright() as p:
 
 ---
 
+## 2026 Letter Contract (March 2026)
+
+**File:** `GCG Encore Funding Letter Contract 2026.docx` (Google Drive ENCORE FUNDING folder)
+
+### Overview
+- Created .docx letter contract matching the format of the 2024/2025 letter contracts
+- Same letter-style layout: GovCon Giants logo top-right, date, Encore address, subject line, numbered sections, bullet lists, single Encore signature block
+- Generated with python-docx
+
+### Content
+- **Investment:** $69,200/year ($5,767/month)
+- **12 deliverables** listed under Section 2 with dollar values:
+  - YouTube (24 videos) — $36,000
+  - Custom Encore YouTube (4 videos) — $12,000
+  - Podcast (12 episodes) — $12,000
+  - Federal Help Center — $18,000
+  - Email Marketing — $22,400
+  - Social Media — $24,000
+  - Brand Ambassador (3 events) — $24,000 (NEW)
+  - LinkedIn Management — $35,000 (NEW)
+  - Scaling Webinars (2/yr) — $6,000 (NEW)
+  - Recompete Tracker — $12,000 (NEW)
+  - Help Desk Support — $6,000 (NEW)
+  - Google Analytics — Included (NEW)
+- **Total package value:** $207,400 (67% discount)
+- **Sections 3-8:** Investment Summary, Term (1 year, 6-month cancel for non-performance), Payment, Broker Agreement, Confidentiality, Governing Law (Florida)
+- Also created HTML draft version (`Encore_Funding_2026_Letter_Contract.html`) and an earlier styled version (`Encore_Funding_2026_Contract_Agreement.html`)
+
+---
+
 ## TempNet Staffing Handout (February 2026)
 
 **Main File:** `/Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-handout.html`
@@ -197,7 +233,110 @@ with sync_playwright() as p:
 
 ### Related Files
 - **Slide presentation (v1):** `/Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-presentation-v1.html`
-- **Future task:** Build a separate storytelling presentation for the actual talk
+
+---
+
+## TempNet Keynote Presentation v1 (March 2026)
+
+**File:** `/Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-presentation-v1.html`
+
+### Overview
+- Full restructure from 25-slide tactical training deck into 20-slide keynote
+- 10-minute keynote setup → fireside chat with two Tracys → free guide handoff
+- Target: punchy, visual, story-driven — not a training manual
+- All existing CSS, nav bar (arrow keys + buttons), and JS preserved
+- JS auto-numbers slides and adds footers
+
+### Slide Structure (20 slides)
+01. **Title** — "You're Already a Government Contractor" (black bg, 3 logos: GCG, Encore, TempNet)
+02. **Your Host** — Eric Coffie headshot + Founder, GovCon Giants
+03. **Evankoff** — 10 years federal construction, $20M+ contracts (with construction photo)
+04. **YouTube** — 1,600+ videos, 3.67M views, 52K+ subscribers (with channel screenshot)
+05. **Podcast** — 688 episodes, 281K+ downloads (with Apple Podcasts screenshot)
+06. **Myth #1** — "You need government experience" → commercial work counts (with stock image)
+07. **Myth #2** — "It's all on SAM.gov" → only 5% publicly posted (with stock image)
+08. **Myth #3** — "It takes years to win" → subcontracting starts in weeks (with stock image)
+09. **The Market** — $775B, 23% small biz, $86B subcontracts (stats row)
+10. **Evergreen Customer** — "What if one customer paid you for 10, 20, 30 years?"
+11. **Success Story: Mama U** — Corliss Udoema, CSI, 20 years GovCon (with headshot)
+12. **Define Your Core Capability** — focused vs. broad (red/green two-column)
+13. **Your Experience Is Enough** — commercial → federal past performance translations
+14. **Who's Actually Buying?** — agency table (VA, DoD, DHS, HHS, GSA)
+15. **The Benefits Nobody Talks About** — long-term contracts, net-30, set-asides, vehicles
+16. **The Brutal Challenges** — compliance, cash flow, proposal fatigue, losing bids
+17. **Real Stories From the Trenches** — teaser for fireside chat
+18. **Fireside Chat Intro** — Tracy Balazs + Tracy Marcinowski headshots (black bg)
+19. **Free Guide** — handout cover image + bullet list of what's inside
+20. **Closing** — "Now go make it official" (black bg, 3 logos)
+
+### Image Files (presentations/images/)
+| Filename | Used On |
+|----------|---------|
+| `eric-coffie-headshot.jpeg` | Slide 02 |
+| `eric-construction.jpg` | Slide 03 |
+| `youtube-videos.png` | Slide 04 |
+| `podcast-apple.png` | Slide 05 |
+| `myth-experience.png` | Slide 06 |
+| `myth-samgov.png` | Slide 07 |
+| `myth-speed-new.jpg` | Slide 08 |
+| `mama-u-headshot.jpeg` | Slide 11 |
+| `tracy-balazs-headshot.jpeg` | Slide 18 |
+| `tracy-marcinowski-headshot.jpeg` | Slide 18 |
+| `handout-cover.png` | Slide 19 (auto-generated from handout HTML via Playwright) |
+
+### Logo Usage on Dark Slides
+- GovCon Giants: `GovconGiants-logo-new.png` with `filter: brightness(0) invert(1)` for white on black
+- Encore Funding: `EncoreLogo_Primary_Reversed.png` (white version, 55px height)
+- TempNet: `TempNet_Logo_Web.png`
+
+---
+
+## TempNet Presentation v3 — "Fact vs. Fiction" (March 2026)
+
+**File (Bootcamp):** `/Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-presentation-v3.html`
+**File (Encore):** `/Users/ericcoffie/Projects/Encore-Funding/tempnet-staffing-presentation-v3.html`
+**Vercel:** https://encore-funding.vercel.app/tempnet-staffing-presentation-v3.html
+
+### Overview
+- Modified copy of v1 keynote — rebranded as "Encore Funding Presents: Fact vs. Fiction in Government Contracting"
+- Green color scheme
+- Removed v1 slides 2-5 (Your Host, Evankoff, YouTube, Podcast)
+- Added: Encore Funding intro slide, myths section title, "How to Get Started" transition, QR codes (encoregov.com), Encore contact closing slides with speakers
+
+### Slide Order (21 slides)
+01. Encore Funding Presents (white bg, GCG + Encore logos)
+02. Title — "You're Already a Government Contractor" (black bg)
+03. Free Guide (title at top, larger 260px cover, bullets, QR code)
+04. The Market ($775B stats)
+05. Myths section title ("Myths That Keep You Out")
+06. Myth #1 — "You need government experience"
+07. Myth #2 — "It's all on SAM.gov"
+08. Myth #3 — "It takes years to win"
+09. Evergreen Customer
+10. Mama U Success Story
+11. "How to Get Started" transition
+12. Define Your Core Capability
+13. Your Experience Is Enough
+14. Who's Actually Buying
+15. Benefits Nobody Talks About
+16. Brutal Challenges
+17. Real Stories From the Trenches
+18. Fireside Chat (Tracy Balazs + Tracy Marcinowski)
+19. Free Guide (side-by-side layout, QR code)
+20. Speakers + Encore Contact (orange, 3-column)
+21. Encore Contact solo (orange)
+
+---
+
+## TempNet Presentation v4 — Orange Scheme (March 2026)
+
+**File (Bootcamp):** `/Users/ericcoffie/Projects/Bootcamp/presentations/tempnet-staffing-presentation-v4.html`
+**File (Encore):** `/Users/ericcoffie/Projects/Encore-Funding/tempnet-staffing-presentation-v4.html`
+**Vercel:** https://encore-funding.vercel.app/tempnet-staffing-presentation-v4.html
+
+### Overview
+- Identical to v3 but with orange color scheme (`--green: #F57C00`, `--green-dark: #E65100`)
+- All accent colors (checkmarks, borders, stats, nav buttons, boxes) are orange instead of green
 
 ---
 
@@ -233,12 +372,70 @@ with sync_playwright() as p:
 
 ---
 
+## EncoreGov.com Landing Page (March 2026)
+
+**Project:** `/Users/ericcoffie/Projects/encoregov/`
+
+**Live URL:** https://encoregov.com/
+
+**Repo:** https://github.com/ecoffie/encoregov
+
+**Deployment:** Vercel (auto-deploys on push to `main`)
+
+### Tech Stack
+- **Framework:** Next.js 15 (TypeScript, React 19)
+- **Styling:** Tailwind CSS 4
+- **Email:** Nodemailer (Gmail SMTP)
+- **CRM:** HubSpot API v3
+- **Notifications:** Slack webhooks + email
+- **Lead Storage:** Upstash Redis KV
+
+### Key Files
+| File | Purpose |
+|------|---------|
+| `src/app/page.tsx` | Main landing page (hero, form, services, how it works) |
+| `src/app/thank-you/page.tsx` | Thank you page after form submission |
+| `src/components/LeadForm.tsx` | Reusable lead capture form component |
+| `src/app/api/lead/route.ts` | POST — form submission (CRM + Slack + emails + Redis) |
+| `src/app/api/leads/route.ts` | GET — retrieve all stored leads from Redis |
+| `src/lib/crm.ts` | HubSpot contact creation + Slack notifications |
+| `src/lib/email.ts` | Guide email to lead + admin notification emails |
+| `src/lib/leads.ts` | Redis KV store for lead persistence |
+| `public/TempNet-Staffing-Handout.pdf` | Free guide PDF (8.4 MB) |
+
+### Form Submission Flow
+1. User submits LeadForm (name, email, phone, company)
+2. POST to `/api/lead` — runs in parallel:
+   - HubSpot contact creation (handles 409 duplicates)
+   - Slack notification with lead details
+   - HTML email to lead with guide download link
+   - **Admin notification email** to `evankoffdev@gmail.com` and `ssweedler@encore-funding.com`
+   - Store in Upstash Redis KV
+3. Redirect to `/thank-you` page
+
+### Environment Variables (`.env.local`)
+```
+HUBSPOT_ACCESS_TOKEN
+SLACK_LEAD_WEBHOOK_URL
+SMTP_USER              # Gmail address
+SMTP_PASSWORD           # Gmail app password
+KV_REST_API_URL         # Upstash Redis
+KV_REST_API_TOKEN
+```
+
+### Session Changes (2026-03-13)
+- Added lead notification emails — both `evankoffdev@gmail.com` and `ssweedler@encore-funding.com` receive an email with lead details (name, email, phone, company, timestamp) on every form submission
+
+---
+
 ## Pending Tasks (Encore Funding Proposal)
 - [x] ~~Capture and add screenshots to `images/` folder for Rights & Benefits section~~
 - [ ] Add extra images to sections (fhc linkedin stats, total impressions linkedin, Post 9)
 
-## Pending Tasks (TempNet Handout)
+## Pending Tasks (TempNet)
 - [x] ~~Build storytelling presentation for TempNet conference talk~~
+- [ ] Add Evankoff image to slide 03 placeholder
+- [ ] Source/finalize stock images for myth slides if needed
 
 ---
 
