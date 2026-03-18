@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encore Funding SEO Diagnostic | C-Suite Presentation</title>
+    <style>
+        @page {
+            size: 11in 8.5in;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .slide {
+            width: 11in;
+            height: 8.5in;
+            padding: 0.5in 0.6in;
+            page-break-after: always;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide:last-child {
+            page-break-after: avoid;
+        }
+
+        :root {
+            --primary: #ef5a2c;
+            --primary-dark: #d94a1e;
+            --dark: #1a1a2e;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --good: #10b981;
+            --bad: #f59e0b;
+            --ugly: #ef4444;
+        }
+
+        /* Title slide */
+        .slide.title-slide {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide.title-slide h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .slide.title-slide h2 {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .slide.title-slide .subtitle {
+            font-size: 20px;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .slide.title-slide .meta {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        /* Section slides */
+        .slide.section-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide.section-slide.good {
+            background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+            color: white;
+        }
+
+        .slide.section-slide.bad {
+            background: linear-gradient(135deg, #92400e 0%, #f59e0b 100%);
+            color: white;
+        }
+
+        .slide.section-slide.ugly {
+            background: linear-gradient(135deg, #991b1b 0%, #ef4444 100%);
+            color: white;
+        }
+
+        .slide.section-slide.neutral {
+            background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);
+            color: white;
+        }
+
+        .slide.section-slide h1 {
+            font-size: 64px;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .slide.section-slide .section-subtitle {
+            font-size: 24px;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        /* Regular slides */
+        .slide-header {
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .slide-header.good { border-bottom-color: var(--good); }
+        .slide-header.bad { border-bottom-color: var(--bad); }
+        .slide-header.ugly { border-bottom-color: var(--ugly); }
+
+        .slide-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .slide-header .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .slide-header .tag.good { background: var(--good); color: white; }
+        .slide-header .tag.bad { background: var(--bad); color: white; }
+        .slide-header .tag.ugly { background: var(--ugly); color: white; }
+
+        .slide-header h2 {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: var(--light-gray);
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr.highlight td {
+            background: #fff7ed;
+            font-weight: 600;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-box.good { background: #ecfdf5; border: 2px solid var(--good); }
+        .stat-box.bad { background: #fffbeb; border: 2px solid var(--bad); }
+        .stat-box.ugly { background: #fef2f2; border: 2px solid var(--ugly); }
+        .stat-box.primary { background: var(--primary); color: white; }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-box.good .stat-number { color: var(--good); }
+        .stat-box.bad .stat-number { color: var(--bad); }
+        .stat-box.ugly .stat-number { color: var(--ugly); }
+        .stat-box.primary .stat-number { color: white; }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .stat-box.primary .stat-label { color: rgba(255,255,255,0.8); }
+
+        /* Two column */
+        .two-col {
+            display: flex;
+            gap: 30px;
+        }
+
+        .two-col > div {
+            flex: 1;
+        }
+
+        /* Callouts */
+        .callout {
+            background: var(--light-gray);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout.good { background: #ecfdf5; border-left-color: var(--good); }
+        .callout.bad { background: #fffbeb; border-left-color: var(--bad); }
+        .callout.ugly { background: #fef2f2; border-left-color: var(--ugly); }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .callout p {
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 8px 0;
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        /* Footer */
+        .slide-footer {
+            position: absolute;
+            bottom: 0.35in;
+            left: 0.6in;
+            right: 0.6in;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: var(--gray);
+            padding-top: 8px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Issue box */
+        .issue-box {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 8px 0;
+        }
+
+        .issue-box.ugly { border-color: var(--ugly); background: #fef2f2; }
+        .issue-box.bad { border-color: var(--bad); background: #fffbeb; }
+
+        .issue-box h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .issue-box p {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* Code block */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 12px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .code-block .comment { color: #64748b; }
+        .code-block .error { color: #f87171; }
+        .code-block .ok { color: #4ade80; }
+
+        /* Scorecard */
+        .scorecard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .score-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .score-item .score {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .score-item .score.good { color: var(--good); }
+        .score-item .score.bad { color: var(--bad); }
+        .score-item .score.ugly { color: var(--ugly); }
+
+        .score-item .label {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        /* Competitor table */
+        .competitor-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .competitor-row .name {
+            width: 180px;
+            font-weight: 600;
+        }
+
+        .competitor-row .advantage {
+            flex: 1;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        /* Big number */
+        .big-stat {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .big-stat .number {
+            font-size: 120px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .big-stat .number.ugly { color: var(--ugly); }
+        .big-stat .number.good { color: var(--good); }
+
+        .big-stat .label {
+            font-size: 24px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+
+        /* Progress bars */
+        .progress-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .progress-label {
+            width: 120px;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 24px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+        }
+
+        .progress-fill.good { background: var(--good); }
+        .progress-fill.bad { background: var(--bad); }
+        .progress-fill.primary { background: var(--primary); }
+
+        /* Three column findings */
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .finding-card {
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .finding-card.good { background: #ecfdf5; border: 2px solid var(--good); }
+        .finding-card.bad { background: #fffbeb; border: 2px solid var(--bad); }
+        .finding-card.ugly { background: #fef2f2; border: 2px solid var(--ugly); }
+
+        .finding-card h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .finding-card.good h3 { color: var(--good); }
+        .finding-card.bad h3 { color: var(--bad); }
+        .finding-card.ugly h3 { color: var(--ugly); }
+
+        .finding-card ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .finding-card li {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide title-slide">
+    <h1>Encore Funding</h1>
+    <h2>SEO Diagnostic Report</h2>
+    <p class="subtitle">The Good, The Bad & The Ugly</p>
+    <p class="meta">Full Website Analysis | March 2026</p>
+</div>
+
+<!-- Slide 2: Executive Scorecard -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>Executive Scorecard</h1>
+        <h2>Current SEO health across both properties</h2>
+    </div>
+    <div class="slide-content">
+        <div class="scorecard">
+            <div class="score-item">
+                <div class="score bad">5/10</div>
+                <div class="label">Technical SEO</div>
+            </div>
+            <div class="score-item">
+                <div class="score bad">4/10</div>
+                <div class="label">On-Page SEO</div>
+            </div>
+            <div class="score-item">
+                <div class="score bad">6/10</div>
+                <div class="label">Content Depth</div>
+            </div>
+            <div class="score-item">
+                <div class="score good">7/10</div>
+                <div class="label">Mobile/Speed</div>
+            </div>
+            <div class="score-item">
+                <div class="score bad">5/10</div>
+                <div class="label">Competitive Position</div>
+            </div>
+            <div class="score-item">
+                <div class="score ugly">?/10</div>
+                <div class="label">Backlink Profile*</div>
+            </div>
+        </div>
+        <p style="font-size: 11px; color: var(--gray); margin-top: 5px;">*Requires Ahrefs/SEMrush audit for accurate assessment</p>
+
+        <div class="three-col" style="margin-top: 25px;">
+            <div class="finding-card good">
+                <h3>THE GOOD</h3>
+                <ul>
+                    <li>87 existing blog posts</li>
+                    <li>$25B lending history (trust)</li>
+                    <li>Strong founder story</li>
+                    <li>WP Rocket optimization</li>
+                    <li>Mobile responsive</li>
+                </ul>
+            </div>
+            <div class="finding-card bad">
+                <h3>THE BAD</h3>
+                <ul>
+                    <li>28 posts dated 2023</li>
+                    <li>No schema markup</li>
+                    <li>Weak meta descriptions</li>
+                    <li>No pillar page strategy</li>
+                    <li>Behind competitors</li>
+                </ul>
+            </div>
+            <div class="finding-card ugly">
+                <h3>THE UGLY</h3>
+                <ul>
+                    <li>87 posts, 0 driving traffic</li>
+                    <li>Two domains splitting authority</li>
+                    <li>HTTP sitemap links</li>
+                    <li>Paid ≈ Organic traffic</li>
+                    <li>Jobs sitemap from 2022</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>2</span>
+    </div>
+</div>
+
+<!-- Slide 3: THE GOOD Section -->
+<div class="slide section-slide good">
+    <h1>The Good</h1>
+    <p class="section-subtitle">What's working in your favor</p>
+</div>
+
+<!-- Slide 4: Good - Brand & Content -->
+<div class="slide">
+    <div class="slide-header good">
+        <h1>Strong Brand Foundation <span class="tag good">Good</span></h1>
+        <h2>You have credibility competitors can't buy</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box good">
+                <div class="stat-number">$25B+</div>
+                <div class="stat-label">Total Lending History</div>
+            </div>
+            <div class="stat-box good">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Years in Industry</div>
+            </div>
+            <div class="stat-box good">
+                <div class="stat-number">87</div>
+                <div class="stat-label">Existing Blog Posts</div>
+            </div>
+        </div>
+
+        <div class="two-col" style="margin-top: 20px;">
+            <div>
+                <h3 style="color: var(--good); margin-bottom: 12px;">Brand Strengths</h3>
+                <ul>
+                    <li><strong>Founder story</strong> — Joel Adelman, original Advance Partners team</li>
+                    <li><strong>Family-owned positioning</strong> — differentiates from Paychex corporate</li>
+                    <li><strong>"Entrepreneurs serving entrepreneurs"</strong> — resonates with target market</li>
+                    <li><strong>Industry association involvement</strong> — IFA board membership</li>
+                    <li><strong>Multiple case studies</strong> — IT, healthcare, light industrial verticals</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: var(--good); margin-bottom: 12px;">Content Assets</h3>
+                <ul>
+                    <li><strong>87 blog posts</strong> — significant library to optimize</li>
+                    <li><strong>Recent activity</strong> — Feb 2026 posts (site isn't abandoned)</li>
+                    <li><strong>Case studies</strong> — real client success stories</li>
+                    <li><strong>Assessment tools</strong> — interactive content exists</li>
+                    <li><strong>Recruitment eBook</strong> — lead magnet in place</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout good" style="margin-top: 20px;">
+            <div class="callout-title">The Opportunity</div>
+            <p>You have the content foundation. The problem is optimization and strategy, not creation from scratch. This makes the fix faster and cheaper.</p>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>4</span>
+    </div>
+</div>
+
+<!-- Slide 5: Good - Technical Foundation -->
+<div class="slide">
+    <div class="slide-header good">
+        <h1>Technical Foundation <span class="tag good">Good</span></h1>
+        <h2>Core infrastructure is solid</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <h3 style="color: var(--good); margin-bottom: 15px;">What's Working</h3>
+
+                <div class="issue-box" style="border-color: var(--good); background: #ecfdf5;">
+                    <h4>✓ WordPress + Beaver Builder</h4>
+                    <p>Manageable CMS, widely supported, easy to update</p>
+                </div>
+
+                <div class="issue-box" style="border-color: var(--good); background: #ecfdf5;">
+                    <h4>✓ WP Rocket Optimization</h4>
+                    <p>Lazy loading enabled, performance scripts active</p>
+                </div>
+
+                <div class="issue-box" style="border-color: var(--good); background: #ecfdf5;">
+                    <h4>✓ Yoast SEO Installed</h4>
+                    <p>Generates sitemaps, has meta tag framework</p>
+                </div>
+
+                <div class="issue-box" style="border-color: var(--good); background: #ecfdf5;">
+                    <h4>✓ HTTPS Enabled</h4>
+                    <p>SSL certificate active on both properties</p>
+                </div>
+
+                <div class="issue-box" style="border-color: var(--good); background: #ecfdf5;">
+                    <h4>✓ Mobile Responsive</h4>
+                    <p>Breakpoints at 768px, 992px, 1200px</p>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: var(--dark); margin-bottom: 15px;">Traffic Reality Check</h3>
+
+                <div class="stats-row" style="flex-direction: column; gap: 10px;">
+                    <div class="stat-box" style="text-align: left; padding: 15px;">
+                        <strong>Main Site (Annual)</strong>
+                        <div style="font-size: 28px; font-weight: 800; color: var(--dark);">28,877 sessions</div>
+                    </div>
+                    <div class="stat-box" style="text-align: left; padding: 15px;">
+                        <strong>GovCon Subdomain (Annual)</strong>
+                        <div style="font-size: 28px; font-weight: 800; color: var(--dark);">6,877 users</div>
+                    </div>
+                    <div class="stat-box" style="text-align: left; padding: 15px; background: var(--primary); color: white;">
+                        <strong style="color: white;">Combined Total</strong>
+                        <div style="font-size: 28px; font-weight: 800;">~28,000 users/year</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 12px; color: var(--gray); margin-top: 15px;">Site is generating traffic. The question is: how much is it leaving on the table?</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>5</span>
+    </div>
+</div>
+
+<!-- Slide 6: THE BAD Section -->
+<div class="slide section-slide bad">
+    <h1>The Bad</h1>
+    <p class="section-subtitle">Issues hurting your rankings</p>
+</div>
+
+<!-- Slide 7: Bad - Technical Issues -->
+<div class="slide">
+    <div class="slide-header bad">
+        <h1>Technical SEO Issues <span class="tag bad">Bad</span></h1>
+        <h2>Fixable problems holding you back</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <div class="issue-box bad">
+                    <h4>⚠️ Sitemap Uses HTTP (Not HTTPS)</h4>
+                    <p>All 7 sub-sitemaps reference HTTP URLs. Can cause indexing inconsistencies.</p>
+                </div>
+
+                <div class="code-block">
+                    <span class="comment"># Current (wrong)</span><br>
+                    <span class="error">http://www.encore-funding.com/post-sitemap.xml</span><br><br>
+                    <span class="comment"># Should be</span><br>
+                    <span class="ok">https://www.encore-funding.com/post-sitemap.xml</span>
+                </div>
+
+                <div class="issue-box bad">
+                    <h4>⚠️ No Schema Markup</h4>
+                    <p>Missing: Organization, LocalBusiness, FAQ, Article, BreadcrumbList schemas. Competitors have these.</p>
+                </div>
+
+                <div class="issue-box bad">
+                    <h4>⚠️ Robots.txt Too Thin</h4>
+                    <p>No sitemap reference, no crawl directives for /wp-admin/</p>
+                </div>
+            </div>
+            <div>
+                <div class="issue-box bad">
+                    <h4>⚠️ Meta Description Gaps</h4>
+                    <p>Many pages missing explicit meta descriptions. Truncated titles in search results.</p>
+                </div>
+
+                <div class="issue-box bad">
+                    <h4>⚠️ H1 Tag Inconsistency</h4>
+                    <p>Some pages have multiple H1s (Beaver Builder issue). H1s don't always contain keywords.</p>
+                </div>
+
+                <div class="issue-box bad">
+                    <h4>⚠️ Weak Internal Linking</h4>
+                    <p>Blog posts don't link to service pages. No breadcrumb navigation.</p>
+                </div>
+
+                <div class="issue-box bad">
+                    <h4>⚠️ Multiple Author Sitemaps</h4>
+                    <p>Both authors-sitemap.xml AND author-sitemap.xml exist. Crawl budget waste.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>7</span>
+    </div>
+</div>
+
+<!-- Slide 8: Bad - Content Strategy -->
+<div class="slide">
+    <div class="slide-header bad">
+        <h1>Content Strategy Gaps <span class="tag bad">Bad</span></h1>
+        <h2>87 posts exist but aren't optimized</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <h3 style="color: var(--bad); margin-bottom: 12px;">Stale Content Problem</h3>
+
+                <div class="stats-row" style="flex-direction: column; gap: 10px;">
+                    <div class="stat-box bad">
+                        <div class="stat-number">28</div>
+                        <div class="stat-label">Posts dated June 2023</div>
+                    </div>
+                </div>
+
+                <p style="margin: 15px 0; font-size: 13px; color: var(--gray);">Many "2023" posts competing for 2026 searches. Google favors fresh content.</p>
+
+                <h3 style="color: var(--bad); margin-bottom: 12px; margin-top: 20px;">No Pillar Page Strategy</h3>
+                <ul style="font-size: 13px;">
+                    <li>Blog posts not interlinked strategically</li>
+                    <li>No content hubs around key topics</li>
+                    <li>Missing topical authority signals</li>
+                    <li>No "ultimate guide" anchor content</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: var(--bad); margin-bottom: 12px;">Missing High-Value Content</h3>
+
+                <table style="font-size: 12px;">
+                    <tr>
+                        <th>Keyword Opportunity</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>payroll funding calculator</td>
+                        <td style="color: var(--ugly);">MISSING</td>
+                    </tr>
+                    <tr>
+                        <td>staffing factoring rates comparison</td>
+                        <td style="color: var(--ugly);">MISSING</td>
+                    </tr>
+                    <tr>
+                        <td>staffing agency business plan template</td>
+                        <td style="color: var(--bad);">Blog only</td>
+                    </tr>
+                    <tr>
+                        <td>healthcare staffing payroll funding</td>
+                        <td style="color: var(--bad);">Blog only</td>
+                    </tr>
+                    <tr>
+                        <td>what is invoice factoring</td>
+                        <td style="color: var(--bad);">Thin content</td>
+                    </tr>
+                </table>
+
+                <div class="callout bad" style="margin-top: 15px;">
+                    <div class="callout-title">Competitors Have These</div>
+                    <p>Scale Funding has dedicated pillar pages. 1st Commercial Credit publishes daily. Porter Capital has calculator tools.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>8</span>
+    </div>
+</div>
+
+<!-- Slide 9: Bad - Competitive Position -->
+<div class="slide">
+    <div class="slide-header bad">
+        <h1>Competitive Disadvantage <span class="tag bad">Bad</span></h1>
+        <h2>You have the better story, but they're telling theirs better online</h2>
+    </div>
+    <div class="slide-content">
+        <table>
+            <tr>
+                <th style="width: 200px;">Competitor</th>
+                <th>Their Advantage Over Encore</th>
+                <th style="width: 100px;">Threat</th>
+            </tr>
+            <tr>
+                <td><strong>Advance Partners</strong></td>
+                <td>Paychex backing, "23% annual client growth" stat, stronger brand recognition, your former company</td>
+                <td style="color: var(--ugly); font-weight: 700;">HIGH</td>
+            </tr>
+            <tr>
+                <td><strong>Porter Capital</strong></td>
+                <td>85-95% advance rates prominently featured, $25M monthly capacity, calculator tools</td>
+                <td style="color: var(--bad); font-weight: 700;">MEDIUM</td>
+            </tr>
+            <tr>
+                <td><strong>Scale Funding</strong></td>
+                <td>Better content structure, clear pillar pages, modern design, weekly blog</td>
+                <td style="color: var(--ugly); font-weight: 700;">HIGH</td>
+            </tr>
+            <tr>
+                <td><strong>Viva Capital</strong></td>
+                <td>Same-day funding emphasis, 100% advance rates, bilingual support</td>
+                <td style="color: var(--bad); font-weight: 700;">MEDIUM</td>
+            </tr>
+            <tr>
+                <td><strong>1st Commercial Credit</strong></td>
+                <td>Transparent rate display (0.69-1.59%), daily content, deep education</td>
+                <td style="color: var(--ugly); font-weight: 700;">HIGH</td>
+            </tr>
+        </table>
+
+        <div class="callout bad" style="margin-top: 20px;">
+            <div class="callout-title">The Irony</div>
+            <p>Joel Adelman founded Advance Partners. Encore has the authentic entrepreneur story that Advance Partners (now Paychex corporate) can't claim. But Advance Partners is winning the SEO game with the playbook Joel's team invented.</p>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>9</span>
+    </div>
+</div>
+
+<!-- Slide 10: THE UGLY Section -->
+<div class="slide section-slide ugly">
+    <h1>The Ugly</h1>
+    <p class="section-subtitle">Critical failures requiring immediate action</p>
+</div>
+
+<!-- Slide 11: Ugly - Content Crisis -->
+<div class="slide">
+    <div class="slide-header ugly">
+        <h1>The Content Crisis <span class="tag ugly">Ugly</span></h1>
+        <h2>87 blog posts driving zero traffic</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <div class="big-stat" style="padding: 20px;">
+                    <div class="number ugly">0</div>
+                    <div class="label">Blog posts in top 10 pages</div>
+                </div>
+
+                <p style="text-align: center; color: var(--gray); font-size: 14px;">Out of 87 published articles</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 12px;">Top 10 Pages (Actual Data)</h3>
+                <table style="font-size: 12px;">
+                    <tr>
+                        <th>#</th>
+                        <th>Page</th>
+                        <th>Views</th>
+                    </tr>
+                    <tr><td>1</td><td>Homepage</td><td>18,357</td></tr>
+                    <tr><td>2</td><td>Apply Now</td><td>4,940</td></tr>
+                    <tr><td>3</td><td>Meet The Team</td><td>3,665</td></tr>
+                    <tr><td>4</td><td>Funding Options</td><td>2,880</td></tr>
+                    <tr><td>5</td><td>Solutions</td><td>2,058</td></tr>
+                    <tr><td>6</td><td>About Us</td><td>1,878</td></tr>
+                    <tr><td>7</td><td>Assessment</td><td>1,663</td></tr>
+                    <tr><td>8</td><td>Contact Us</td><td>1,644</td></tr>
+                    <tr><td>9</td><td>Recruitment eBook</td><td>1,520</td></tr>
+                    <tr><td>10</td><td>Apply Now (alt)</td><td>1,449</td></tr>
+                </table>
+                <p style="font-size: 11px; color: var(--ugly); margin-top: 8px; font-weight: 600;">No /resources/ or /blog/ URLs appear</p>
+            </div>
+        </div>
+
+        <div class="callout ugly" style="margin-top: 15px;">
+            <div class="callout-title">What This Means</div>
+            <p>You invested in 87 pieces of content that aren't ranking, aren't driving traffic, and aren't generating leads. This is a content strategy failure, not a content shortage problem.</p>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>11</span>
+    </div>
+</div>
+
+<!-- Slide 12: Ugly - Domain Split -->
+<div class="slide">
+    <div class="slide-header ugly">
+        <h1>Split Domain Authority <span class="tag ugly">Ugly</span></h1>
+        <h2>Two websites competing with each other</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <h3 style="margin-bottom: 15px;">How Google Sees You</h3>
+
+                <div class="code-block">
+                    <span class="comment"># Two separate domains</span><br><br>
+                    encore-funding.com<br>
+                    └── Domain Authority: X<br>
+                    └── Backlinks: Only help this site<br><br>
+                    gov.encore-funding.com<br>
+                    └── Domain Authority: Y (lower)<br>
+                    └── Backlinks: Only help this site<br><br>
+                    <span class="error"># Link juice NEVER flows between them</span>
+                </div>
+
+                <div class="stats-row" style="margin-top: 15px;">
+                    <div class="stat-box">
+                        <div class="stat-number">21,280</div>
+                        <div class="stat-label">Main Site Users</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">6,877</div>
+                        <div class="stat-label">Subdomain Users</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 15px;">The Problem</h3>
+
+                <div class="issue-box ugly">
+                    <h4>Backlinks Don't Transfer</h4>
+                    <p>Any link to gov.encore-funding.com doesn't help encore-funding.com rank. You're building two weak domains instead of one strong one.</p>
+                </div>
+
+                <div class="issue-box ugly">
+                    <h4>Content Cannibalization</h4>
+                    <p>Main site has /solutions/funding-options/government-contract-financing/<br>Subdomain is ENTIRE site for same topic. Google doesn't know which to rank.</p>
+                </div>
+
+                <div class="issue-box ugly">
+                    <h4>28,000 Users Split</h4>
+                    <p>If consolidated, that's 28,000 users strengthening ONE domain's authority.</p>
+                </div>
+
+                <div class="callout" style="margin-top: 15px; border-left-color: var(--primary);">
+                    <div class="callout-title">Recommendation</div>
+                    <p>Migrate gov.encore-funding.com → encore-funding.com/govcon/</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>12</span>
+    </div>
+</div>
+
+<!-- Slide 13: Ugly - Paid vs Organic -->
+<div class="slide">
+    <div class="slide-header ugly">
+        <h1>Paying for Traffic You Could Get Free <span class="tag ugly">Ugly</span></h1>
+        <h2>Organic and Paid Search are nearly equal</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box" style="flex: 2;">
+                <div class="stat-number" style="color: var(--dark);">28,877</div>
+                <div class="stat-label">Total Sessions (Annual)</div>
+            </div>
+            <div class="stat-box good">
+                <div class="stat-number">28.3%</div>
+                <div class="stat-label">Organic Search (FREE)</div>
+            </div>
+            <div class="stat-box ugly">
+                <div class="stat-number">24.3%</div>
+                <div class="stat-label">Paid Search (PAYING)</div>
+            </div>
+        </div>
+
+        <div class="two-col" style="margin-top: 25px;">
+            <div>
+                <h3 style="margin-bottom: 15px;">Traffic Breakdown</h3>
+                <div class="progress-item">
+                    <span class="progress-label">Organic</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill good" style="width: 28%;">8,172</div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">Paid</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill bad" style="width: 24%;">7,028</div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">Direct</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill primary" style="width: 22%;">6,436</div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">Referral</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill primary" style="width: 7%;">2,053</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 15px;">What Healthy Looks Like</h3>
+
+                <table style="font-size: 13px;">
+                    <tr>
+                        <th>Channel</th>
+                        <th>Current</th>
+                        <th>Target</th>
+                    </tr>
+                    <tr>
+                        <td>Organic Search</td>
+                        <td>28.3%</td>
+                        <td style="color: var(--good); font-weight: 700;">45%+</td>
+                    </tr>
+                    <tr>
+                        <td>Paid Search</td>
+                        <td>24.3%</td>
+                        <td style="color: var(--good); font-weight: 700;">15%</td>
+                    </tr>
+                </table>
+
+                <div class="callout ugly" style="margin-top: 15px;">
+                    <div class="callout-title">The Math</div>
+                    <p>Every organic session that replaces a paid click = money saved. At +150% organic, you could cut paid spend 30-50%.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>13</span>
+    </div>
+</div>
+
+<!-- Slide 14: Ugly - Technical Debt -->
+<div class="slide">
+    <div class="slide-header ugly">
+        <h1>Technical Debt <span class="tag ugly">Ugly</span></h1>
+        <h2>Signs of neglected maintenance</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <div class="issue-box ugly">
+                    <h4>Jobs Sitemap from 2022</h4>
+                    <p>Last modified: May 5, 2022 — over 4 years old. If you're not posting jobs, this should be removed. Signals to Google that the site isn't maintained.</p>
+                </div>
+
+                <div class="code-block">
+                    jobs-sitemap.xml<br>
+                    Last Modified: <span class="error">2022-05-05</span><br>
+                    <span class="comment"># 4+ years stale</span>
+                </div>
+
+                <div class="issue-box ugly">
+                    <h4>Duplicate Author Sitemaps</h4>
+                    <p>Both authors-sitemap.xml AND author-sitemap.xml exist. Wastes crawl budget.</p>
+                </div>
+            </div>
+            <div>
+                <div class="issue-box ugly">
+                    <h4>Robots.txt (Current)</h4>
+                </div>
+
+                <div class="code-block">
+                    User-Agent: *<br>
+                    Disallow:<br><br>
+                    <span class="comment"># That's it. Nothing else.</span><br>
+                    <span class="error"># No sitemap reference</span><br>
+                    <span class="error"># No /wp-admin/ blocking</span>
+                </div>
+
+                <div class="issue-box" style="border-color: var(--good); background: #ecfdf5;">
+                    <h4>Robots.txt (Should Be)</h4>
+                </div>
+
+                <div class="code-block">
+                    User-Agent: *<br>
+                    Disallow: /wp-admin/<br>
+                    Disallow: /wp-includes/<br>
+                    Allow: /wp-admin/admin-ajax.php<br><br>
+                    <span class="ok">Sitemap: https://encore-funding.com/sitemap_index.xml</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>14</span>
+    </div>
+</div>
+
+<!-- Slide 15: Market Opportunity -->
+<div class="slide section-slide neutral">
+    <h1>The Opportunity</h1>
+    <p class="section-subtitle">What we're going after</p>
+</div>
+
+<!-- Slide 16: Market Size -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>Market Opportunity</h1>
+        <h2>Growing market, low keyword competition</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box primary">
+                <div class="stat-number">$202B</div>
+                <div class="stat-label">Staffing Factoring Market by 2030</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">6.6%</div>
+                <div class="stat-label">Annual Growth Rate (CAGR)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">$30B</div>
+                <div class="stat-label">US Healthcare Factoring by 2033</div>
+            </div>
+        </div>
+
+        <h3 style="margin: 20px 0 12px;">Keyword Opportunity Matrix</h3>
+        <table style="font-size: 12px;">
+            <tr>
+                <th>Keyword</th>
+                <th>Est. Monthly Volume</th>
+                <th>Difficulty</th>
+                <th>Your Status</th>
+                <th>Opportunity</th>
+            </tr>
+            <tr>
+                <td>payroll funding</td>
+                <td>1,000-2,000</td>
+                <td>Medium</td>
+                <td style="color: var(--ugly);">Not ranking</td>
+                <td style="color: var(--good); font-weight: 700;">HIGH</td>
+            </tr>
+            <tr>
+                <td>invoice factoring</td>
+                <td>5,000-8,000</td>
+                <td>High</td>
+                <td style="color: var(--ugly);">Not top 20</td>
+                <td>MEDIUM</td>
+            </tr>
+            <tr>
+                <td>government contract financing</td>
+                <td>300-500</td>
+                <td style="color: var(--good);">Low</td>
+                <td>Have page</td>
+                <td style="color: var(--good); font-weight: 700;">QUICK WIN</td>
+            </tr>
+            <tr>
+                <td>how to start a staffing agency</td>
+                <td>2,000-4,000</td>
+                <td>Medium</td>
+                <td>Have content</td>
+                <td style="color: var(--good); font-weight: 700;">OPTIMIZE</td>
+            </tr>
+            <tr>
+                <td>8a contractor funding</td>
+                <td>50-100</td>
+                <td style="color: var(--good);">Very Low</td>
+                <td>Mentioned</td>
+                <td style="color: var(--good); font-weight: 700;">QUICK WIN</td>
+            </tr>
+            <tr>
+                <td>healthcare staffing funding</td>
+                <td>200-400</td>
+                <td style="color: var(--good);">Low</td>
+                <td>Blog only</td>
+                <td style="color: var(--good); font-weight: 700;">HIGH</td>
+            </tr>
+        </table>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>16</span>
+    </div>
+</div>
+
+<!-- Slide 17: 6-Month Targets (Compressed Timeline) -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>6-Month Targets <span class="tag" style="background: var(--primary);">Compressed</span></h1>
+        <h2>Compressed timeline. Aggressive execution.</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row" style="margin-bottom: 20px;">
+            <div class="stat-box primary">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Months to Domination</div>
+            </div>
+            <div class="stat-box" style="background: #fef2f2; border: 2px solid var(--ugly);">
+                <div class="stat-number" style="color: var(--ugly); text-decoration: line-through;">12</div>
+                <div class="stat-label">Not This</div>
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Today</th>
+                <th>Month 2</th>
+                <th>Month 4</th>
+                <th>Month 6</th>
+            </tr>
+            <tr>
+                <td>Organic Sessions (Main)</td>
+                <td>8,172</td>
+                <td>10,215</td>
+                <td>14,300</td>
+                <td style="color: var(--good); font-weight: 700;">20,430 (+150%)</td>
+            </tr>
+            <tr>
+                <td>GovCon Subdomain Users</td>
+                <td>6,877</td>
+                <td>8,596</td>
+                <td>12,035</td>
+                <td style="color: var(--good); font-weight: 700;">17,192 (+150%)</td>
+            </tr>
+            <tr>
+                <td>Blog Posts in Top 10</td>
+                <td style="color: var(--ugly); font-weight: 700;">0</td>
+                <td>3</td>
+                <td>7</td>
+                <td style="color: var(--good); font-weight: 700;">10</td>
+            </tr>
+            <tr>
+                <td>Keywords in Top 10</td>
+                <td>~0</td>
+                <td>10</td>
+                <td>30</td>
+                <td style="color: var(--good); font-weight: 700;">50</td>
+            </tr>
+            <tr>
+                <td>Organic % of Traffic</td>
+                <td>28%</td>
+                <td>33%</td>
+                <td>40%</td>
+                <td style="color: var(--good); font-weight: 700;">45%+</td>
+            </tr>
+            <tr>
+                <td>New Content Published</td>
+                <td>0</td>
+                <td>16</td>
+                <td>40</td>
+                <td style="color: var(--good); font-weight: 700;">60 total</td>
+            </tr>
+        </table>
+
+        <div class="callout" style="margin-top: 15px; border-left-color: var(--primary);">
+            <div class="callout-title">The Elon Musk Rule: 10-year goals in 6 months</div>
+            <p>Aggressive execution: 10 posts/month instead of 8. All tech fixes in 2 weeks instead of 4. Parallelize content + optimization. No waiting around.</p>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>17</span>
+    </div>
+</div>
+
+<!-- Slide 18: First 2 Weeks Sprint -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>First 2 Weeks: Blitz Mode</h1>
+        <h2>Everything technical DONE in 14 days</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <h3 style="color: var(--ugly); margin-bottom: 12px;">Days 1-3: Technical Debt Eliminated</h3>
+                <ul style="font-size: 13px;">
+                    <li>✓ Fix sitemap HTTPS issue (Yoast settings)</li>
+                    <li>✓ Update robots.txt with sitemap reference</li>
+                    <li>✓ Remove stale jobs-sitemap.xml</li>
+                    <li>✓ Consolidate author sitemaps</li>
+                    <li>✓ Implement Organization schema</li>
+                    <li>✓ Add LocalBusiness schema</li>
+                    <li>✓ Add FAQ schema to FAQ page</li>
+                </ul>
+
+                <h3 style="color: var(--bad); margin-bottom: 12px; margin-top: 20px;">Days 4-7: On-Page Optimization</h3>
+                <ul style="font-size: 13px;">
+                    <li>✓ Rewrite homepage + all service page titles</li>
+                    <li>✓ Meta descriptions for ALL pages (not just top 20)</li>
+                    <li>✓ Fix every H1 tag issue site-wide</li>
+                    <li>✓ Add breadcrumb navigation</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: var(--primary); margin-bottom: 12px;">Days 8-14: Content Blitz</h3>
+                <ul style="font-size: 13px;">
+                    <li>✓ Update ALL 28 posts dated 2023 (bulk refresh)</li>
+                    <li>✓ First pillar page LIVE: "Ultimate Guide to Payroll Funding"</li>
+                    <li>✓ Optimize GovCon financing page for rankings</li>
+                    <li>✓ Internal linking structure implemented</li>
+                    <li>✓ First 4 new blog posts published</li>
+                </ul>
+
+                <div class="callout" style="margin-top: 20px; border-left-color: var(--ugly);">
+                    <div class="callout-title">Day 1 Decision: Subdomain</div>
+                    <p><strong>Migrate gov.encore-funding.com → encore-funding.com/govcon/</strong></p>
+                    <p style="margin-top: 8px;">No waiting. 301 redirects, preserve content, consolidate authority immediately. Every day we wait = authority wasted.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>18</span>
+    </div>
+</div>
+
+<!-- Slide 19: 6-Month Execution Plan -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>6-Month Execution Plan</h1>
+        <h2>Same results, half the time</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box primary">
+                <div class="stat-number">60</div>
+                <div class="stat-label">New Content Pieces</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">87</div>
+                <div class="stat-label">Posts Optimized</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Pillar Pages</div>
+            </div>
+            <div class="stat-box" style="background: var(--primary); color: white;">
+                <div class="stat-number">2 wks</div>
+                <div class="stat-label" style="color: rgba(255,255,255,0.8);">Tech Fix Sprint</div>
+            </div>
+        </div>
+
+        <table style="margin-top: 20px;">
+            <tr>
+                <th>Phase</th>
+                <th>Timeline</th>
+                <th>Velocity</th>
+                <th>Exit Criteria</th>
+            </tr>
+            <tr style="background: #fef2f2;">
+                <td><strong>🔥 BLITZ</strong></td>
+                <td>Weeks 1-2</td>
+                <td>All hands on deck</td>
+                <td style="color: var(--ugly); font-weight: 700;">100% tech debt eliminated</td>
+            </tr>
+            <tr>
+                <td><strong>Foundation</strong></td>
+                <td>Month 1</td>
+                <td>10 posts + 2 pillars</td>
+                <td>Payroll + GovCon pillars live</td>
+            </tr>
+            <tr>
+                <td><strong>Growth</strong></td>
+                <td>Months 2-3</td>
+                <td>10 posts/month</td>
+                <td>+50% organic, 3 more pillars</td>
+            </tr>
+            <tr>
+                <td><strong>Authority</strong></td>
+                <td>Months 4-5</td>
+                <td>10 posts/month</td>
+                <td>+100% organic, thought leadership</td>
+            </tr>
+            <tr>
+                <td><strong>Domination</strong></td>
+                <td>Month 6</td>
+                <td>10 posts + scale</td>
+                <td style="color: var(--good); font-weight: 700;">+150%, 50 keywords top 10</td>
+            </tr>
+        </table>
+
+        <div class="callout" style="margin-top: 15px; border-left-color: var(--primary);">
+            <div class="callout-title">How We Move This Fast</div>
+            <p>Parallel execution: tech + content simultaneously. 10 posts/month (not 8). Weekly sprints with daily standups. No bureaucracy, no waiting for approvals. Ship fast, iterate faster.</p>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>19</span>
+    </div>
+</div>
+
+<!-- Slide 20: Summary -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>Summary: The Full Picture</h1>
+    </div>
+    <div class="slide-content">
+        <div class="three-col">
+            <div class="finding-card good">
+                <h3>THE GOOD</h3>
+                <ul>
+                    <li>$25B+ lending history = trust</li>
+                    <li>87 blog posts to optimize</li>
+                    <li>Strong founder story</li>
+                    <li>Case studies across verticals</li>
+                    <li>WP Rocket, mobile responsive</li>
+                    <li>Yoast SEO installed</li>
+                    <li>Not starting from zero</li>
+                </ul>
+            </div>
+            <div class="finding-card bad">
+                <h3>THE BAD</h3>
+                <ul>
+                    <li>28 posts dated 2023</li>
+                    <li>No schema markup anywhere</li>
+                    <li>Weak meta descriptions</li>
+                    <li>No pillar page strategy</li>
+                    <li>Behind 5+ competitors</li>
+                    <li>Missing calculator tools</li>
+                    <li>No internal link strategy</li>
+                </ul>
+            </div>
+            <div class="finding-card ugly">
+                <h3>THE UGLY</h3>
+                <ul>
+                    <li>87 posts → 0 traffic</li>
+                    <li>Two domains split authority</li>
+                    <li>Paid ≈ Organic (24% vs 28%)</li>
+                    <li>HTTP sitemap links</li>
+                    <li>Jobs sitemap from 2022</li>
+                    <li>Duplicate sitemaps</li>
+                    <li>Content cannibalization</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <div style="font-size: 36px; font-weight: 800; color: var(--dark);">The Opportunity</div>
+            <div style="font-size: 20px; color: var(--gray); margin-top: 10px;">
+                Fix the ugly, improve the bad, leverage the good → <span style="color: var(--good); font-weight: 700;">+150% organic traffic</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Encore Funding SEO Diagnostic</span>
+        <span>March 2026</span>
+        <span>20</span>
+    </div>
+</div>
+
+<!-- Slide 21: Closing -->
+<div class="slide title-slide">
+    <h2 style="color: #94a3b8; font-size: 20px; margin-bottom: 20px;">6-Month Target (Not 12)</h2>
+    <h1 style="font-size: 100px; margin-bottom: 10px;">+150%</h1>
+    <h2 style="font-size: 32px;">Organic Traffic Growth</h2>
+    <div style="margin-top: 40px; color: #94a3b8; font-size: 18px;">
+        50 Keywords Top 10 &nbsp;|&nbsp; 60 New Posts &nbsp;|&nbsp; Tech Debt Gone in 2 Weeks
+    </div>
+    <div style="margin-top: 20px; color: var(--primary); font-size: 24px; font-weight: 700;">
+        Why wait a year when you can dominate in 6 months?
+    </div>
+    <p class="meta" style="margin-top: 50px;">Encore Funding SEO Diagnostic | March 2026</p>
+</div>
+
+</body>
+</html>

@@ -1,18 +1,18 @@
 # Encore Funding SEO Engagement - Executive Summary
 **Date:** March 17, 2026
 **Prepared for:** Encore Funding Leadership
-**Prepared by:** GovCon Giants SEO Team
+**Prepared by:** GovCon Giants
 
 ---
 
 ## The Opportunity
 
-Encore Funding has **strong fundamentals** but **untapped SEO potential**. With the right strategy, we can:
+Encore Funding has **strong fundamentals** but **untapped SEO potential**. The strategy:
 
 - **Reduce paid search spend** by growing organic traffic
 - **Dominate GovCon funding keywords** (low competition, high intent)
-- **Leverage the GovCon Giants partnership** to accelerate growth
 - **Turn 87 dormant blog posts** into traffic-generating assets
+- **Consolidate domain authority** for maximum impact
 
 ---
 
@@ -69,22 +69,21 @@ If consolidated: **28,000 users strengthening ONE domain**
 ### 3. Paid Search Dependency
 **Organic (28.3%) ≈ Paid (24.3%)**
 
-They're paying for traffic they could get organically. With proper SEO:
+Paying for traffic that could come organically. With proper SEO:
 - Organic should be 45%+ of traffic
 - Paid search can be reduced by 30-50%
-- Savings reinvested in content/link building
 
 ---
 
-## 12-Month Targets
+## 6-Month Targets
 
-| Metric | Now | Month 12 | Growth |
-|--------|-----|----------|--------|
-| Organic Sessions | 8,172 | 20,430 | **+150%** |
-| GovCon Users | 6,877 | 17,192 | **+150%** |
-| GovCon Giants Page | 1,013 | 4,000 | **+295%** |
-| Blog Posts in Top 10 | 0 | 10 | **Content works** |
-| Keywords in Top 10 | ~0 | 50 | **Visibility** |
+| Metric | Now | Month 2 | Month 4 | Month 6 |
+|--------|-----|---------|---------|---------|
+| Organic Sessions | 8,172 | 10,215 | 14,300 | 20,430 (+150%) |
+| GovCon Users | 6,877 | 8,596 | 12,035 | 17,192 (+150%) |
+| Blog Posts in Top 10 | 0 | 3 | 7 | 10 |
+| Keywords in Top 10 | ~0 | 10 | 30 | 50 |
+| Organic % of Traffic | 28% | 33% | 40% | 45%+ |
 
 ---
 
@@ -100,66 +99,64 @@ The `/govcon-giants-partner-government-contractor-funding/` page is the **#2 mos
 
 ---
 
-## Immediate Priorities (30 Days)
+## Immediate Priorities (First 2 Weeks)
 
-### Week 1: Technical Fixes
+### Days 1-3: Technical Debt Eliminated
 - [ ] Fix sitemap HTTPS issue
 - [ ] Implement schema markup
 - [ ] Update robots.txt
 - [ ] Remove stale sitemaps
 
-### Week 2: Architecture Decision
-- [ ] **DECIDE:** Consolidate subdomain or keep separate?
-- [ ] If consolidate: Plan migration
-- [ ] If keep: Launch parallel strategy
+### Days 4-7: On-Page Optimization
+- [ ] Rewrite homepage + service page titles
+- [ ] Add meta descriptions to all pages
+- [ ] Fix H1 tag issues site-wide
+- [ ] Add breadcrumb navigation
 
-### Week 3-4: Content Optimization
-- [ ] Refresh top 10 blog posts with 2026 data
+### Days 8-14: Content Foundation
+- [ ] **DECIDE:** Consolidate subdomain or keep separate?
+- [ ] Update all 28 posts dated 2023
 - [ ] Create first pillar page (Payroll Funding Guide)
 - [ ] Optimize GovCon Giants partnership page
+- [ ] Publish first 4 new blog posts
 
 ---
 
-## Investment Summary
+## 6-Month Execution Plan
 
-### What We'll Deliver
-
-**Month 1-3 (Foundation):**
+**Month 1 (Foundation):**
 - All technical SEO issues fixed
-- 3 pillar pages created
-- 24 new content pieces
+- 2 pillar pages created
+- 10 new content pieces
 - Schema implemented site-wide
 
-**Month 4-6 (Growth):**
-- 24 additional content pieces
+**Months 2-3 (Growth):**
+- 20 additional content pieces
+- 2 more pillar pages
 - Healthcare + IT vertical pages
 - Link building campaign launched
-- 50% traffic increase
+- +50% traffic
 
-**Month 7-12 (Authority):**
-- 48 more content pieces (72 total)
+**Months 4-5 (Authority):**
+- 20 more content pieces
+- Final 2 pillar pages
 - Industry thought leadership
-- Comparison/competitive content
-- 150% traffic increase
+- +100% traffic
 
-### Expected ROI
-
-| Investment | Return |
-|------------|--------|
-| Reduced paid search | $X,XXX/year savings |
-| Increased organic traffic | +12,258 sessions/year (free) |
-| GovCon Giants amplification | 4x partnership page traffic |
-| Content assets | 72 new pieces (permanent value) |
+**Month 6 (Domination):**
+- 10 final content pieces
+- Competitive keyword capture
+- Full optimization pass
+- +150% traffic, 50 keywords top 10
 
 ---
 
 ## Next Steps
 
-1. **Schedule kickoff call** to review findings
+1. **Review findings** in this diagnostic
 2. **Decide on subdomain strategy** (consolidate vs keep)
 3. **Provide Google Search Console access** for deeper analysis
-4. **Run Ahrefs/SEMrush audit** for backlink profile
-5. **Approve Month 1 content calendar**
+4. **Kick off Week 1 blitz** - technical fixes start immediately
 
 ---
 
@@ -169,13 +166,14 @@ The `/govcon-giants-partner-government-contractor-funding/` page is the **#2 mos
 |----------|---------|
 | `seo-audit-report.md` | Complete technical + content audit |
 | `seo-testing-criteria.md` | Quality checklist for all SEO work |
-| `content-strategy-12-months.md` | Month-by-month content calendar |
+| `content-strategy-6-months.md` | Month-by-month content calendar |
 | `executive-summary.md` | This document |
+| `c-suite-presentation-v2.html` | Good/Bad/Ugly presentation deck |
 
 All files located in: `/Users/ericcoffie/Encore Funding/tasks/`
 
 ---
 
-**Bottom Line:** Encore Funding has the brand credibility and content foundation to dominate staffing funding keywords. The GovCon Giants partnership is already working. With focused execution, we'll turn 28% organic traffic into 45%+ while building assets that compound over time.
+**Bottom Line:** Encore Funding has the brand credibility and content foundation to dominate staffing funding keywords. The GovCon Giants partnership is already working. With aggressive execution, we turn 28% organic traffic into 45%+ in 6 months.
 
 *Let's get started.*
