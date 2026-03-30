@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encore GovCon LinkedIn Strategy - Executive Summary</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .page {
+            width: 8.5in;
+            height: 11in;
+            background: white;
+            margin: 0 auto;
+            padding: 0.5in;
+            position: relative;
+            page-break-after: always;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #0077B5;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .header-left h1 {
+            font-size: 24px;
+            color: #0077B5;
+            font-weight: 700;
+        }
+
+        .header-left p {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .logos {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            font-size: 10px;
+            color: #666;
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Key Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, #0077B5 0%, #005885 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .insight-box h2 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .insight-box .main-stat {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .insight-box .sub-text {
+            font-size: 15px;
+            opacity: 0.95;
+            max-width: 600px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0077B5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        /* Data Cards */
+        .data-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .data-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border-left: 4px solid #0077B5;
+        }
+
+        .data-card .number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0077B5;
+        }
+
+        .data-card .label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .data-card .desc {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        /* Competitor Box */
+        .competitor-box {
+            background: #fff8e1;
+            border: 1px solid #ffca28;
+            border-left: 4px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+        }
+
+        .competitor-box h4 {
+            font-size: 14px;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .competitor-box p {
+            font-size: 14px;
+            color: #5d4037;
+            line-height: 1.5;
+        }
+
+        .competitor-box strong {
+            color: #bf360c;
+        }
+
+        /* Two Column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        /* Comparison Table */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .compare-table th {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #0077B5;
+        }
+
+        .compare-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .compare-table .old {
+            color: #dc3545;
+            text-decoration: line-through;
+        }
+
+        .compare-table .new {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        /* Why Box */
+        .why-box {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .why-box h4 {
+            font-size: 13px;
+            color: #1565c0;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .why-box ul {
+            font-size: 12px;
+            color: #333;
+            margin-left: 18px;
+        }
+
+        .why-box li {
+            margin-bottom: 6px;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 0.5in;
+            left: 0.5in;
+            right: 0.5in;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        /* PAGE 2 STYLES */
+
+        /* Content Mix */
+        .content-mix {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .mix-item {
+            flex: 1;
+            padding: 15px 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .mix-item.value {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+
+        .mix-item.authority {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+        }
+
+        .mix-item.direct {
+            background: #ffebee;
+            border: 2px solid #f44336;
+        }
+
+        .mix-item .pct {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .mix-item .type {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        .mix-item .examples {
+            font-size: 9px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Schedule */
+        .schedule-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .day {
+            flex: 1;
+            text-align: center;
+            padding: 10px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        .day.active {
+            background: #0077B5;
+            color: white;
+        }
+
+        .day.optional {
+            background: #64b5f6;
+            color: white;
+        }
+
+        .day.inactive {
+            background: #f5f5f5;
+            color: #bbb;
+        }
+
+        .day .name {
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .day .content {
+            font-size: 9px;
+            opacity: 0.9;
+        }
+
+        /* Format Cards */
+        .format-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .format-card {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .format-card .stat {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0077B5;
+            white-space: nowrap;
+        }
+
+        .format-card .info {
+            font-size: 11px;
+            color: #333;
+        }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .kpi {
+            background: #f8f9fa;
+            padding: 12px 10px;
+            border-radius: 6px;
+            text-align: center;
+            border-top: 3px solid #28a745;
+        }
+
+        .kpi .value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        .kpi .metric {
+            font-size: 9px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+        }
+
+        .next-steps h4 {
+            font-size: 12px;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .next-steps ol {
+            font-size: 12px;
+            margin-left: 18px;
+            color: #333;
+        }
+
+        .next-steps li {
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        /* Sources */
+        .sources {
+            font-size: 10px;
+            color: #888;
+        }
+
+        .sources strong {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="header">
+            <div class="header-left">
+                <h1>LinkedIn Content Strategy</h1>
+                <p>Encore GovCon Division | Data-Driven Recommendations | March 2026</p>
+            </div>
+            <div class="logos">
+                <div class="logo-placeholder">ENCORE FUNDING</div>
+                <div class="logo-placeholder">GOVCON GIANTS</div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h2>The Data Supports Leadership's Instinct</h2>
+            <div class="main-stat">3-4 Posts/Week Is Optimal</div>
+            <div class="sub-text">With two audiences (Staffing + GovCon), alternating content means each segment sees only 2 posts/week. Total output of 12-16 posts/month stays under the fatigue threshold.</div>
+        </div>
+
+        <div class="section-title">What the Research Reveals</div>
+        <div class="data-cards">
+            <div class="data-card">
+                <div class="number">12-16</div>
+                <div class="label">Posts/Month for Dual Audience</div>
+                <div class="desc">Each segment sees ~8 posts — within optimal range</div>
+            </div>
+            <div class="data-card">
+                <div class="number">48-72hr</div>
+                <div class="label">Top Post Lifespan</div>
+                <div class="desc">New posts during this window trigger cannibalization</div>
+            </div>
+            <div class="data-card">
+                <div class="number">87%</div>
+                <div class="label">Don't Use Audience Targeting</div>
+                <div class="desc">LinkedIn's hidden feature segments posts by industry</div>
+            </div>
+        </div>
+
+        <div class="competitor-box">
+            <h4>Dual Audience Advantage</h4>
+            <p>Encore serves <strong>Staffing</strong> and <strong>GovCon</strong> audiences. By alternating content, each segment sees only ~2 relevant posts/week — avoiding fatigue while doubling total output. Competitor <strong>Parabilis</strong> (3,949 followers) posts 2-3x/week for GovCon only. Encore can match their GovCon presence while also serving Staffing.</p>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <div class="section-title">Strategy Comparison</div>
+                <table class="compare-table">
+                    <tr>
+                        <th>Metric</th>
+                        <th>Original</th>
+                        <th>Recommended</th>
+                    </tr>
+                    <tr>
+                        <td>Posts/Week</td>
+                        <td class="old">5 (daily)</td>
+                        <td class="new">3-4</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Volume</td>
+                        <td class="old">20-30</td>
+                        <td class="new">12-16</td>
+                    </tr>
+                    <tr>
+                        <td>Content Split</td>
+                        <td class="old">Mixed</td>
+                        <td class="new">50% Staffing / 50% GovCon</td>
+                    </tr>
+                    <tr>
+                        <td>Audience Targeting</td>
+                        <td class="old">None</td>
+                        <td class="new">By Industry</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <div class="why-box">
+                    <h4>Why Dual-Audience Strategy Works</h4>
+                    <ul>
+                        <li><strong>No fatigue:</strong> Each audience sees ~2 posts/week (their content only)</li>
+                        <li><strong>Hidden feature:</strong> LinkedIn's organic targeting segments by industry</li>
+                        <li><strong>Competitive parity:</strong> Match Parabilis on GovCon + serve Staffing</li>
+                        <li><strong>Quality focus:</strong> 61+ sec dwell time = 15.6% engagement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>Prepared by GovCon Giants Strategic Partnership Team</div>
+            <div>Page 1 of 2</div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="header">
+            <div class="header-left">
+                <h1>LinkedIn Content Strategy</h1>
+                <p>Content Mix, Schedule & KPIs</p>
+            </div>
+            <div class="logos">
+                <div class="logo-placeholder">ENCORE FUNDING</div>
+                <div class="logo-placeholder">GOVCON GIANTS</div>
+            </div>
+        </div>
+
+        <div class="section-title">Content Mix by Audience</div>
+        <div class="content-mix">
+            <div class="mix-item" style="background: #fff3e0; border: 2px solid #ff9800;">
+                <div class="pct">50%</div>
+                <div class="type">Staffing</div>
+                <div class="examples">Payroll funding, cash flow, back-office, growth tips</div>
+            </div>
+            <div class="mix-item" style="background: #e3f2fd; border: 2px solid #0077B5;">
+                <div class="pct">50%</div>
+                <div class="type">GovCon</div>
+                <div class="examples">Set-asides, compliance, contract financing, GCG content</div>
+            </div>
+        </div>
+        <p style="font-size: 10px; color: #666; margin-bottom: 10px;">Within each audience: 50% educational, 30% authority/thought leadership, 20% direct (client success, CTAs)</p>
+
+        <div class="section-title">Weekly Posting Schedule (Dual Audience)</div>
+        <div class="schedule-row">
+            <div class="day inactive">
+                <div class="name">Mon</div>
+                <div class="content">—</div>
+            </div>
+            <div class="day active" style="background: #ff9800;">
+                <div class="name">Tue</div>
+                <div class="content">Staffing</div>
+            </div>
+            <div class="day active" style="background: #0077B5;">
+                <div class="name">Wed</div>
+                <div class="content">GovCon</div>
+            </div>
+            <div class="day active" style="background: #ff9800;">
+                <div class="name">Thu</div>
+                <div class="content">Staffing</div>
+            </div>
+            <div class="day optional">
+                <div class="name">Fri</div>
+                <div class="content">GovCon/Both</div>
+            </div>
+        </div>
+        <p style="font-size: 10px; color: #666; margin-bottom: 15px;"><span style="color: #ff9800;">■</span> Staffing content &nbsp; <span style="color: #0077B5;">■</span> GovCon content &nbsp; Use LinkedIn's organic targeting to segment by industry.</p>
+
+        <div class="section-title">Top Performing Formats</div>
+        <div class="format-cards">
+            <div class="format-card">
+                <div class="stat">11.2x</div>
+                <div class="info"><strong>Carousels</strong> — More impressions vs text-only posts</div>
+            </div>
+            <div class="format-card">
+                <div class="stat">+71%</div>
+                <div class="info"><strong>Vertical Video</strong> — More impressions than horizontal</div>
+            </div>
+            <div class="format-card">
+                <div class="stat">3x</div>
+                <div class="info"><strong>Native Articles</strong> — Higher reach than external links</div>
+            </div>
+            <div class="format-card">
+                <div class="stat">Best</div>
+                <div class="info"><strong>Zero-Click</strong> — Full value in post, no external links</div>
+            </div>
+        </div>
+
+        <div class="section-title">30-Day KPIs</div>
+        <div class="kpi-grid">
+            <div class="kpi">
+                <div class="value">12-16</div>
+                <div class="metric">Posts Published</div>
+            </div>
+            <div class="kpi">
+                <div class="value">+200</div>
+                <div class="metric">New Followers</div>
+            </div>
+            <div class="kpi">
+                <div class="value">30-40</div>
+                <div class="metric">Website Clicks</div>
+            </div>
+            <div class="kpi">
+                <div class="value">5-8</div>
+                <div class="metric">DM Inquiries</div>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h4>Immediate Next Steps</h4>
+            <ol>
+                <li><strong>Approve dual-audience cadence</strong> — 3-4 posts/week (Tue/Wed/Thu + optional Fri)</li>
+                <li><strong>Enable LinkedIn audience targeting</strong> — Segment posts by industry (Staffing vs GovCon)</li>
+                <li><strong>Prioritize carousel + video formats</strong> — Highest engagement potential</li>
+                <li><strong>Create first 4 posts</strong> — 2 Staffing + 2 GovCon for Week 1</li>
+            </ol>
+        </div>
+
+        <div class="sources">
+            <strong>Sources:</strong> Buffer (2M+ posts analyzed), LiGo (247 B2B pages, 18 months), Beamio, DowSocial, Social Insider LinkedIn Benchmarks 2026, La Growth Machine, CXL B2B Research
+        </div>
+
+        <div class="footer">
+            <div>Prepared by GovCon Giants Strategic Partnership Team</div>
+            <div>Page 2 of 2</div>
+        </div>
+    </div>
+</body>
+</html>
