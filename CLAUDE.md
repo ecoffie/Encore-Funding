@@ -466,3 +466,37 @@ KV_REST_API_TOKEN
 cd "/Users/ericcoffie/Encore Funding" && python3 export_to_pptx.py
 ```
 Uses Playwright to screenshot each slide, then python-pptx to assemble into PPTX.
+
+---
+
+## HUBZone Webinar Landing Page (June 2026)
+
+**Project:** `/Users/ericcoffie/govcon-funnels/` (NOT in Encore Funding repo)
+
+**Live URL:** https://govcongiants.com/hubzone
+
+**Repo:** https://github.com/ecoffie/govcon-funnels
+
+### Webinar Details
+- **Title:** From Interested To Procurement Ready — HUBZone Webinar
+- **Date:** Wednesday, June 17, 2026
+- **Time:** 6:00 – 8:00 PM EST (includes ½-hour Q&A)
+- **Hosts:** Eric Coffie + Tim Hagerty (TeamingPro), Chad Eberly (Encore Funding), Todd Rogers (LTR)
+
+### Key Files (govcon-funnels)
+| File | Purpose |
+|------|---------|
+| `src/app/hubzone/page.tsx` | Landing page (schema.org Event, hero, CTAs) |
+| `src/app/hubzone/thank-you/page.tsx` | Post-registration confirmation page |
+| `src/lib/email.ts` | `sendHubzoneWebinarEmail()` — confirmation email with Google Calendar link |
+
+### Session Changes (2026-05-26)
+- Corrected webinar date from June 15 → June 17 across all surfaces:
+  - Landing page (title, meta, hero, schema.org Event start/end, CTAs)
+  - Thank-you page (also fixed wrong time window "8 AM – 6 PM" → "6 – 8 PM EST")
+  - Confirmation email (subject, headline, date block, weekday Mon→Wed, Google Calendar `dates=20260617T220000Z/20260618T000000Z`)
+- Commit: `3b59f29`
+
+### Gotcha
+- **Always update weekday when changing date.** June 15 = Monday, June 17 = Wednesday. Easy to miss in the email's "Save the Date" block.
+- **Google Calendar `dates=` param uses UTC.** 6 PM EDT = 22:00 UTC, so June 17 6–8 PM EDT = `20260617T220000Z/20260618T000000Z` (crosses midnight UTC).
