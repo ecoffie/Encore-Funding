@@ -6,292 +6,231 @@
   <title>Encore Marketing Report | GovCon Giants Partnership</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0f12;
-      --surface: #18181c;
-      --surface-hover: #222228;
-      --text: #f4f4f5;
-      --text-muted: #a1a1aa;
-      --accent: #6366f1;
-      --accent-light: #818cf8;
-      --green: #86efac;
-      --yellow: #fde68a;
-      --red: #fca5a5;
-      --border: #27272a;
+      --brand: #F0592D;
+      --brand-600: #D9491F;
+      --brand-100: #FFEDD5;
+      --brand-50: #FFF7ED;
+      --ink: #1E293B;
+      --ink-strong: #0F172A;
+      --muted: #64748B;
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-soft: #F1F5F9;
+      --border: #E2E8F0;
+      --dark: #1E293B;
+      --green: #059669;
+      --yellow: #D97706;
+      --red: #DC2626;
+      --shadow: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+      --shadow-lg: 0 10px 30px rgba(15,23,42,0.08);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
       background: var(--bg);
-      color: var(--text);
+      color: var(--ink);
       line-height: 1.6;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem 4rem; }
 
-    header {
-      text-align: center;
-      padding: 3rem 0 2rem;
+    /* Top brand bar */
+    .brandbar {
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
     }
-    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    header p { color: var(--text-muted); font-size: 1rem; }
+    .brandbar-inner {
+      max-width: 1180px; margin: 0 auto; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brandbar img { height: 30px; width: auto; display: block; }
+    .brandbar .partner {
+      font-size: 0.78rem; color: var(--muted); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
 
-    /* KPI Metrics Row */
-    .metrics-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
+    /* Hero */
+    header.hero {
+      padding: 3rem 0 2rem;
     }
-    .metric-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem;
+    .hero .eyebrow {
+      display: inline-block;
+      background: var(--brand-100); color: var(--brand-600);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 999px;
+      margin-bottom: 1rem;
     }
-    .metric-box .label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
+    header.hero h1 {
+      font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em;
+      color: var(--ink-strong); line-height: 1.1; margin-bottom: 0.6rem;
+      max-width: 720px;
     }
-    .metric-box .value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin-top: 0.25rem;
+    header.hero h1 .accent { color: var(--brand); }
+    header.hero p { color: var(--muted); font-size: 1.05rem; max-width: 620px; }
+
+    /* Hero KPI band */
+    .hero-kpis {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem; margin: 2rem 0 0.5rem;
     }
-    .metric-box .sub {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
+    .kpi {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.4rem 1.5rem; box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
     }
+    .kpi::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--brand);
+    }
+    .kpi .label {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); font-weight: 600;
+    }
+    .kpi .value {
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.02em;
+      color: var(--ink-strong); margin-top: 0.3rem; line-height: 1;
+    }
+    .kpi .sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; }
 
     /* View Tabs */
-    .view-tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin: 1.5rem 0;
-    }
+    .view-tabs { display: flex; gap: 0.5rem; margin: 2.5rem 0 1.75rem; flex-wrap: wrap; }
     .view-tab {
-      padding: 0.6rem 1.25rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
+      padding: 0.6rem 1.4rem; border-radius: 999px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--muted);
+      font-size: 0.92rem; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: all 0.18s;
     }
-    .view-tab:hover { background: var(--surface-hover); color: var(--text); }
-    .view-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+    .view-tab:hover { border-color: var(--brand); color: var(--brand-600); }
+    .view-tab.active { background: var(--brand); color: #fff; border-color: var(--brand); }
 
-    /* Section headers */
     .section { margin: 2rem 0; }
-    .section h2 {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* Sparkline chart card */
-    .chart-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem;
-      overflow: hidden;
-    }
-    .chart-card h3 {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    /* Two-column layout */
-    .grid-2 { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1rem; }
-
-    /* Channel bars */
-    .bar-list { display: grid; gap: 0.6rem; }
-    .bar-row { display: grid; grid-template-columns: 80px 1fr 84px; gap: 0.75rem; align-items: center; }
-    .bar-row .name { font-size: 0.85rem; color: var(--text-muted); }
-    .bar-track { height: 16px; background: var(--border); border-radius: 6px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 6px; }
-    .bar-fill.youtube { background: linear-gradient(90deg, #dc2626, #ff6b6b); }
-    .bar-fill.linkedin { background: linear-gradient(90deg, #0a66c2, #60a5fa); }
-    .bar-fill.fhc { background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
-    .bar-fill.instagram { background: linear-gradient(90deg, #c026d3, #f472b6); }
-    .bar-fill.podcast { background: linear-gradient(90deg, #059669, #86efac); }
-    .bar-fill.default { background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
-    .bar-val { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+    .section-title { font-size: 1.35rem; font-weight: 800; color: var(--ink-strong); letter-spacing: -0.02em; margin-bottom: 0.35rem; }
+    .section-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
     /* Month cards grid */
     .month-links {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
     }
     .month-link {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      padding: 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.2s;
+      display: flex; flex-direction: column; gap: 0.4rem;
+      padding: 1.35rem 1.4rem; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 16px;
+      color: var(--ink); text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
     }
     .month-link:hover {
-      background: var(--surface-hover);
-      border-color: var(--accent);
-      color: var(--accent-light);
-      text-decoration: none;
+      transform: translateY(-3px); border-color: var(--brand);
+      box-shadow: var(--shadow-lg); color: var(--ink); text-decoration: none;
     }
-    .month-link .month-name { font-weight: 600; font-size: 1rem; }
-    .month-link .month-stat {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .month-link.empty { opacity: 0.35; }
+    .month-link .month-name { font-weight: 800; font-size: 1.15rem; color: var(--ink-strong); letter-spacing: -0.01em; }
+    .month-link .month-stat { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 0.4rem; }
+    .month-link .month-stat strong { color: var(--brand-600); font-weight: 700; }
+    .month-link .arrow { margin-top: auto; padding-top: 0.5rem; color: var(--brand); font-weight: 700; font-size: 0.85rem; }
+    .month-link.empty { opacity: 0.5; box-shadow: none; }
+    .month-link.empty:hover { transform: none; border-color: var(--border); box-shadow: none; }
     .month-link.empty .month-stat { font-style: italic; }
+    .month-link.empty .arrow { display: none; }
 
     /* Deliverable Tracker */
-    .tracker-list {
-      display: grid;
-      gap: 0.75rem;
-      max-width: 700px;
-    }
+    .tracker-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.25rem; }
     .tracker-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.4rem 1.5rem; box-shadow: var(--shadow);
     }
     .tracker-group h4 {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-size: 0.78rem; color: var(--brand-600); margin-bottom: 1rem;
+      text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;
     }
     .progress-row {
-      display: grid;
-      grid-template-columns: 1fr 150px 80px;
-      gap: 0.75rem;
-      align-items: center;
-      padding: 0.4rem 0;
+      display: grid; grid-template-columns: 1fr 130px 64px;
+      gap: 0.75rem; align-items: center; padding: 0.45rem 0;
     }
-    .progress-label { font-size: 0.9rem; }
-    .progress-bar {
-      height: 10px;
-      background: var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-    }
+    .progress-label { font-size: 0.92rem; color: var(--ink); font-weight: 500; }
+    .progress-bar { height: 9px; background: var(--surface-soft); border-radius: 999px; overflow: hidden; }
     .progress-fill {
-      height: 100%;
-      border-radius: 6px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-      transition: width 0.5s;
+      height: 100%; border-radius: 999px;
+      background: var(--brand); transition: width 0.6s ease;
     }
-    .progress-fill.full { background: linear-gradient(90deg, #059669, var(--green)); }
-    .progress-fill.warn { background: linear-gradient(90deg, #d97706, var(--yellow)); }
-    .progress-count {
-      text-align: right;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
+    .progress-fill.full { background: var(--green); }
+    .progress-fill.warn { background: var(--yellow); }
+    .progress-count { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--muted); font-weight: 500; }
 
-    /* Top content table */
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-    th {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: var(--surface-hover); }
-    .channel-badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
-    .channel-youtube { background: rgba(255,0,0,0.2); color: #ff6b6b; }
-    .channel-linkedin { background: rgba(10,102,194,0.2); color: #60a5fa; }
-    .channel-instagram { background: rgba(228,64,95,0.2); color: #f472b6; }
-    .channel-fhc { background: rgba(99,102,241,0.2); color: var(--accent-light); }
-    .channel-podcast { background: rgba(5,150,105,0.2); color: #86efac; }
-    .num { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
-    a { color: var(--accent-light); text-decoration: none; }
+    a { color: var(--brand-600); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     footer {
-      text-align: center;
-      padding: 3rem 0;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      text-align: center; padding: 3rem 0 1rem; margin-top: 2rem;
+      border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem;
     }
+    footer img { height: 22px; width: auto; vertical-align: middle; opacity: 0.85; margin: 0 0.4rem; }
 
-    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
     @media (max-width: 768px) {
-      .container { padding: 1rem; }
-      .metrics-row { grid-template-columns: repeat(2, 1fr); }
-      .progress-row { grid-template-columns: 1fr; gap: 0.25rem; }
+      .container { padding: 0 1rem 3rem; }
+      header.hero h1 { font-size: 2rem; }
+      .hero-kpis { grid-template-columns: repeat(2, 1fr); }
+      .progress-row { grid-template-columns: 1fr 90px 50px; }
     }
 
     @media print {
-      body { background: white; color: black; }
+      body { background: white; }
       .view-tabs { display: none; }
-      .metric-box { border: 1px solid #ccc; background: #f9f9f9; }
-      .metric-box .label, .metric-box .sub { color: #666; }
-      .chart-card { break-inside: avoid; border: 1px solid #ccc; background: #f9f9f9; }
-      a { color: black; }
+      .kpi, .month-link, .tracker-group { box-shadow: none; break-inside: avoid; }
     }
   </style>
 </head>
 <body>
+  <div class="brandbar">
+    <div class="brandbar-inner">
+      <img src="images/EncoreLogo_Primary_Color_CMYK.png" alt="Encore Funding" />
+      <span class="partner">GovCon Giants Partnership</span>
+    </div>
+  </div>
+
   <div class="container">
-    <header>
-      <h1>Encore Marketing Report</h1>
-      <p>GovCon Giants Partnership &middot; Executive Dashboard</p>
+    <header class="hero">
+      <span class="eyebrow">Marketing Performance</span>
+      <h1>Your campaign, <span class="accent">measured.</span></h1>
+      <p>A month-by-month look at the content, reach, and engagement Encore Funding earned through the GovCon Giants partnership.</p>
+
+      <div class="hero-kpis" id="hero-kpis"></div>
     </header>
 
     <!-- View Tabs -->
     <div class="view-tabs">
-      <button class="view-tab active" data-view="reports">Reports</button>
+      <button class="view-tab active" data-view="reports">Monthly Reports</button>
       <button class="view-tab" data-view="deliverables">Deliverables</button>
     </div>
 
     <!-- Reports View -->
-    <div id="months-view">
+    <div id="months-view" class="section">
+      <div class="section-title">Browse by month</div>
+      <div class="section-sub">Select a month to explore every piece of content and its performance.</div>
       <div class="month-links" id="month-links"></div>
     </div>
 
     <!-- Deliverables View -->
-    <div id="deliverables-view" style="display:none">
+    <div id="deliverables-view" class="section" style="display:none">
+      <div class="section-title">Deliverable tracker</div>
+      <div class="section-sub">Progress against the annual partnership commitments.</div>
       <div class="tracker-list" id="deliverable-tracker"></div>
     </div>
 
     <footer>
-      Encore &times; GovCon Giants Partnership Report &middot; March 2025 &ndash; January 2026
+      <div>
+        <img src="images/EncoreLogo_Primary_Color_CMYK.png" alt="Encore Funding" />
+        <img src="images/GovconGiants-logo-black.png" alt="GovCon Giants" />
+      </div>
+      <div style="margin-top:0.75rem">Encore Funding &times; GovCon Giants Partnership Report <span id="footer-range"></span></div>
     </footer>
   </div>
 
@@ -308,6 +247,37 @@
 
     function n(v) { return (v || 0).toLocaleString(); }
 
+    function compact(v) {
+      v = v || 0;
+      if (v >= 1e6) return (v / 1e6).toFixed(v >= 1e7 ? 0 : 1) + 'M';
+      if (v >= 1e3) return (v / 1e3).toFixed(v >= 1e4 ? 0 : 1) + 'K';
+      return v.toLocaleString();
+    }
+
+    // ── Hero KPIs (lifetime totals) ──
+    (function renderHeroKpis() {
+      const sum = k => months.reduce((s, m) => s + (((data.aggregates[m] || {}).totals || {})[k] || 0), 0);
+      const totalImp = sum('impressions');
+      const totalViews = sum('views');
+      const totalEng = sum('engagements');
+      const totalItems = sum('items');
+      const activeMonths = months.filter(m => (((data.aggregates[m] || {}).totals || {}).items || 0) > 0).length;
+      const kpis = [
+        { label: 'Total Impressions', value: compact(totalImp), sub: 'across all channels' },
+        { label: 'Total Views', value: compact(totalViews), sub: 'video + podcast + social' },
+        { label: 'Engagements', value: compact(totalEng), sub: 'likes, comments, shares' },
+        { label: 'Content Published', value: n(totalItems), sub: activeMonths + ' active months' },
+      ];
+      document.getElementById('hero-kpis').innerHTML = kpis.map(k =>
+        `<div class="kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div><div class="sub">${k.sub}</div></div>`
+      ).join('');
+
+      if (months.length) {
+        const range = fmtMonth(months[0]) + ' – ' + fmtMonth(months[months.length - 1]);
+        document.getElementById('footer-range').textContent = '· ' + range;
+      }
+    })();
+
     // ── Month Cards ──
     (function renderMonthCards() {
       const cards = months.map(k => {
@@ -318,8 +288,9 @@
         return `
           <a href="monthly-report.html?month=${k}" class="month-link ${isEmpty ? 'empty' : ''}">
             <div class="month-name">${fmtMonth(k)}</div>
-            <div class="month-stat">${isEmpty ? 'No data' : imp + ' impressions'}</div>
-            <div class="month-stat">${isEmpty ? '' : itemCount + ' items'}</div>
+            <div class="month-stat">${isEmpty ? 'No content' : '<strong>' + imp + '</strong> impressions'}</div>
+            <div class="month-stat">${isEmpty ? '' : itemCount + ' pieces published'}</div>
+            <div class="arrow">View report →</div>
           </a>`;
       });
       document.getElementById('month-links').innerHTML = cards.join('');
