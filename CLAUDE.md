@@ -500,3 +500,25 @@ Uses Playwright to screenshot each slide, then python-pptx to assemble into PPTX
 ### Gotcha
 - **Always update weekday when changing date.** June 15 = Monday, June 17 = Wednesday. Easy to miss in the email's "Save the Date" block.
 - **Google Calendar `dates=` param uses UTC.** 6 PM EDT = 22:00 UTC, so June 17 6–8 PM EDT = `20260617T220000Z/20260618T000000Z` (crosses midnight UTC).
+
+### Registration Command Center (June 9–10, 2026) — in govcon-funnels
+- **`/hubzone/registrations`** (password `***REMOVED-SENSITIVE-CREDENTIAL***`, or admin pw) — live ops dashboard reading GHL by tags `hubzone-webinar` + `hubzone-webinar-bottom`. Pace vs. **200 goal**, projection, velocity, source attribution, follow-up worklist (name/company/email/phone) + CSV. PII-redacted endpoint retired in favor of full detail behind the password.
+- **Company Name field** added to both `/hubzone` forms → GHL `companyName` + Slack + worklist/CSV.
+- **Scarcity banner** "first 100 get Zoom access" (public count-only `/api/hubzone/spots`, no PII).
+- **Spin-the-wheel PROTOTYPE** on `/hubzone/thank-you` (`HubzoneSpinWheel.tsx`) — canvas, weighted prizes, one-spin-per-attendee. Client-side draw; move server-side before real prizes.
+- Webinar pivoted to a **roundtable with Chad Eberly** (Encore storytelling). Action items: `govcon-funnels/tasks/hubzone-webinar-todo.md`.
+
+---
+
+## Encore Competitive Market Briefing (June 9, 2026)
+
+**File (HTML source):** `/Users/ericcoffie/Encore Funding/encore-competitive-briefing.html`
+**PDF:** `/Users/ericcoffie/Downloads/Encore_GovCon_Competitive_Briefing.pdf`
+
+- 5-page branded (GovCon Giants × Encore) PDF for **Shelly Sweedler** — neutral market-intel briefing on the GovCon financing competitive landscape.
+- **Tier One (direct):** RCA (Republic Capital Access), United Capital Funding, Parabilis, Porter Capital, REV Capital, 1st Commercial Credit, White Oak, Action Capital, Eagle, Raistone.
+- **Tier Two (adjacent):** altLINE, eCapital, Republic Business Credit, Scale Funding, Riviera, Prestige, FundThrough, Bay View, Charter.
+- **Tier Three (alternatives):** SBA 7(a) CAPLines, SBA WCP, Lendistry, Mobilization Funding, Live Oak, FAR Part 32.
+- Closest threats: **RCA, UC Funding, Parabilis** — RCA matches Encore's unbilled-financing + bid-letter pitch; UC Funding/Parabilis lead with bank backing. Encore's edges: unbilled invoices, RFP support letters, no transactional fees, back-office + consulting wraparound.
+- **Every claim fact-checked via web search** before delivery (UC Funding/Gulf Coast Bank, Parabilis, altLINE/Southern Bank, Republic/Renasant, RCA/DoD Trusted Capital, Lendistry SBLC, Triumph=trucking excluded).
+- PDF via Playwright (same method as the proposal PDFs). Logos embedded `file://`. Re-export: open HTML, `page.pdf(format='Letter', margin=0, print_background=True)`.
