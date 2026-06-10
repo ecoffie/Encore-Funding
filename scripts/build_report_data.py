@@ -64,6 +64,23 @@ MONTHS_MAP = {
 }
 
 
+# Canonical channel names — collapses trailing-space / casing variants
+# ("LinkedIn " -> "LinkedIn", "youtube" -> "Youtube") so per-channel
+# aggregation doesn't split one channel into two.
+CHANNEL_CANON = {
+    "linkedin": "LinkedIn",
+    "youtube": "Youtube",
+    "instagram": "Instagram",
+    "podcast": "Podcast",
+    "fhc": "FHC",
+}
+
+
+def canon_channel(s: str) -> str:
+    key = (s or "").strip().lower()
+    return CHANNEL_CANON.get(key, (s or "").strip())
+
+
 def month_key(d: dt.date) -> str:
     return f"{d.year:04d}-{d.month:02d}"
 
@@ -339,7 +356,7 @@ def main() -> int:
     with open(INPUT_CSV, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            channel = (row.get("Channel") or "").strip()
+            channel = canon_channel(row.get("Channel"))
             dtype = (row.get("Data Type") or "").strip()
             title = (row.get("Video/Post Title") or "").strip()
             link = (row.get("Link") or "").strip()
