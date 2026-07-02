@@ -1,0 +1,44 @@
+name: Refresh GA4 data
+
+on:
+  schedule:
+    # Every Monday at 11:00 UTC (~7am ET). Adjust cron as needed.
+    - cron: "0 11 * * 1"
+  workflow_dispatch: {}  # adds a manual "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write  # allow the job to commit the refreshed ga-data.js
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch GA4 data
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SA_KEY: ${{ secrets.GA4_SA_KEY }}
+          GA4_START_DATE: "2025-03-01"
+        run: python3 scripts/fetch_ga.py
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- ga-data.js; then
+            echo "No changes in ga-data.js — nothing to commit."
+          else
+            git add ga-data.js
+            git commit -m "chore: refresh GA4 data ($(date -u +%Y-%m-%d))"
+            git push
+          fi

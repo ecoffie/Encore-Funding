@@ -1,0 +1,45 @@
+name: Refresh report data
+
+on:
+  schedule:
+    # 1st of every month at 10:00 UTC (6am ET) — after the month closes
+    - cron: "0 10 1 * *"
+  workflow_dispatch: {}  # "Run workflow" button in the Actions tab for manual runs
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install openpyxl
+
+      - name: Rebuild report-data.js from live Google Sheet
+        env:
+          SHEETS_ID: ${{ vars.SHEETS_ID || '1gjZ5Hv6Kxy9nrxxtyyg4EdqAHBmaSs8r3h07pz2i4PY' }}
+        run: python3 scripts/build_from_live.py
+
+      - name: Commit updated report data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- report-data.js; then
+            echo "No changes in report-data.js — nothing to commit."
+          else
+            MONTH=$(date -u +%Y-%m)
+            git add report-data.js
+            git commit -m "chore: auto-refresh report data (${MONTH})"
+            git push
+            echo "✓ Pushed updated report-data.js for ${MONTH}"
+          fi
