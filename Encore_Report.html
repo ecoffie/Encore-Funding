@@ -110,35 +110,35 @@
     .view-tab:hover { border-color: var(--brand); color: var(--brand-600); }
     .view-tab.active { background: var(--brand); color: #fff; border-color: var(--brand); }
 
-    /* Year-over-year */
-    .yoy-picker { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-    .yoy-pick { padding: 0.45rem 1.1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-size: 0.85rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.18s; }
-    .yoy-pick:hover { border-color: var(--brand); color: var(--brand-600); }
-    .yoy-pick.active { background: var(--brand); color: #fff; border-color: var(--brand); }
-    .yoy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .yoy-metric { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.2rem 1.3rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-    .yoy-metric .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
-    .yoy-metric .vals { font-size: 1.15rem; font-weight: 700; color: var(--ink-strong); margin-top: 0.4rem; letter-spacing: -0.01em; }
-    .yoy-metric .vals .y1 { color: var(--muted); font-weight: 600; }
-    .yoy-metric .vals .arrow { color: var(--muted); margin: 0 0.35rem; font-weight: 400; }
-    .yoy-metric .delta { margin-top: 0.45rem; font-size: 0.85rem; font-weight: 700; display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; }
-    .yoy-metric .delta.up { color: #047857; background: #ECFDF5; }
-    .yoy-metric .delta.down { color: #B91C1C; background: #FEF2F2; }
-    .yoy-metric .delta.flat { color: var(--muted); background: var(--surface-soft); }
-    .yoy-metric .delta.new { color: var(--brand-600); background: var(--brand-50); }
-    .yoy-narrative { background: linear-gradient(135deg, var(--brand-50), #fff); border: 1px solid var(--brand-100); border-radius: 16px; padding: 1.4rem 1.6rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
-    .yoy-narrative h3 { font-size: 1.02rem; font-weight: 800; color: var(--ink-strong); margin-bottom: 0.7rem; }
-    .yoy-narrative ul { list-style: none; display: grid; gap: 0.6rem; }
-    .yoy-narrative li { position: relative; padding-left: 1.2rem; font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
-    .yoy-narrative li::before { content: ''; position: absolute; left: 0; top: 0.6rem; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
-    .yoy-narrative li b { color: var(--ink-strong); }
-    table.yoy-channels { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    table.yoy-channels th, table.yoy-channels td { padding: 0.65rem 0.8rem; text-align: right; border-bottom: 1px solid var(--border); }
-    table.yoy-channels th:first-child, table.yoy-channels td:first-child { text-align: left; font-weight: 600; color: var(--ink-strong); }
-    table.yoy-channels thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); border-bottom: 2px solid var(--border); }
-    table.yoy-channels .grp25 { color: var(--muted); }
-    table.yoy-channels .grp26 { color: var(--brand-600); }
-    table.yoy-channels tfoot td, table.yoy-channels tr.total td { font-weight: 700; border-top: 2px solid var(--border); border-bottom: none; }
+    /* Passcode modal */
+    .pin-overlay {
+      position: fixed; inset: 0; background: rgba(15,23,42,0.55);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000; backdrop-filter: blur(4px);
+    }
+    .pin-box {
+      background: var(--surface); border-radius: 20px; padding: 2.2rem 2.5rem;
+      box-shadow: 0 20px 60px rgba(15,23,42,0.2); width: 340px; max-width: 92vw;
+      text-align: center;
+    }
+    .pin-box .pin-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .pin-box h3 { font-size: 1.15rem; font-weight: 800; color: var(--ink-strong); margin-bottom: 0.35rem; }
+    .pin-box p { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.4rem; }
+    .pin-input {
+      width: 100%; padding: 0.75rem 1rem; font-size: 1.15rem; letter-spacing: 0.25em;
+      text-align: center; border: 2px solid var(--border); border-radius: 12px;
+      font-family: 'JetBrains Mono', monospace; outline: none; transition: border-color 0.18s;
+    }
+    .pin-input:focus { border-color: var(--brand); }
+    .pin-input.shake { animation: shake 0.35s ease; border-color: var(--red); }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-7px)} 40%,80%{transform:translateX(7px)} }
+    .pin-error { color: var(--red); font-size: 0.82rem; margin-top: 0.6rem; min-height: 1.2em; }
+    .pin-btn {
+      width: 100%; margin-top: 1.1rem; padding: 0.75rem; border-radius: 999px;
+      background: var(--brand); color: #fff; font-size: 0.95rem; font-weight: 700;
+      font-family: inherit; border: none; cursor: pointer; transition: background 0.18s;
+    }
+    .pin-btn:hover { background: var(--brand-600); }
 
     .section { margin: 2rem 0; }
     .section-title { font-size: 1.35rem; font-weight: 800; color: var(--ink-strong); letter-spacing: -0.02em; margin-bottom: 0.35rem; }
@@ -283,15 +283,14 @@
 
     <!-- View Tabs -->
     <div class="view-tabs">
-      <button class="view-tab active" data-view="insights">Insights</button>
-      <button class="view-tab" data-view="yoy">Year over Year</button>
-      <button class="view-tab" data-view="reports">Monthly Reports</button>
+      <button class="view-tab active" data-view="reports">Monthly Reports</button>
+      <button class="view-tab" data-view="insights">Insights</button>
       <button class="view-tab" data-view="analytics">Website Analytics</button>
-      <button class="view-tab" data-view="deliverables">Deliverables</button>
+      <button class="view-tab" data-view="deliverables">🔒 Deliverables</button>
     </div>
 
     <!-- Insights (Combined) View -->
-    <div id="insights-view" class="section">
+    <div id="insights-view" class="section" style="display:none">
       <div class="section-title">Content &times; website performance</div>
       <div class="section-sub">How marketing output and reach correspond with website traffic, month by month.</div>
 
@@ -312,28 +311,8 @@
       </div>
     </div>
 
-    <!-- Year over Year View -->
-    <div id="yoy-view" class="section" style="display:none">
-      <div class="section-title">Year-over-year comparison</div>
-      <div class="section-sub">Same calendar month, both years &mdash; so you can explain changes apples-to-apples.</div>
-      <div class="yoy-picker" id="yoy-picker"></div>
-      <h2 id="yoy-heading" style="font-size:1.5rem;font-weight:800;color:var(--ink-strong);letter-spacing:-0.02em;margin:0.5rem 0 1.25rem"></h2>
-      <div class="yoy-grid" id="yoy-metrics"></div>
-      <div class="yoy-narrative" id="yoy-narrative"></div>
-      <div class="ga-card">
-        <h3>Content mix by channel</h3>
-        <div class="ga-card-sub">Where the pieces and impressions came from each year &mdash; the mix is usually what moves the headline numbers.</div>
-        <div style="overflow-x:auto;margin-top:0.75rem">
-          <table class="yoy-channels" id="yoy-channels"></table>
-        </div>
-      </div>
-      <div class="section-sub" style="margin-top:0.75rem;font-size:0.8rem">
-        Website metrics from Google Analytics (gov.encore-funding.com) are largely paid-acquisition / SEO driven and are directional relative to sponsored content.
-      </div>
-    </div>
-
     <!-- Reports View -->
-    <div id="months-view" class="section" style="display:none">
+    <div id="months-view" class="section">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap">
         <div>
           <div class="section-title">Browse by month</div>
@@ -437,9 +416,10 @@
       }
     })();
 
-    // ── Month Cards ──
+    // ── Month Cards (newest first) ──
     (function renderMonthCards() {
-      const cards = months.map(k => {
+      const sorted = months.slice().reverse();
+      const cards = sorted.map(k => {
         const agg = (data.aggregates[k] || {}).totals || {};
         const isEmpty = (agg.items || 0) === 0;
         const imp = n(agg.impressions || 0);
@@ -521,27 +501,32 @@
     // ── Insights (Combined content × web) ──
     (function renderInsights() {
       const ga = window.GA_DATA;
-      const series = data.series || {};
-      const sMonths = series.months || [];
-      if (!ga || !ga.monthly || sMonths.length === 0) {
+      if (!months.length) {
         document.getElementById('insights-view').innerHTML =
           '<div class="section-sub">Combined insights require both content and analytics data.</div>';
         return;
       }
 
-      // Join by month
-      const gaMonths = ga.monthly.months || [];
+      // Join content aggregates with GA monthly by month key
       const gaNew = {}, gaActive = {};
-      gaMonths.forEach((m, i) => { gaNew[m] = ga.monthly.new_users[i] || 0; gaActive[m] = ga.monthly.active_users[i] || 0; });
+      if (ga && ga.monthly) {
+        (ga.monthly.months || []).forEach((m, i) => {
+          gaNew[m] = ga.monthly.new_users[i] || 0;
+          gaActive[m] = ga.monthly.active_users[i] || 0;
+        });
+      }
 
-      const rows = sMonths.map((m, i) => ({
-        month: m,
-        items: (series.items || [])[i] || 0,
-        impressions: (series.impressions || [])[i] || 0,
-        engagements: (series.engagements || [])[i] || 0,
-        newUsers: gaNew[m] || 0,
-        activeUsers: gaActive[m] || 0,
-      }));
+      const rows = months.map(m => {
+        const t = (data.aggregates[m] || {}).totals || {};
+        return {
+          month: m,
+          items: t.items || 0,
+          impressions: t.impressions || 0,
+          engagements: t.engagements || 0,
+          newUsers: gaNew[m] || 0,
+          activeUsers: gaActive[m] || 0,
+        };
+      });
 
       // ── Dual-axis chart: content impressions (bars) + new users (line) ──
       function dualChart(rows, width = 880, height = 280) {
@@ -739,130 +724,69 @@
         (ga.key_events || []).map(e => ({ name: EVENT_LABELS[e.name] || e.name, title: e.name, value: e.count, wide: true })), 'conv');
     })();
 
-    // ── Year-over-Year ──
-    (function renderYoY() {
-      const pickerEl = document.getElementById('yoy-picker');
-      if (!pickerEl) return;
-      const ga = window.GA_DATA;
-      // GA new-users by month
-      const gaNew = {}, gaActive = {};
-      if (ga && ga.monthly) ga.monthly.months.forEach((mk, i) => { gaNew[mk] = ga.monthly.new_users[i]; gaActive[mk] = ga.monthly.active_users[i]; });
+    // ── Tab Switching + Deliverables Passcode ──
+    const DELIVERABLES_PIN = '2026'; // ← change this to your preferred passcode
+    const PIN_SESSION_KEY = 'encore_del_unlocked';
 
-      // Calendar months present in 2+ years
-      const byCal = {};
-      months.forEach(k => { const [y, m] = k.split('-'); (byCal[m] = byCal[m] || []).push(y); });
-      const compareMonths = Object.keys(byCal).filter(m => new Set(byCal[m]).size >= 2).sort();
-      if (!compareMonths.length) { pickerEl.innerHTML = '<span style="color:var(--muted)">Need two years of the same month to compare. Available once 2026 overlaps 2025.</span>'; return; }
+    const views = { reports: 'months-view', insights: 'insights-view', analytics: 'analytics-view', deliverables: 'deliverables-view' };
 
-      const chClean = c => (c || '').trim();
-      const chDisplay = c => ({ 'Youtube': 'YouTube', 'FHC': 'Federal Help Center' }[chClean(c)] || chClean(c));
-      const fmtPct = (cur, prev) => {
-        if (prev == null || prev === 0) return cur > 0 ? { txt: 'new', cls: 'new' } : { txt: '—', cls: 'flat' };
-        const p = (cur - prev) / prev * 100;
-        const cls = p > 1 ? 'up' : p < -1 ? 'down' : 'flat';
-        return { txt: (p > 0 ? '+' : '') + p.toFixed(0) + '%', cls };
-      };
+    function showView(name) {
+      document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-view="' + name + '"]').classList.add('active');
+      Object.values(views).forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+      const el = document.getElementById(views[name]);
+      if (el) el.style.display = 'block';
+    }
 
-      function draw(cm) {
-        const years = [...new Set(byCal[cm])].sort();
-        const y1k = years[0] + '-' + cm, y2k = years[years.length - 1] + '-' + cm;
-        const a1 = (data.aggregates[y1k] || {}), a2 = (data.aggregates[y2k] || {});
-        const t1 = a1.totals || {}, t2 = a2.totals || {};
-        document.getElementById('yoy-heading').textContent = fmtMonth(y2k) + ' vs. ' + fmtMonth(y1k);
+    function showPinModal(onSuccess) {
+      const overlay = document.createElement('div');
+      overlay.className = 'pin-overlay';
+      overlay.innerHTML = `
+        <div class="pin-box">
+          <div class="pin-icon">🔒</div>
+          <h3>Deliverables — Private</h3>
+          <p>Enter the passcode to view deliverable progress.</p>
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="10" placeholder="••••" autocomplete="off" />
+          <div class="pin-error"></div>
+          <button class="pin-btn">Unlock</button>
+        </div>`;
+      document.body.appendChild(overlay);
+      const input = overlay.querySelector('.pin-input');
+      const errEl = overlay.querySelector('.pin-error');
+      const btn   = overlay.querySelector('.pin-btn');
+      setTimeout(() => input.focus(), 50);
 
-        // Metric cards
-        const metricDefs = [
-          { k: 'items', label: 'Pieces Published', up_good: true },
-          { k: 'impressions', label: 'Impressions', up_good: true },
-          { k: 'views', label: 'Views', up_good: true },
-          { k: 'engagements', label: 'Engagements', up_good: true },
-          { k: 'clicks', label: 'Clicks', up_good: true },
-        ];
-        let cards = metricDefs.map(d => {
-          const v1 = t1[d.k] || 0, v2 = t2[d.k] || 0;
-          const d_ = fmtPct(v2, v1);
-          return '<div class="yoy-metric"><div class="label">' + d.label + '</div>' +
-            '<div class="vals"><span class="y1">' + n(v1) + '</span><span class="arrow">&rarr;</span>' + n(v2) + '</div>' +
-            '<div class="delta ' + d_.cls + '">' + d_.txt + '</div></div>';
-        }).join('');
-        // Website new users
-        const w1 = gaNew[y1k], w2 = gaNew[y2k];
-        if (w1 != null || w2 != null) {
-          const dw = fmtPct(w2 || 0, w1);
-          cards += '<div class="yoy-metric"><div class="label">Website New Users</div>' +
-            '<div class="vals"><span class="y1">' + n(w1 || 0) + '</span><span class="arrow">&rarr;</span>' + n(w2 || 0) + '</div>' +
-            '<div class="delta ' + dw.cls + '">' + dw.txt + '</div></div>';
+      function attempt() {
+        if (input.value === DELIVERABLES_PIN) {
+          sessionStorage.setItem(PIN_SESSION_KEY, '1');
+          overlay.remove();
+          onSuccess();
+        } else {
+          errEl.textContent = 'Incorrect passcode — try again.';
+          input.classList.remove('shake');
+          void input.offsetWidth; // reflow to restart animation
+          input.classList.add('shake');
+          input.value = '';
+          setTimeout(() => input.focus(), 50);
         }
-        document.getElementById('yoy-metrics').innerHTML = cards;
-
-        // Channel mix (pieces + impressions)
-        const bc1 = a1.by_channel || {}, bc2 = a2.by_channel || {};
-        const chans = [...new Set([...Object.keys(bc1), ...Object.keys(bc2)].map(chClean))];
-        // Reach per channel: impressions fall back to views
-        const reachOf = (bc, c) => { const o = bc[c] || bc[c + ' '] || {}; return (o.impressions || 0) || (o.views || 0); };
-        const piecesOf = (bc, c) => { const o = bc[c] || bc[c + ' '] || {}; return o.items || 0; };
-        chans.sort((a, b) => (reachOf(bc1, b) + reachOf(bc2, b)) - (reachOf(bc1, a) + reachOf(bc2, a)));
-        let rows = chans.map(c => {
-          const p1 = piecesOf(bc1, c), p2 = piecesOf(bc2, c), r1 = reachOf(bc1, c), r2 = reachOf(bc2, c);
-          return '<tr><td>' + chDisplay(c) + '</td>' +
-            '<td class="grp25">' + p1 + '</td><td class="grp25">' + compact(r1) + '</td>' +
-            '<td class="grp26">' + p2 + '</td><td class="grp26">' + compact(r2) + '</td></tr>';
-        }).join('');
-        const totP1 = chans.reduce((s, c) => s + piecesOf(bc1, c), 0), totP2 = chans.reduce((s, c) => s + piecesOf(bc2, c), 0);
-        const totR1 = chans.reduce((s, c) => s + reachOf(bc1, c), 0), totR2 = chans.reduce((s, c) => s + reachOf(bc2, c), 0);
-        document.getElementById('yoy-channels').innerHTML =
-          '<thead><tr><th>Channel</th><th class="grp25">' + years[0] + ' pieces</th><th class="grp25">' + years[0] + ' reach</th>' +
-          '<th class="grp26">' + years[years.length - 1] + ' pieces</th><th class="grp26">' + years[years.length - 1] + ' reach</th></tr></thead>' +
-          '<tbody>' + rows + '</tbody>' +
-          '<tfoot><tr class="total"><td>Total</td><td class="grp25">' + totP1 + '</td><td class="grp25">' + compact(totR1) + '</td>' +
-          '<td class="grp26">' + totP2 + '</td><td class="grp26">' + compact(totR2) + '</td></tr></tfoot>';
-
-        // Narrative
-        const pts = [];
-        const impP = (t1.impressions ? (t2.impressions - t1.impressions) / t1.impressions * 100 : null);
-        const engP = (t1.engagements ? (t2.engagements - t1.engagements) / t1.engagements * 100 : null);
-        const clkP = (t1.clicks ? (t2.clicks - t1.clicks) / t1.clicks * 100 : null);
-        pts.push('Both months delivered <b>' + (t1.items || 0) + '</b> and <b>' + (t2.items || 0) + '</b> pieces respectively &mdash; but the <b>channel mix</b> changed, which is what moved the headline numbers.');
-        // Biggest piece-count swing
-        let drop = null, add = null;
-        chans.forEach(c => { const d = piecesOf(bc1, c) - piecesOf(bc2, c); if (d > 0 && (!drop || d > drop.d)) drop = { c, d, p1: piecesOf(bc1, c), p2: piecesOf(bc2, c) }; const a = piecesOf(bc2, c) - piecesOf(bc1, c); if (a > 0 && (!add || a > add.a)) add = { c, a, p1: piecesOf(bc1, c), p2: piecesOf(bc2, c) }; });
-        if (drop) {
-          const shr = totR1 ? Math.round(reachOf(bc1, drop.c) / totR1 * 100) : 0;
-          pts.push('<b>' + chDisplay(drop.c) + '</b> content went from <b>' + drop.p1 + '</b> piece' + (drop.p1 === 1 ? '' : 's') + ' to <b>' + drop.p2 + '</b>' + (shr >= 40 ? ', and ' + chDisplay(drop.c) + ' drove <b>' + shr + '%</b> of ' + years[0] + ' reach &mdash; so fewer of them explains most of the impressions change' : '') + '.');
-        }
-        if (add) pts.push('Meanwhile <b>' + chDisplay(add.c) + '</b> grew from <b>' + add.p1 + '</b> to <b>' + add.p2 + '</b>, diversifying the mix.');
-        const upbits = [];
-        if (engP != null && engP > 5) upbits.push('engagements <b>+' + engP.toFixed(0) + '%</b>');
-        if (clkP != null && clkP > 5) upbits.push('clicks <b>+' + clkP.toFixed(0) + '%</b>');
-        if (upbits.length) pts.push('Audience action actually rose: ' + upbits.join(' and ') + ' &mdash; so this reads as a mix shift, not a performance decline.');
-        document.getElementById('yoy-narrative').innerHTML = '<h3>What changed</h3><ul>' + pts.map(p => '<li>' + p + '</li>').join('') + '</ul>';
       }
+      btn.addEventListener('click', attempt);
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+      overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+    }
 
-      // default to the latest compare month
-      let active = compareMonths[compareMonths.length - 1];
-      pickerEl.innerHTML = compareMonths.map(cm => {
-        const yrs = [...new Set(byCal[cm])].sort();
-        return '<button class="yoy-pick" data-cm="' + cm + '">' + MONTH_NAMES[parseInt(cm, 10) - 1] + ' ' + yrs[0] + ' vs ' + yrs[yrs.length - 1] + '</button>';
-      }).join('');
-      pickerEl.querySelectorAll('.yoy-pick').forEach(b => {
-        if (b.dataset.cm === active) b.classList.add('active');
-        b.addEventListener('click', () => {
-          pickerEl.querySelectorAll('.yoy-pick').forEach(x => x.classList.remove('active'));
-          b.classList.add('active');
-          draw(b.dataset.cm);
-        });
-      });
-      draw(active);
-    })();
-
-    // ── Tab Switching ──
-    const views = { insights: 'insights-view', yoy: 'yoy-view', reports: 'months-view', analytics: 'analytics-view', deliverables: 'deliverables-view' };
     document.querySelectorAll('.view-tab').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        Object.values(views).forEach(id => document.getElementById(id).style.display = 'none');
-        document.getElementById(views[btn.dataset.view]).style.display = 'block';
+        const name = btn.dataset.view;
+        if (name === 'deliverables') {
+          if (sessionStorage.getItem(PIN_SESSION_KEY) === '1') {
+            showView('deliverables');
+          } else {
+            showPinModal(() => showView('deliverables'));
+          }
+          return;
+        }
+        showView(name);
       });
     });
   </script>
