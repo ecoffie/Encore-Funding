@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Contractor Funding — Eric Coffie + Encore Funding</title>
+<meta name="description" content="Same-day working capital for government contractors. Endorsed by GovCon Giants. $25B+ funded. No equity, no personal guarantees. Apply in 5 minutes.">
+<style>
+  :root {
+    --brand-green: #4caf50;
+    --brand-green-dark: #2e7d32;
+    --brand-navy: #0d2f4f;
+    --gray-50: #fafafa;
+    --gray-100: #f4f4f4;
+    --gray-200: #e0e0e0;
+    --gray-600: #555;
+    --gray-900: #1a1a1a;
+    --max-width: 1180px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--gray-900);
+    line-height: 1.55;
+    padding-bottom: 80px;
+  }
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  h1, h2, h3 { line-height: 1.2; margin: 0 0 16px; }
+  h1 { font-size: 44px; font-weight: 800; }
+  h2 { font-size: 32px; font-weight: 700; }
+  h3 { font-size: 22px; font-weight: 700; }
+  p { margin: 0 0 16px; }
+
+  /* Header */
+  .site-header {
+    border-bottom: 1px solid var(--gray-200);
+    padding: 16px 0;
+  }
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-header .logo { font-weight: 700; color: var(--brand-navy); font-size: 20px; }
+  .site-header .nav-cta {
+    background: var(--brand-green);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* Section 1 — Hero */
+  .hero {
+    background: linear-gradient(135deg, #f0f9f1 0%, #ffffff 60%);
+    padding: 56px 0 72px;
+  }
+  .hero .trust-strip {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--brand-green-dark);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { color: var(--brand-navy); margin-bottom: 20px; }
+  .hero .subhead { font-size: 20px; color: var(--gray-600); margin-bottom: 32px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 16px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary { background: var(--brand-green); color: white; }
+  .btn-primary:hover { background: var(--brand-green-dark); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--brand-green-dark);
+    border: 2px solid var(--brand-green);
+  }
+  .btn-large { padding: 20px 40px; font-size: 18px; }
+
+  .eric-quote-card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .eric-quote-card .photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: var(--gray-600);
+  }
+  .eric-quote-card blockquote {
+    margin: 0 0 12px;
+    font-size: 17px;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--gray-900);
+  }
+  .eric-quote-card .attribution {
+    font-size: 14px;
+    color: var(--gray-600);
+    font-weight: 600;
+  }
+
+  /* Section 2 — Stats */
+  .stats {
+    background: var(--gray-50);
+    padding: 48px 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .stat-big {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--brand-navy);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Section 3 — Why Encore */
+  .why-section { padding: 72px 0; }
+  .section-h2 { text-align: center; margin-bottom: 48px; color: var(--brand-navy); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .why-card {
+    padding: 32px;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+  }
+  .why-card .icon {
+    width: 56px;
+    height: 56px;
+    background: #e8f5e9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .mid-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* Section 4 — Eric Story */
+  .eric-story {
+    background: var(--gray-50);
+    padding: 72px 0;
+  }
+  .eric-story-grid {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .eric-story-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 64px;
+  }
+  .eric-story blockquote {
+    border-left: 4px solid var(--brand-green);
+    padding-left: 20px;
+    margin: 0 0 16px;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .eric-story .attribution {
+    font-weight: 700;
+    color: var(--brand-navy);
+  }
+
+  /* Section 5 — Lead form */
+  .form-section {
+    padding: 72px 0;
+    background: var(--brand-navy);
+    color: white;
+  }
+  .form-section .section-h2 { color: white; }
+  .form-section .form-subhead { text-align: center; color: rgba(255,255,255,0.85); margin-bottom: 32px; font-size: 18px; }
+  .lead-form {
+    max-width: 720px;
+    margin: 0 auto;
+    background: white;
+    color: var(--gray-900);
+    padding: 40px;
+    border-radius: 16px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-row.single { grid-template-columns: 1fr; }
+  .form-row label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--gray-600);
+  }
+  .form-row input, .form-row select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    font-size: 16px;
+    background: white;
+  }
+  .form-row input:focus, .form-row select:focus {
+    outline: none;
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px rgba(76,175,80,0.15);
+  }
+  .form-submit {
+    width: 100%;
+    padding: 18px;
+    background: var(--brand-green);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    margin-top: 8px;
+    cursor: pointer;
+  }
+  .form-submit:hover { background: var(--brand-green-dark); }
+  .form-trust {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--gray-600);
+  }
+
+  /* Section 6 — Use cases */
+  .use-cases { padding: 72px 0; }
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .use-card {
+    padding: 28px;
+    background: var(--gray-50);
+    border-radius: 12px;
+  }
+  .use-card h3 { color: var(--brand-navy); }
+
+  /* Section 7 — FAQ */
+  .faq-section {
+    padding: 72px 0;
+    background: var(--gray-50);
+  }
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--gray-200);
+    padding: 20px 0;
+  }
+  .faq-item summary {
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--brand-navy);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::after { content: '+'; font-size: 24px; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { margin-top: 12px; color: var(--gray-600); }
+
+  /* Section 8 — Associations */
+  .associations {
+    padding: 56px 0;
+    text-align: center;
+  }
+  .associations h2 { font-size: 20px; color: var(--gray-600); font-weight: 600; margin-bottom: 32px; }
+  .logo-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    opacity: 0.75;
+  }
+  .logo-placeholder {
+    width: 110px;
+    height: 60px;
+    background: var(--gray-200);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--gray-600);
+    font-weight: 600;
+    text-align: center;
+    padding: 8px;
+  }
+
+  /* Section 9 — Final CTA */
+  .final-cta {
+    background: var(--brand-navy);
+    color: white;
+    padding: 72px 0;
+    text-align: center;
+  }
+  .final-cta h2 { color: white; font-size: 36px; }
+  .final-cta p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 32px; }
+
+  /* Footer */
+  .site-footer {
+    background: var(--gray-900);
+    color: rgba(255,255,255,0.7);
+    padding: 32px 0;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Sticky mobile CTA */
+  .mobile-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 12px 16px;
+    background: white;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+  }
+  .mobile-sticky-cta .btn { width: 100%; padding: 14px; text-align: center; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    .hero { padding: 36px 0 48px; }
+    .hero-grid, .eric-story-grid { grid-template-columns: 1fr; gap: 32px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid, .use-cases-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .lead-form { padding: 28px 20px; }
+    .mobile-sticky-cta { display: block; }
+    body { padding-bottom: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header (simplified for mockup) -->
+<header class="site-header">
+  <div class="container">
+    <div class="logo">Encore Funding</div>
+    <a href="#apply-form" class="nav-cta">APPLY NOW</a>
+  </div>
+</header>
+
+<!-- Section 1 — Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="trust-strip">$25B+ FUNDED · ERIC COFFIE–VETTED · 48-HOUR APPROVAL</div>
+    <div class="hero-grid">
+      <div>
+        <h1>Government Contractor Financing — Endorsed by Eric Coffie</h1>
+        <p class="subhead">Fast working capital for government contractors. Same-day approval. No equity, no personal guarantees.</p>
+        <div class="hero-ctas">
+          <a href="#apply-form" class="btn btn-primary">APPLY NOW →</a>
+          <a href="#apply-form" class="btn btn-ghost">See if you qualify</a>
+        </div>
+      </div>
+      <div class="eric-quote-card">
+        <div class="photo">EC</div>
+        <blockquote>"I trust Encore Funding with my own audience because they fund the contractor I'd want to fund — the one Wall Street ignores."</blockquote>
+        <div class="attribution">— Eric Coffie, GovCon Giants</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 — Stats -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-big">$25B+</div>
+        <div class="stat-label">Funded since 2014</div>
+      </div>
+      <div>
+        <div class="stat-big">48hr</div>
+        <div class="stat-label">Approval process</div>
+      </div>
+      <div>
+        <div class="stat-big">100%</div>
+        <div class="stat-label">GovCon-focused team</div>
+      </div>
+      <div>
+        <div class="stat-big">Founders</div>
+        <div class="stat-label">Of Advance Partners</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3 — Why Encore -->
+<section class="why-section">
+  <div class="container">
+    <h2 class="section-h2">Why government contractors choose Encore</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">🤝</div>
+        <h3>Entrepreneurs serving entrepreneurs</h3>
+        <p>Founded by the team that built Advance Partners. Family-owned, not corporate. You'll talk to a real person who understands GovCon — not a call center.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📋</div>
+        <h3>Funding + back-office in one</h3>
+        <p>We handle invoicing, collections, and reporting so your team can focus on winning the next contract. No bolt-on tools, no separate vendors.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🛡️</div>
+        <h3>Built for GovCon contract types</h3>
+        <p>Schedule 21A, T&amp;M, Cost-Plus, Firm-Fixed-Price. We fund against the receivable, not your personal credit. NET-30 to NET-60 federal payment cycles? We bridge it.</p>
+      </div>
+    </div>
+    <div class="mid-cta">
+      <a href="#apply-form" class="btn btn-primary btn-large">READY TO APPLY? START HERE →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4 — Eric Coffie Story -->
+<section class="eric-story">
+  <div class="container">
+    <div class="eric-story-grid">
+      <div class="eric-story-photo">EC</div>
+      <div>
+        <h2>Why GovCon Giants partnered with Encore Funding</h2>
+        <blockquote>
+          When my audience asks me where to get funding for their government contracts, I send them to Encore — full stop.
+          <br><br>
+          Here's why: most factoring companies want a personal guarantee, a credit pull, and 90 days to think about it. By the time they answer, your contract is at risk and your payroll is past due.
+          <br><br>
+          Encore funds against the federal receivable. They've moved $25B+ through that model. The team has been doing this since before the term "GovCon" was a category. And they're family-owned, not a Wall Street rollup.
+          <br><br>
+          That's the kind of partner I'd want behind me. So I made sure they're available to you.
+        </blockquote>
+        <div class="attribution">— Eric Coffie, Founder, GovCon Giants</div>
+        <div style="margin-top: 24px;">
+          <a href="#apply-form" class="btn btn-primary btn-large">SEE IF YOU QUALIFY — APPLY IN 5 MIN →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5 — Lead Form -->
+<section class="form-section" id="apply-form">
+  <div class="container">
+    <h2 class="section-h2">Apply for government contractor funding</h2>
+    <p class="form-subhead">Same-day response. No credit pull for initial review. No equity required.</p>
+    <form class="lead-form" onsubmit="event.preventDefault(); alert('Form submission — wire to HubSpot endpoint in production');">
+      <div class="form-row">
+        <div>
+          <label>First name *</label>
+          <input type="text" name="first_name" required>
+        </div>
+        <div>
+          <label>Last name *</label>
+          <input type="text" name="last_name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Business email *</label>
+          <input type="email" name="email" required>
+        </div>
+        <div>
+          <label>Phone *</label>
+          <input type="tel" name="phone" required>
+        </div>
+      </div>
+      <div class="form-row single">
+        <div>
+          <label>Company name *</label>
+          <input type="text" name="company" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Monthly invoice volume *</label>
+          <select name="invoice_volume" required>
+            <option value="">Select…</option>
+            <option value="under_50k">Under $50K</option>
+            <option value="50k_250k">$50K – $250K</option>
+            <option value="250k_1m">$250K – $1M</option>
+            <option value="over_1m">Over $1M</option>
+          </select>
+        </div>
+        <div>
+          <label>Contract type</label>
+          <select name="contract_type">
+            <option value="">Select…</option>
+            <option value="prime">Prime contractor</option>
+            <option value="sub">Subcontractor</option>
+            <option value="both">Both</option>
+            <option value="not_yet">Not yet awarded</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">GET MY FUNDING ASSESSMENT →</button>
+      <p class="form-trust">🔒 Your information is secure. No credit pull required for initial review.</p>
+    </form>
+  </div>
+</section>
+
+<!-- Section 6 — Use cases -->
+<section class="use-cases">
+  <div class="container">
+    <h2 class="section-h2">Funding for every stage of your government contract</h2>
+    <div class="use-cases-grid">
+      <div class="use-card">
+        <h3>Schedule 21A Holder</h3>
+        <p>Need working capital between agency payments? We fund against your federal receivables so payroll runs on time, every time.</p>
+      </div>
+      <div class="use-card">
+        <h3>Newly Awarded Contract</h3>
+        <p>Won a contract but can't fund the ramp? We fund against the contract value so you can staff up before the first invoice clears.</p>
+      </div>
+      <div class="use-card">
+        <h3>NET-30/60 Squeeze</h3>
+        <p>Government pays in 30 to 60 days. Payroll runs weekly. We bridge the gap — same week the invoice goes out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7 — FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-h2">Funding Questions? We Have Answers.</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do you fund prime contractors only, or subs too?</summary>
+        <p>Both. We fund prime contractors and qualifying subcontractors. The key is the underlying federal receivable — if a federal agency is the ultimate payer, we can typically fund it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How fast can I get my first advance?</summary>
+        <p>Most clients see funding within 48 hours of application approval. Initial review takes 4 to 24 hours. No credit pull is required for the initial review.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What contract types qualify?</summary>
+        <p>Firm-Fixed-Price, T&amp;M, Cost-Plus, Schedule 21A, IDIQ task orders, BPA call orders. If you have a federal contract and an invoice you can issue against it, we can fund it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will you need a personal guarantee?</summary>
+        <p>No. We fund against the federal receivable, not against you personally. That's the entire point of our model — we underwrite the contract, not your credit score.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What does the fee structure look like?</summary>
+        <p>Transparent, contract-by-contract pricing based on invoice volume and federal payment cycle. We quote upfront with no hidden fees. Talk to our team for a same-day quote on your specific situation.</p>
+      </details>
+    </div>
+    <div class="mid-cta">
+      <a href="/contact-us/" class="btn btn-ghost">STILL HAVE QUESTIONS? TALK TO OUR GOVCON TEAM →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8 — Associations -->
+<section class="associations">
+  <div class="container">
+    <h2>Trusted by GovCon associations and the GovCon Giants community</h2>
+    <div class="logo-row">
+      <div class="logo-placeholder">GovCon Giants</div>
+      <div class="logo-placeholder">National 8(a)</div>
+      <div class="logo-placeholder">ASBCC</div>
+      <div class="logo-placeholder">NVSBC</div>
+      <div class="logo-placeholder">IFA</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 9 — Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to fund your next government contract?</h2>
+    <p>Same-day assessment. No equity. No personal guarantees. Same team that built Advance Partners.</p>
+    <a href="/apply-now/" class="btn btn-primary btn-large">APPLY NOW →</a>
+  </div>
+</section>
+
+<!-- Footer (simplified) -->
+<footer class="site-footer">
+  <div class="container">
+    &copy; 2026 Encore Funding · 30100 Chagrin Blvd, Suite 350, Pepper Pike, OH 44124
+  </div>
+</footer>
+
+<!-- Sticky mobile CTA -->
+<div class="mobile-sticky-cta">
+  <a href="#apply-form" class="btn btn-primary">APPLY NOW — GET FUNDED IN 48 HOURS →</a>
+</div>
+
+<!-- Schema markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "serviceType": "Government Contractor Financing",
+      "provider": {
+        "@type": "Organization",
+        "name": "Encore Funding",
+        "url": "https://www.encore-funding.com"
+      },
+      "areaServed": "United States",
+      "description": "Working capital financing for government contractors against federal receivables. Same-day approval, no equity required, no personal guarantees."
+    },
+    {
+      "@type": "FinancialService",
+      "name": "Encore Funding",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "30100 Chagrin Blvd, Suite 350",
+        "addressLocality": "Pepper Pike",
+        "addressRegion": "OH",
+        "postalCode": "44124",
+        "addressCountry": "US"
+      },
+      "url": "https://www.encore-funding.com"
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

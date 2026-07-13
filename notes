@@ -1,0 +1,13 @@
+One thing worth confirming before this goes to Encore: the staffing search volumes are ranges
+  from the March audit's own estimates ("Unknown" rank, est. volume) rather than a fresh
+  GSC/Ahrefs pull — I labeled them as estimates. If you get the GSC access the report asks for,
+  I can replace the ranges with real numbers and sharpen the sizing. 
+
+Scenario   │ Applications (60d) │          vs their 14 / 90d           │
+  ├──────────────┼────────────────────┼──────────────────────────────────────┤
+  │ Conservative │ ~11                │ ties them in 2/3 the time, $0 spend  │
+  ├──────────────┼────────────────────┼──────────────────────────────────────┤
+  │ Mid (likely) │ ~30                │ ~2×                                  │
+  ├──────────────┼────────────────────┼──────────────────────────────────────┤
+  │ Aggressive   │ ~66                │ ~4–5× if one YouTube placement lands │
+  └──────────────┴────────────────────┴──────────────────────────────────────

@@ -1,0 +1,52 @@
+HTTP/2 301 
+date: Sun, 31 May 2026 10:55:01 GMT
+content-type: text/html; charset=UTF-8
+location: https://www.encore-funding.com/
+x-sucuri-id: 14007
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+content-security-policy: upgrade-insecure-requests;
+cf-ray: a04571a15ed8b87a-IAD
+cf-cache-status: HIT
+age: 163614
+cache-control: public, max-age=2678400
+expires: Wed, 01 Jul 2026 10:55:01 GMT
+vary: Accept-Encoding
+x-gateway-cache-key: 0|standard|https|encore-funding.com|||/
+x-gateway-cache-status: EXPIRED
+x-gateway-request-id: fb0fb3e913f0d32adb9454b6dc88d68e
+x-gateway-skip-cache: 0
+x-redirect-by: WordPress
+set-cookie: __cf_bm=KtMbE8S5_5nQ_wuz7tZIRMAvHDxvhbVBimBGetw8mbM-1780224901.33465-1.0.1.1-cjULvXks6PYCJc7SsP2uoJMt9Eo_cbfDYOkYL0EuSi6Bjr.GvCDUfjHcyMDvPOyo72kDbwvuqyRGwn6JaY..lUufMzLPYUCsSvs.MrijPRAkjSZgKpvvjUC2wAi9G2Vk; HttpOnly; SameSite=None; Secure; Path=/; Domain=encore-funding.com; Expires=Sun, 31 May 2026 11:25:01 GMT
+alt-svc: h3=":443"; ma=86400
+server: Sucuri/Cloudproxy
+x-sucuri-cache: MISS
+alt-svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000
+
+HTTP/2 200 
+date: Sun, 31 May 2026 10:55:01 GMT
+content-type: text/html; charset=UTF-8
+x-sucuri-id: 14007
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+content-security-policy: upgrade-insecure-requests;
+cf-ray: a04571a4d8edc8c5-IAD
+cf-cache-status: HIT
+age: 163614
+cache-control: public, max-age=2678400
+set-cookie: __cf_bm=moI9YwBRSDW9JTL3ZKRObinsveOp7DJxRz9cuVePnOw-1780224901.8983743-1.0.1.1-DqTgN6KWrcWXdECDpBOcBmgeOI28ondUM6emjfciOnCbDickb4hHMOf7FC08fuJjyLkjtKUJTxL3KqAOtAkFqE577TYtNOJjw5WtgZ_b36.tTa0_kNZHu7inmaJCgh9K; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.encore-funding.com; Expires=Sun, 31 May 2026 11:25:01 GMT
+expires: Wed, 01 Jul 2026 10:55:01 GMT
+last-modified: Fri, 29 May 2026 13:27:15 GMT
+link: <https://www.encore-funding.com/wp-json/>; rel="https://api.w.org/", <https://www.encore-funding.com/wp-json/wp/v2/pages/24>; rel="alternate"; title="JSON"; type="application/json", <https://www.encore-funding.com/>; rel=shortlink
+vary: Accept-Encoding
+x-gateway-cache-key: 1780061228.469|standard|https|www.encore-funding.com|||/
+x-gateway-cache-status: HIT
+x-gateway-request-id: b35d90014e6a0c9e1e7fce8e411afa87
+x-gateway-skip-cache: 0
+alt-svc: h3=":443"; ma=86400
+server: Sucuri/Cloudproxy
+x-sucuri-cache: MISS
+alt-svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000
+

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Encore Funding — GovCon Competitive Market Briefing</title>
+<style>
+  @page { size: letter; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1e3a8a;
+    --navy-dark: #16285e;
+    --green: #10b981;
+    --orange: #F57C00;
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --bg-soft: #f8fafc;
+  }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page {
+    width: 8.5in; height: 11in; padding: 0.6in 0.65in; position: relative;
+    page-break-after: always; overflow: hidden; background: #fff;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* running footer */
+  .footer {
+    position: absolute; bottom: 0.42in; left: 0.65in; right: 0.65in;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 8px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 6px;
+  }
+  .footer .conf { color: var(--orange); font-weight: 700; letter-spacing: .5px; }
+
+  /* ---------- COVER ---------- */
+  .cover { background: linear-gradient(150deg, var(--navy-dark) 0%, var(--navy) 55%, #2547b0 100%); color: #fff; }
+  .cover .logos { display: flex; align-items: center; gap: 18px; margin-bottom: 60px; }
+  .cover .logos img { height: 34px; }
+  .cover .logos .x { color: rgba(255,255,255,.5); font-size: 18px; }
+  .cover .eyebrow { color: var(--green); font-weight: 800; letter-spacing: 3px; font-size: 12px; text-transform: uppercase; margin-bottom: 14px; }
+  .cover h1 { font-size: 46px; line-height: 1.08; font-weight: 800; letter-spacing: -1px; margin-bottom: 18px; }
+  .cover .sub { font-size: 17px; color: rgba(255,255,255,.82); line-height: 1.5; max-width: 5.4in; }
+  .cover .meta { position: absolute; bottom: 1in; left: 0.65in; right: 0.65in; border-top: 1px solid rgba(255,255,255,.25); padding-top: 18px; display: flex; gap: 50px; }
+  .cover .meta .k { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+  .cover .meta .v { font-size: 14px; font-weight: 600; }
+
+  /* ---------- HEADINGS ---------- */
+  .kicker { color: var(--orange); font-weight: 800; letter-spacing: 2px; font-size: 10px; text-transform: uppercase; margin-bottom: 6px; }
+  h2.section { font-size: 26px; font-weight: 800; color: var(--navy); letter-spacing: -.5px; margin-bottom: 4px; }
+  .section-rule { height: 3px; width: 54px; background: var(--green); border-radius: 2px; margin: 8px 0 20px; }
+  h3 { font-size: 15px; font-weight: 700; color: var(--navy-dark); margin: 18px 0 8px; }
+  p { font-size: 11.5px; line-height: 1.6; color: #374151; margin-bottom: 9px; }
+  .lead { font-size: 13px; line-height: 1.65; color: #1f2937; }
+
+  /* ---------- COMPONENTS ---------- */
+  .callout { background: var(--bg-soft); border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 14px 0; }
+  .callout .lbl { font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 5px; }
+  .callout p { margin: 0; font-size: 11px; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .statcard { border: 1px solid var(--line); border-radius: 10px; padding: 13px 15px; }
+  .statcard .n { font-size: 22px; font-weight: 800; color: var(--orange); line-height: 1; }
+  .statcard .l { font-size: 10px; color: var(--muted); margin-top: 5px; line-height: 1.35; }
+
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 14px; }
+  th { background: var(--navy); color: #fff; font-size: 9.5px; text-transform: uppercase; letter-spacing: .5px; text-align: left; padding: 8px 10px; font-weight: 700; }
+  td { font-size: 10.5px; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.4; }
+  tr:nth-child(even) td { background: #fafbfc; }
+  td .co { font-weight: 700; color: var(--navy-dark); }
+  .tier-tag { display: inline-block; font-size: 8px; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; letter-spacing: .5px; }
+  .t-direct { background: #fee2e2; color: #b91c1c; }
+  .t-adj { background: #fef3c7; color: #92400e; }
+  .t-alt { background: #dbeafe; color: #1e40af; }
+
+  ul.clean { list-style: none; margin: 6px 0 12px; }
+  ul.clean li { font-size: 11px; line-height: 1.55; padding-left: 18px; position: relative; margin-bottom: 6px; color: #374151; }
+  ul.clean li::before { content: '▸'; color: var(--green); position: absolute; left: 0; font-weight: 800; }
+
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 14px; }
+  .badge { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; border-radius: 20px; padding: 4px 11px; font-size: 9.5px; font-weight: 700; }
+
+  .diff-card { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+  .diff-card h4 { font-size: 12px; color: var(--orange); font-weight: 800; margin-bottom: 4px; }
+  .diff-card p { font-size: 10.5px; margin: 0; }
+
+  .note { font-size: 9.5px; color: var(--muted); font-style: italic; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="page cover">
+  <div class="logos">
+    <img src="file:///Users/ericcoffie/Encore%20Funding/images/GovconGiants-logo-black.png" style="filter: brightness(0) invert(1);" alt="GovCon Giants">
+    <span class="x">×</span>
+    <img src="file:///Users/ericcoffie/Encore%20Funding/images/EncoreLogo_Primary_Reversed.png" alt="Encore Funding">
+  </div>
+  <div class="eyebrow">Competitive Market Briefing</div>
+  <h1>The GovCon<br>Financing Landscape</h1>
+  <div class="sub">An intelligence briefing on the firms competing for government-contractor working capital — invoice factoring, AR financing, and contract funding — and where Encore Funding sits within it.</div>
+  <div class="meta">
+    <div>
+      <div class="k">Prepared for</div>
+      <div class="v">Shelly Sweedler, Encore Funding</div>
+    </div>
+    <div>
+      <div class="k">Prepared by</div>
+      <div class="v">GovCon Giants</div>
+    </div>
+    <div>
+      <div class="k">Date</div>
+      <div class="v">June 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — EXEC SUMMARY ============ -->
+<div class="page">
+  <div class="kicker">01 · Executive Summary</div>
+  <h2 class="section">The Competitive Picture</h2>
+  <div class="section-rule"></div>
+
+  <p class="lead">The government-contractor financing market is crowded but stratified. Dozens of firms will fund federal receivables, yet only a handful are truly <strong>GovCon-native</strong> — built around federal compliance, the Assignment of Claims Act, and the cash-flow realities of contract work. Most others are general small-business factors that accept government invoices opportunistically.</p>
+
+  <p>We sorted the field into three tiers based on how directly each competes with Encore's government-contractor division:</p>
+
+  <div class="grid2" style="margin: 16px 0;">
+    <div class="statcard">
+      <div class="n">10+</div>
+      <div class="l">Direct competitors specializing in or heavily marketing to government contractors</div>
+    </div>
+    <div class="statcard">
+      <div class="n">10+</div>
+      <div class="l">Adjacent general factors that fund GovCon receivables but lead with other industries</div>
+    </div>
+    <div class="statcard">
+      <div class="n">5+</div>
+      <div class="l">Alternative financing paths (SBA CAPLines, bank LOCs, mobilization loans) contractors choose instead of factoring</div>
+    </div>
+    <div class="statcard">
+      <div class="n">3</div>
+      <div class="l">Firms that represent Encore's tightest head-to-head threat: RCA, UC Funding, and Parabilis</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">The Headline</div>
+    <p>Encore's sharpest competitors — <strong>Republic Capital Access (RCA)</strong>, <strong>United Capital Funding</strong>, and <strong>Parabilis</strong> — compete on Encore's own terms. RCA offers both unbilled financing and bid commitment letters; UC Funding and Parabilis lead with <strong>bank ownership and FDIC backing</strong>. Encore's counter-strengths remain defensible: advancing on <strong>unbilled</strong> invoices, issuing <strong>RFP financial support letters</strong>, "<strong>no transactional fees</strong>" pricing, and an <strong>integrated back-office + consulting</strong> model carried over from its staffing-funding business.</p>
+  </div>
+
+  <h3>How to read this briefing</h3>
+  <p>The pages that follow profile each tier, identify the two closest threats in detail, and close with the differentiators Encore can lean on in competitive conversations. This is a neutral market-awareness document — not a sales script — intended to sharpen positioning and inform partnership strategy.</p>
+
+  <div class="footer">
+    <span>GovCon Giants × Encore Funding · GovCon Financing Competitive Briefing</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 — DIRECT COMPETITORS ============ -->
+<div class="page">
+  <div class="kicker">02 · Tier One <span class="tier-tag t-direct" style="margin-left:6px;">Direct</span></div>
+  <h2 class="section">GovCon-Native Specialists</h2>
+  <div class="section-rule"></div>
+  <p>These firms specialize in — or aggressively market to — government contractors. They understand federal compliance, the Assignment of Claims Act, and contract-based cash flow. This is the tier Encore competes with head-to-head.</p>
+
+  <table>
+    <thead>
+      <tr><th style="width:24%">Company</th><th style="width:30%">Offering</th><th style="width:46%">GovCon Angle & Differentiator</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="co">Republic Capital Access (RCA)</span><br><span class="note">republiccapitalaccess.com · Herndon, VA</span></td>
+        <td>Pre- &amp; post-invoice financing, bid commitment letters, acquisition/refi/restructure</td>
+        <td>Self-described "largest, fastest-growing specialty finance company for government contractors." <strong>Member of the DoD Trusted Capital Marketplace.</strong> Directly mirrors Encore's edges: <strong>pre-invoice (unbilled) financing AND bid commitment letters.</strong></td>
+      </tr>
+      <tr>
+        <td><span class="co">United Capital Funding</span><br><span class="note">ucfunding.com</span></td>
+        <td>Factoring, incl. earned-but-unbilled receivables; 85–90% advance</td>
+        <td>Mirrors Encore's playbook — unbilled receivables, pre-award commitment letters, startups on first contract. <strong>Bank-owned (Gulf Coast Bank &amp; Trust, FDIC-insured, $3B+).</strong> Handles classified contracts &amp; Assignment of Claims.</td>
+      </tr>
+      <tr>
+        <td><span class="co">Parabilis</span><br><span class="note">parabilis.com · McLean, VA</span></td>
+        <td>Lines of credit &amp; working capital (LOC-led, not pure factoring)</td>
+        <td>Pure-play federal contractor financing. 100+ yrs combined GovCon executive experience; bank-backed revolving facility. Strong GovCon-native brand.</td>
+      </tr>
+      <tr>
+        <td><span class="co">Porter Capital</span><br><span class="note">portercap.com</span></td>
+        <td>Factoring &amp; asset-based lending; up to 90% advance</td>
+        <td>Dedicated government division (federal/state/local). Cash within ~24 hrs; flexible for milestone/seasonal billing.</td>
+      </tr>
+      <tr>
+        <td><span class="co">REV Capital</span><br><span class="note">revinc.com</span></td>
+        <td>Full-service factoring; advertised up to ~98% advance</td>
+        <td>Markets GovCon factoring aggressively; headline-grabbing high advance rate.</td>
+      </tr>
+      <tr>
+        <td><span class="co">1st Commercial Credit</span><br><span class="note">1stcommercialcredit.com</span></td>
+        <td>Government receivables factoring; tiered 0.69–1.59%</td>
+        <td>SAM.gov registered; deep Assignment of Claims expertise across local/state/federal.</td>
+      </tr>
+      <tr>
+        <td><span class="co">White Oak Business Capital</span><br><span class="note">Bethesda, MD</span></td>
+        <td>Factoring $100K–$7M; 85–90% advance</td>
+        <td>"Solutions for government contractors." Proximity to the federal buyer base is a selling point.</td>
+      </tr>
+      <tr>
+        <td><span class="co">Action Capital</span><br><span class="note">actioncapital.com · est. 1959</span></td>
+        <td>Factoring $100K–$8M; up to 90%</td>
+        <td>GovCon among core verticals; long track record / institutional credibility.</td>
+      </tr>
+      <tr>
+        <td><span class="co">Eagle Business Credit</span><br><span class="note">Woodstock, GA</span></td>
+        <td>Factoring from ~$10K; up to 90%</td>
+        <td>Lowest entry minimum — strong fit for very small / startup contractors.</td>
+      </tr>
+      <tr>
+        <td><span class="co">Raistone Capital</span><br><span class="note">raistone.com · NYC</span></td>
+        <td>Factoring $50K–$30M; 85–95%</td>
+        <td>Higher-capacity mid-market; supports multiple simultaneous contracts.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">Also surfaced as GovCon-serving (smaller / regional, verify before treating as direct rivals): Primary Funding (CA), Coeur Capital (GA), SouthStar Capital (SC), Capflow Funding, ComCap, Business Factors.</p>
+
+  <div class="footer">
+    <span>GovCon Giants × Encore Funding · GovCon Financing Competitive Briefing</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 — ADJACENT + ALTERNATIVES ============ -->
+<div class="page">
+  <div class="kicker">03 · Tiers Two &amp; Three</div>
+  <h2 class="section">Adjacent Factors &amp; Alternatives</h2>
+  <div class="section-rule"></div>
+
+  <h3><span class="tier-tag t-adj">Adjacent</span> &nbsp;General factors that fund GovCon — but it's not their focus</h3>
+  <p>Large, reputable factors that will fund government receivables yet lead with general SMB or industry-specific factoring. Credible alternatives whenever a contractor doesn't specifically need federal-compliance depth.</p>
+  <table>
+    <thead><tr><th style="width:26%">Company</th><th style="width:74%">Note</th></tr></thead>
+    <tbody>
+      <tr><td><span class="co">altLINE</span> <span class="note">(The Southern Bank)</span></td><td>Bank-owned factor (est. 1936). Up to 90% advance, fees from 0.8%, same-day possible. Has a dedicated government-contract page — a credible bank-backed alternative.</td></tr>
+      <tr><td><span class="co">eCapital</span></td><td>Large multi-industry factor with online platform + account managers; publishes GovCon-specific content.</td></tr>
+      <tr><td><span class="co">Republic Business Credit</span></td><td>Subsidiary of Renasant Bank. AR lending, factoring, ledgered LOCs up to $20M. Bank-backed.</td></tr>
+      <tr><td><span class="co">Scale Funding</span> <span class="note">(ex-TCI)</span></td><td>$50K–$10M, up to 90%. General mid-market factor.</td></tr>
+      <tr><td><span class="co">Riviera Finance</span></td><td>Est. 1969, 2,000+ clients, non-recourse, up to 95%, 24-hr funding. Broad SMB.</td></tr>
+      <tr><td><span class="co">Prestige Capital</span></td><td>Companies $3M–$300M in sales; spot/selective factoring (no all-invoice requirement).</td></tr>
+      <tr><td><span class="co">FundThrough</span></td><td>AI/fintech; 100% advance minus fee (~2.75–8.25%); targets larger single invoices. Tech-forward, general SMB.</td></tr>
+      <tr><td><span class="co">Bay View Funding · Charter Capital</span></td><td>Long-running multi-industry general factors (Bay View is a Heritage Bank subsidiary).</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="tier-tag t-alt">Alternative</span> &nbsp;What contractors choose instead of factoring</h3>
+  <ul class="clean">
+    <li><strong>SBA 7(a) CAPLines</strong> — government-backed revolving lines up to $5M. The Contract CAPLine finances specific-contract costs; cheaper than factoring but slower and needs operating history.</li>
+    <li><strong>SBA 7(a) Working Capital Pilot (2024)</strong> — newer transaction-based working-capital line aimed partly at contract-based businesses.</li>
+    <li><strong>Lendistry</strong> — fintech CDFI and SBA Preferred Lender (the only African American–led SBA-designated SBLC). Offers SBA 7(a) loans up to $5M, non-revolving lines of credit ($50K–$5M), and dedicated contractor financing. A loan/LOC alternative to factoring, with a strong minority- &amp; underserved-business mission — relevant for 8(a)/SDB-certified contractors.</li>
+    <li><strong>Mobilization Funding</strong> — short-term loans for upfront project costs (materials, labor), repaid from milestone payments. Direct alternative for capital-intensive, pre-invoice needs.</li>
+    <li><strong>Live Oak Bank</strong> — bank lender with a dedicated government-contracting group (loans / LOCs).</li>
+    <li><strong>FAR Part 32 financing</strong> — the contract itself can provide progress / advance payments; contractors weigh this against third-party financing.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="lbl">Accuracy note</div>
+    <p>Some firms on "best GovCon factoring" listicles are weak fits and were excluded from the direct tier: <strong>Triumph</strong> (now trucking/freight-focused), <strong>Tradewind</strong> (international trade finance), and <strong>BlueVine</strong> (pivoting toward banking/LOC products).</p>
+  </div>
+
+  <div class="footer">
+    <span>GovCon Giants × Encore Funding · GovCon Financing Competitive Briefing</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 — CLOSEST THREATS + POSITIONING ============ -->
+<div class="page">
+  <div class="kicker">04 · Positioning</div>
+  <h2 class="section">Closest Threats &amp; Encore's Edge</h2>
+  <div class="section-rule"></div>
+
+  <h3>The three firms to watch most closely</h3>
+  <div class="diff-card" style="margin-bottom:10px;">
+    <h4>Republic Capital Access (RCA)</h4>
+    <p>The most direct threat. Herndon, VA; self-described largest GovCon specialty finance firm and a <strong>DoD Trusted Capital Marketplace</strong> member. Offers <strong>both</strong> of Encore's signature edges — pre-invoice (unbilled) financing <em>and</em> bid commitment letters — neutralizing them head-to-head.</p>
+  </div>
+  <div class="grid2" style="margin-bottom:14px;">
+    <div class="diff-card">
+      <h4>United Capital Funding</h4>
+      <p>Mirrors Encore feature-for-feature — unbilled receivables, pre-award letters, startup-friendly. Edge: <strong>FDIC-insured bank ownership</strong> (Gulf Coast Bank), a trust signal Encore can't match directly.</p>
+    </div>
+    <div class="diff-card">
+      <h4>Parabilis</h4>
+      <p>GovCon-pure, DC-based, deep federal pedigree. Leads with <strong>lines of credit</strong> rather than factoring — same customer, different product shape, bank-backed facility.</p>
+    </div>
+  </div>
+
+  <h3>Where Encore differentiates</h3>
+  <p>Against the entire field, four Encore strengths hold up as genuinely defensible:</p>
+  <div class="diff-card">
+    <h4>1 · Advances on unbilled invoices</h4>
+    <p>Funding earned-but-unbilled work — not just billed receivables — is a feature few general factors match and a real cash-flow advantage for contractors mid-period.</p>
+  </div>
+  <div class="diff-card">
+    <h4>2 · RFP / Financial Support Letters</h4>
+    <p>Issuing letters that prove capital strength inside a bid response helps contractors <em>win</em> work — Encore is selling capability, not just cash. UC Funding's pre-award letters are the main parallel.</p>
+  </div>
+  <div class="diff-card">
+    <h4>3 · "No transactional fees" pricing</h4>
+    <p>A clean, transparent pricing message in a market where tiered/hidden fees are common.</p>
+  </div>
+  <div class="diff-card">
+    <h4>4 · Integrated back-office + consulting</h4>
+    <p>Credit monitoring, collections, and strategic SME consulting carried over from Encore's staffing-funding business — a wraparound few pure factors offer.</p>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">Strategic takeaway</div>
+    <p>Two gaps to close. First, <strong>bank backing</strong> — the card UC Funding, Parabilis, Republic, and altLINE all play. Second, <strong>RCA already matches</strong> Encore's unbilled-financing and bid-letter pitch, so those alone no longer differentiate against the top tier. Encore's durable counter-move is the <strong>integrated back-office + consulting</strong> wraparound few rivals offer, paired with transparent "no transactional fees" pricing — reframing the conversation from "who's safest" to "who helps me run and grow the business."</p>
+  </div>
+
+  <div class="footer">
+    <span>GovCon Giants × Encore Funding · GovCon Financing Competitive Briefing</span>
+    <span class="conf">CONFIDENTIAL · Prepared for Shelly Sweedler</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -522,3 +522,17 @@ Uses Playwright to screenshot each slide, then python-pptx to assemble into PPTX
 - Closest threats: **RCA, UC Funding, Parabilis** — RCA matches Encore's unbilled-financing + bid-letter pitch; UC Funding/Parabilis lead with bank backing. Encore's edges: unbilled invoices, RFP support letters, no transactional fees, back-office + consulting wraparound.
 - **Every claim fact-checked via web search** before delivery (UC Funding/Gulf Coast Bank, Parabilis, altLINE/Southern Bank, Republic/Renasant, RCA/DoD Trusted Capital, Lendistry SBLC, Triumph=trucking excluded).
 - PDF via Playwright (same method as the proposal PDFs). Logos embedded `file://`. Re-export: open HTML, `page.pdf(format='Letter', margin=0, print_background=True)`.
+
+---
+
+## HUBZone Conference Panel — "Building for Scale" Run of Show (July 2026)
+
+**File (HTML):** `/Users/ericcoffie/Encore Funding/hubzone-conference-run-of-show.html`
+**PDF:** `/Users/ericcoffie/Downloads/HUBZone_Building_for_Scale_Run_of_Show.pdf`
+
+- Panelist prep sheet (doubles as the day-of run of show, used to align panelists on the prep call) for the **2026 National HUBZone Conference** session **"Building for Scale: Innovative Growth & Funding Strategies."**
+- **Tue, July 21, 2026 · 10:30 AM–12:00 PM · Westfields Marriott, Chantilly, VA.** Moderator: Eric Coffie. (Organizer: Michelle Burnett, HUBZone Contractors National Council. NOTE: Michelle's email said 7/22 but the correct date is 7/21.)
+- **Panelists (3):** Teresa McBride (Chairman, MCPM Inc. — scaled a tech consulting firm to $197M/800+ by 1999, SBA Entrepreneur of the Year; now leads $1B–$5B project finance) → pillar *Scaling & Capital*; Calvin J. Mitchell Jr. (Sr. Director, GDIT; former SES procurement exec; NCMA Board Advisor) → *Buyer & Prime Side*; Joel Adelman (CEO, Encore Funding / AdCap Growth Partners / Transcap) → *Funding / Access to Capital*. **Joel is the Encore panelist.** Intro order Teresa → Calvin → Joel (builds scale → get selected → fund it, ending on Encore).
+- Panelist titles/bios sourced from their LinkedIn profiles (Calvin: linkedin.com/in/calvin-j-mitchell-jr-a705348; Joel: linkedin.com/in/joel-adelman-cleveland).
+- **Layout:** GCG × Encore branded, 2 pages. P1 = frame + prep-call note + Run of Show timeline + Cross-Panel & Q&A Backup box. P2 = three panelist cards (pillar + bio + 5 tailored questions, orange = opener). Built from the June 17 webinar template (`hubzone-run-of-show.html`).
+- **PDF via Playwright** (Letter, margin 0, print_background=True). Fit was tuned by headless render measuring content-bottom vs. footer-top per page — both pages CLEAR.

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HUBZone Webinar — Run of Show</title>
+<style>
+  @page { size: letter; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1e3a8a; --navy-dark: #16285e; --green: #10b981;
+    --orange: #F57C00; --ink: #1f2937; --muted: #6b7280;
+    --line: #e5e7eb; --bg-soft: #f8fafc;
+  }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 8.5in; height: 11in; padding: 0.42in 0.5in; position: relative; background: #fff; overflow: hidden; }
+
+  /* header band */
+  .head { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--green); padding-bottom: 9px; margin-bottom: 11px; }
+  .head .logos { display: flex; align-items: center; gap: 11px; }
+  .head .logos img { height: 22px; }
+  .head .logos .x { color: #cbd5e1; font-size: 13px; }
+  .head .meta { text-align: right; font-size: 8.5px; color: var(--muted); line-height: 1.5; }
+  .head .meta b { color: var(--navy-dark); }
+
+  .title-row { margin-bottom: 9px; }
+  .eyebrow { color: var(--orange); font-weight: 800; letter-spacing: 2px; font-size: 9px; text-transform: uppercase; }
+  h1 { font-size: 21px; font-weight: 800; color: var(--navy); letter-spacing: -.5px; margin: 2px 0 3px; }
+  .sub { font-size: 9.5px; color: var(--muted); line-height: 1.4; }
+
+  .audience-note { background: #fffbeb; border: 1px solid #fde68a; border-left: 3px solid var(--orange); border-radius: 0 6px 6px 0; padding: 7px 11px; margin-bottom: 11px; }
+  .audience-note b { color: #92400e; font-size: 9.5px; }
+  .audience-note span { font-size: 9.5px; color: #78350f; }
+
+  .layout { display: grid; grid-template-columns: 1.18fr 1fr; gap: 14px; }
+
+  h2.sec { font-size: 11px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px; display: flex; align-items: center; gap: 6px; }
+  h2.sec::before { content: ''; width: 16px; height: 3px; background: var(--green); border-radius: 2px; }
+
+  /* run of show timeline */
+  .ros { list-style: none; }
+  .ros li { display: grid; grid-template-columns: 58px 1fr; gap: 9px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+  .ros li:last-child { border-bottom: none; }
+  .ros .time { font-size: 9px; font-weight: 800; color: var(--orange); line-height: 1.3; }
+  .ros .what b { font-size: 10px; color: var(--navy-dark); display: block; }
+  .ros .what span { font-size: 9px; color: var(--muted); line-height: 1.4; }
+  .ros .lead-tag { display: inline-block; font-size: 7.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .3px; padding: 1px 5px; border-radius: 3px; background: #ecfdf5; color: #047857; margin-top: 2px; }
+
+  /* panelist block */
+  .pan { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; margin-bottom: 8px; }
+  .pan.todd { border-color: var(--orange); background: #fff8f1; }
+  .pan .ph { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .pan .nm { font-size: 11px; font-weight: 800; color: var(--navy-dark); }
+  .pan .pillar { font-size: 7.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; color: var(--green); }
+  .pan .tt { font-size: 8.5px; color: var(--muted); margin-bottom: 5px; }
+  .pan ol { margin: 0 0 0 14px; }
+  .pan ol li { font-size: 9px; line-height: 1.4; color: #374151; margin-bottom: 3px; }
+  .pan ol li.story { color: var(--orange); font-weight: 600; }
+
+  .footer { position: absolute; bottom: 0.26in; left: 0.5in; right: 0.5in; display: flex; justify-content: space-between; font-size: 7.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 5px; }
+  .footer .conf { color: var(--orange); font-weight: 700; letter-spacing: .5px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <div class="logos">
+      <img src="file:///Users/ericcoffie/Encore%20Funding/images/GovconGiants-logo-black.png" alt="GovCon Giants">
+      <span class="x">×</span>
+      <img src="file:///Users/ericcoffie/Encore%20Funding/images/EncoreLogo_Primary_Color_CMYK.png" alt="Encore Funding">
+    </div>
+    <div class="meta">
+      <b>Wed, June 17, 2026 · 6:00–8:00 PM EST</b><br>
+      Live roundtable + 30-min Q&amp;A · Zoom<br>
+      Moderator: Eric Coffie
+    </div>
+  </div>
+
+  <div class="title-row">
+    <div class="eyebrow">Panelist Briefing &amp; Run of Show</div>
+    <h1>From Interested To Procurement Ready — HUBZone Webinar</h1>
+    <div class="sub">Roundtable format. Audience = small businesses entering the federal market. Arc: get findable → get teamed → get funded → get selected.</div>
+  </div>
+
+  <div class="audience-note">
+    <b>FOR TODD:</b> <span>This is a relaxed roundtable, not a lecture. You open the intros (~6:05, 5 min) then hand the layup to Chad. Eric moderates the round-robin and will tee you up by name — just answer conversationally and tell stories. No slides needed. Your angle: the government buyer side — IDVs and how agencies actually evaluate &amp; buy. Questions in your card below.</span>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT: RUN OF SHOW -->
+    <div>
+      <h2 class="sec">Run of Show</h2>
+      <ul class="ros">
+        <li>
+          <div class="time">5:30<br>PM</div>
+          <div class="what"><b>Panelists in Zoom green room</b><span>Tech check — audio, video, lighting. Confirm speaking order. Doors open to attendees at 5:55.</span></div>
+        </li>
+        <li>
+          <div class="time">6:00–<br>6:05</div>
+          <div class="what"><b>Welcome &amp; Frame</b><span>Eric opens, housekeeping, the journey: win the work → fund it → team to grow.</span><span class="lead-tag">Eric</span></div>
+        </li>
+        <li>
+          <div class="time">6:05–<br>6:20</div>
+          <div class="what"><b>Intros — 5 min each</b><span>Todd → Chad → Tim. Quick, conversational. Todd hands the layup to Chad.</span><span class="lead-tag">Todd · Chad · Tim</span></div>
+        </li>
+        <li>
+          <div class="time">6:20–<br>7:15</div>
+          <div class="what"><b>Moderated Round-Robin</b><span>Eric drives 3–4 themes; each panelist weighs in. The real value — cross-talk &amp; stories, not monologues.</span><span class="lead-tag">All</span></div>
+        </li>
+        <li>
+          <div class="time">7:15–<br>7:30</div>
+          <div class="what"><b>Rapid-Fire / Cross-Talk</b><span>Fast back-and-forth to surface audience-style questions before opening the floor.</span><span class="lead-tag">All</span></div>
+        </li>
+        <li>
+          <div class="time">7:30–<br>7:55</div>
+          <div class="what"><b>Live Q&amp;A</b><span>Audience questions. Eric routes to the right panelist; backup questions ready if quiet.</span><span class="lead-tag">All</span></div>
+        </li>
+        <li>
+          <div class="time">7:55–<br>8:00</div>
+          <div class="what"><b>Close &amp; Next Steps</b><span>Eric — working-capital CTA (encoregov.com), recording note, thank panelists.</span><span class="lead-tag">Eric</span></div>
+        </li>
+      </ul>
+
+      <h2 class="sec" style="margin-top:10px;">Cross-Panel &amp; Q&amp;A Backup</h2>
+      <div class="pan" style="margin-bottom:0;">
+        <ol>
+          <li><b>Roundtable:</b> 90 days, limited money — in what order do you tackle teaming, funding, and agency outreach? <i>(let all 3 argue their pillar)</i></li>
+          <li><b>Roundtable:</b> Most expensive mistake you each see in your lane — do they overlap?</li>
+          <li style="margin-top:4px; color:var(--muted);"><b>Q&amp;A if quiet:</b> "Do I need a contract in hand first?" · "How do I know if I qualify for HUBZone?" · "Zero past performance — am I wasting my time?" · "Realistic timeline to first win?"</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- RIGHT: PANELIST QUESTIONS -->
+    <div>
+      <h2 class="sec">Panelist Questions</h2>
+
+      <div class="pan todd">
+        <div class="ph"><span class="nm">Todd Rogers</span><span class="pillar">🏛️ Agency / Buyer Side</span></div>
+        <div class="tt">Industry Technical Expert · LTR — IDVs &amp; the government buyer side</div>
+        <ol>
+          <li class="story">Open us up — give the room the buyer's-eye view: how do agencies actually decide who they buy from?</li>
+          <li>IDVs (IDIQs, BPAs, GWACs) — what are they, and why should a small business care about getting on one?</li>
+          <li>When a small biz approaches you — what makes you say <i>yes</i> in the first 5 minutes, and what makes you pass?</li>
+          <li>Biggest gap between how small businesses think they're evaluated vs. how agencies actually judge them?</li>
+          <li>Closer: hand the layup to Chad — once you're selected, the next problem is funding the work.</li>
+        </ol>
+      </div>
+
+      <div class="pan">
+        <div class="ph"><span class="nm">Chad Eberly</span><span class="pillar">💰 Funding</span></div>
+        <div class="tt">General Manager, Encore Funding</div>
+        <ol>
+          <li class="story">Lead w/ the Encore story — how did you come to specialize in funding federal contractors?</li>
+          <li>First win — what happens to their bank account in the first 60–90 days before the gov't pays?</li>
+          <li>Why can't most contractors just use their bank?</li>
+          <li>Financing before you've billed vs. after — why it matters for scaling.</li>
+          <li>Closer: when should they talk to a funding partner — at the win, or before?</li>
+        </ol>
+      </div>
+
+      <div class="pan">
+        <div class="ph"><span class="nm">Tim Hagerty</span><span class="pillar">🤝 Teaming</span></div>
+        <div class="tt">CEO, TeamingPro</div>
+        <ol>
+          <li class="story">Why did you build TeamingPro — what was broken about finding partners?</li>
+          <li>How does automation compress the 12–18 mo. relationship phase — and what still has to be done the old way?</li>
+          <li>For a HUBZone firm — how do they get primes to seek <i>them</i> out?</li>
+          <li>Closer: one thing someone could do this week to be a better teaming partner?</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>GovCon Giants × Encore Funding · HUBZone Webinar Panelist Briefing</span>
+    <span class="conf">CONFIDENTIAL — PANELISTS ONLY</span>
+  </div>
+
+</div>
+</body>
+</html>

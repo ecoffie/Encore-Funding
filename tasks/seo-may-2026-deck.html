@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encore Funding SEO Update | May 2026 | C-Suite Deck</title>
+    <style>
+        @page { size: 11in 8.5in; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #475569;
+            color: #1a1a2e;
+            font-size: 15.5px;
+            line-height: 1.45;
+        }
+
+        .slide {
+            width: 11in;
+            height: 8.5in;
+            padding: 0.5in 0.6in;
+            page-break-after: always;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            margin: 0 auto 22px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+        .slide:last-child { page-break-after: avoid; }
+
+        :root {
+            --primary: #ef5a2c;
+            --primary-dark: #d94a1e;
+            --dark: #1a1a2e;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --good: #10b981;
+            --bad: #f59e0b;
+            --ugly: #ef4444;
+            --navy: #1e3a8a;
+            --purple: #7c3aed;
+        }
+
+        /* Title slide */
+        .slide.title-slide {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .slide.title-slide h1 { font-size: 48px; font-weight: 700; margin-bottom: 15px; color: white; }
+        .slide.title-slide h2 { font-size: 28px; font-weight: 400; color: var(--primary); margin-bottom: 30px; }
+        .slide.title-slide .subtitle { font-size: 20px; color: #94a3b8; margin-bottom: 40px; }
+        .slide.title-slide .meta { font-size: 16px; color: #64748b; }
+
+        /* Section divider slides */
+        .slide.section-slide { justify-content: center; align-items: center; text-align: center; }
+        .slide.section-slide.good { background: linear-gradient(135deg, #065f46 0%, #10b981 100%); color: white; }
+        .slide.section-slide.bad { background: linear-gradient(135deg, #92400e 0%, #f59e0b 100%); color: white; }
+        .slide.section-slide.ugly { background: linear-gradient(135deg, #991b1b 0%, #ef4444 100%); color: white; }
+        .slide.section-slide.neutral { background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%); color: white; }
+        .slide.section-slide.brand { background: linear-gradient(135deg, var(--navy) 0%, var(--purple) 100%); color: white; }
+        .slide.section-slide h1 { font-size: 60px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 4px; }
+        .slide.section-slide .section-subtitle { font-size: 23px; margin-top: 20px; opacity: 0.92; text-transform: none; letter-spacing: 0; font-weight: 400; max-width: 8in; }
+
+        /* Content slide header */
+        .slide-header { margin-bottom: 22px; padding-bottom: 12px; border-bottom: 3px solid var(--primary); }
+        .slide-header.good { border-bottom-color: var(--good); }
+        .slide-header.bad { border-bottom-color: var(--bad); }
+        .slide-header.ugly { border-bottom-color: var(--ugly); }
+        .slide-header.neutral { border-bottom-color: #3b82f6; }
+        .slide-header.brand { border-bottom-color: var(--purple); }
+        .slide-header h1 { font-size: 28px; font-weight: 700; color: var(--dark); }
+        .slide-header .tag {
+            display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 11px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 15px; vertical-align: middle;
+        }
+        .slide-header .tag.good { background: var(--good); color: white; }
+        .slide-header .tag.bad { background: var(--bad); color: white; }
+        .slide-header .tag.ugly { background: var(--ugly); color: white; }
+        .slide-header .tag.neutral { background: #3b82f6; color: white; }
+        .slide-header .tag.brand { background: var(--purple); color: white; }
+        .slide-header h2 { font-size: 16px; font-weight: 400; color: var(--gray); margin-top: 5px; }
+
+        .slide-content { flex: 1; display: flex; flex-direction: column; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: var(--light-gray); font-weight: 600; color: var(--dark); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+        tr.highlight td { background: #fff7ed; font-weight: 600; }
+        tr.good-row td { background: #ecfdf5; }
+        td .pos { color: var(--good); font-weight: 700; }
+        td .neg { color: var(--ugly); font-weight: 700; }
+
+        /* Stat boxes */
+        .stats-row { display: flex; gap: 15px; margin: 15px 0; }
+        .stat-box { flex: 1; background: var(--light-gray); border-radius: 10px; padding: 20px; text-align: center; }
+        .stat-box.good { background: #ecfdf5; border: 2px solid var(--good); }
+        .stat-box.bad { background: #fffbeb; border: 2px solid var(--bad); }
+        .stat-box.ugly { background: #fef2f2; border: 2px solid var(--ugly); }
+        .stat-box.primary { background: var(--primary); color: white; }
+        .stat-box.brand { background: linear-gradient(135deg, var(--navy) 0%, var(--purple) 100%); color: white; }
+        .stat-number { font-size: 34px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+        .stat-box.good .stat-number { color: var(--good); }
+        .stat-box.bad .stat-number { color: var(--bad); }
+        .stat-box.ugly .stat-number { color: var(--ugly); }
+        .stat-box.primary .stat-number, .stat-box.brand .stat-number { color: white; }
+        .stat-label { font-size: 13.5px; color: var(--gray); font-weight: 500; }
+        .stat-box.primary .stat-label, .stat-box.brand .stat-label { color: rgba(255,255,255,0.85); }
+
+        /* Two column */
+        .two-col { display: flex; gap: 30px; }
+        .two-col > div { flex: 1; }
+
+        /* Callouts */
+        .callout { background: var(--light-gray); border-left: 4px solid var(--primary); padding: 15px 20px; margin: 12px 0; border-radius: 0 8px 8px 0; }
+        .callout.good { background: #ecfdf5; border-left-color: var(--good); }
+        .callout.bad { background: #fffbeb; border-left-color: var(--bad); }
+        .callout.ugly { background: #fef2f2; border-left-color: var(--ugly); }
+        .callout.brand { background: #f5f3ff; border-left-color: var(--purple); }
+        .callout-title { font-weight: 700; font-size: 15.5px; margin-bottom: 5px; color: var(--dark); }
+        .callout p { color: var(--gray); font-size: 14.5px; }
+
+        /* Lists */
+        ul, ol { margin: 10px 0; padding-left: 20px; }
+        li { margin: 8px 0; font-size: 15px; color: var(--dark); }
+
+        /* Checklist (no bullets, green checks) */
+        .checklist { list-style: none; padding-left: 0; }
+        .checklist li { padding: 10px 13px; margin: 7px 0; background: #ecfdf5; border-radius: 8px; font-size: 14.5px; }
+        .checklist li::before { content: "\2713"; color: var(--good); font-weight: 800; margin-right: 10px; }
+        .checklist li small { display: block; color: var(--gray); font-size: 12.5px; margin-top: 2px; margin-left: 24px; }
+
+        /* Footer */
+        .slide-footer {
+            position: absolute; bottom: 0.35in; left: 0.6in; right: 0.6in;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 11px; color: var(--gray); padding-top: 8px; border-top: 1px solid #e2e8f0;
+        }
+
+        /* Issue box */
+        .issue-box { background: white; border: 2px solid #e2e8f0; border-radius: 10px; padding: 14px; margin: 8px 0; }
+        .issue-box.ugly { border-color: var(--ugly); background: #fef2f2; }
+        .issue-box.bad { border-color: var(--bad); background: #fffbeb; }
+        .issue-box.good { border-color: var(--good); background: #ecfdf5; }
+        .issue-box h4 { font-size: 15px; margin-bottom: 5px; color: var(--dark); }
+        .issue-box p { font-size: 13.5px; color: var(--gray); }
+
+        /* Big number */
+        .big-stat { text-align: center; padding: 20px; }
+        .big-stat .number { font-size: 110px; font-weight: 800; line-height: 1; }
+        .big-stat .number.ugly { color: var(--ugly); }
+        .big-stat .number.good { color: var(--good); }
+        .big-stat .number.primary { color: var(--primary); }
+        .big-stat .label { font-size: 22px; color: var(--gray); margin-top: 10px; }
+
+        /* Scorecard */
+        .scorecard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .score-item { background: white; border: 2px solid #e2e8f0; border-radius: 10px; padding: 15px; text-align: center; }
+        .score-item .score { font-size: 32px; font-weight: 800; }
+        .score-item .score.good { color: var(--good); }
+        .score-item .score.bad { color: var(--bad); }
+        .score-item .score.ugly { color: var(--ugly); }
+        .score-item .label { font-size: 12px; color: var(--gray); margin-top: 5px; }
+
+        /* Finding cards (3-col) */
+        .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .finding-card { border-radius: 10px; padding: 20px; }
+        .finding-card.good { background: #ecfdf5; border: 2px solid var(--good); }
+        .finding-card.bad { background: #fffbeb; border: 2px solid var(--bad); }
+        .finding-card.ugly { background: #fef2f2; border: 2px solid var(--ugly); }
+        .finding-card.brand { background: #f5f3ff; border: 2px solid var(--purple); }
+        .finding-card h3 { font-size: 15.5px; margin-bottom: 10px; }
+        .finding-card.good h3 { color: var(--good); }
+        .finding-card.bad h3 { color: var(--bad); }
+        .finding-card.ugly h3 { color: var(--ugly); }
+        .finding-card.brand h3 { color: var(--purple); }
+        .finding-card ul { margin: 0; padding-left: 18px; }
+        .finding-card li { font-size: 14px; margin: 5px 0; }
+
+        /* Hero URL box */
+        .url-hero {
+            background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+            color: #fff; border-radius: 12px; padding: 22px; text-align: center; margin: 14px 0;
+        }
+        .url-hero .u-label { font-size: 13px; opacity: 0.9; margin-bottom: 6px; }
+        .url-hero .u-link { font-size: 26px; font-weight: 800; letter-spacing: 0.3px; }
+
+        /* Glossary grid */
+        .gloss { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; margin-top: 8px; }
+        .gloss .term { font-weight: 700; color: var(--navy); font-size: 14.5px; }
+        .gloss .def { font-size: 13.5px; color: var(--gray); }
+        .gloss .row { display: contents; }
+
+        @media screen { body { padding: 22px 0; } }
+    </style>
+</head>
+<body>
+
+<!-- 1. TITLE -->
+<div class="slide title-slide">
+    <h1>Encore Funding</h1>
+    <h2>SEO &amp; Conversion Update</h2>
+    <p class="subtitle">The Bottom Line, Up Front — Then the Proof</p>
+    <p class="meta">Executive Briefing &nbsp;|&nbsp; May 2026 &nbsp;|&nbsp; Prepared by GovCon Giants</p>
+</div>
+
+<!-- 2. BOTTOM LINE UP FRONT -->
+<div class="slide">
+    <div class="slide-header brand">
+        <h1>Bottom Line Up Front <span class="tag brand">Start Here</span></h1>
+        <h2>The opportunity, the quick win, and what we need from you — on one page</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box brand"><div class="stat-number">40–60</div><div class="stat-label">New SEO pages we can build (staffing + GovCon)</div></div>
+            <div class="stat-box brand"><div class="stat-number">15,000+</div><div class="stat-label">Monthly searches you don't capture today</div></div>
+            <div class="stat-box primary"><div class="stat-number">$0</div><div class="stat-label">Ad spend — proven free on GovCon Giants</div></div>
+        </div>
+        <div class="two-col">
+            <div>
+                <div class="callout brand"><div class="callout-title">The opportunity (the big play)</div><p>Build a library of search-matched pages that earn Google traffic 24/7 — the same engine that put <strong>72 of our pages on page one for free</strong>. It's a new, compounding channel that grows month over month.</p></div>
+                <div class="callout good"><div class="callout-title">The quick win (this week)</div><p>One page leaks conversions today. We already rebuilt it — <strong>+11 leads / 90 days</strong> from a single page change. Live demo on slide 8.</p></div>
+            </div>
+            <div>
+                <div class="callout" style="border-left-color:var(--purple);background:#f5f3ff;"><div class="callout-title">What we need from you</div>
+                    <ul style="margin:6px 0 0;">
+                        <li><strong>Ship the partner-page rebuild</strong> (built &amp; live)</li>
+                        <li><strong>Google Search Console access</strong> — the key that unlocks measurable SEO</li>
+                        <li><strong>Green-light the page build</strong> — we start producing this month</li>
+                    </ul>
+                </div>
+                <div class="callout"><div class="callout-title">The one-liner</div><p>The traffic is healthy. One page is leaking it, and the organic channel is wide open. Both are fixable — fast.</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 3. RECOMMENDATIONS (priority actions, up front) -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>What We Recommend This Quarter</h1>
+        <h2>In priority order, with expected impact</h2>
+    </div>
+    <div class="slide-content">
+        <table>
+            <tr><th>#</th><th>Action</th><th>Expected impact</th></tr>
+            <tr class="highlight"><td>1</td><td>Ship the partner-page rebuild</td><td>+11 leads / 90d (22% lift on GovCon conversions)</td></tr>
+            <tr><td>2</td><td>Wire form-submit as a tracked conversion</td><td>Unlocks the ability to measure everything else</td></tr>
+            <tr><td>3</td><td>Send one email to the GovCon list</td><td>+5–8 leads (best channel, currently unused)</td></tr>
+            <tr><td>4</td><td>Tag social links + overlay social on Analytics</td><td>Makes your social plan's traffic visible — credits the real driver</td></tr>
+            <tr><td>5</td><td>Restart GovCon content (2 posts/mo min.)</td><td>Stops the slow Google decay</td></tr>
+            <tr class="good-row"><td>6</td><td>Approve the programmatic-page build</td><td>A new compounding organic channel</td></tr>
+        </table>
+        <div class="callout"><div class="callout-title">Sequencing</div><p>Items 1–3 are this-week work. Items 4–6 are this-month work. Item 6 is the quarter's compounding play. The rest of this deck is the proof behind each line.</p></div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 4. SECTION: OPPORTUNITY (brand) -->
+<div class="slide section-slide brand">
+    <div>
+        <h1>The Opportunity</h1>
+        <p class="section-subtitle">March showed the market size. This is the page architecture that captures it.</p>
+    </div>
+</div>
+
+<!-- 5. OPPORTUNITY detail -->
+<div class="slide">
+    <div class="slide-header brand">
+        <h1>Two Engines, 40–60 Pages <span class="tag brand">Build Plan</span></h1>
+        <h2>Staffing (main site) + GovCon financing (subdomain)</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div class="finding-card brand">
+                <h3>Engine 1 — Staffing</h3>
+                <ul>
+                    <li>/payroll-funding (pillar)</li>
+                    <li>/staffing-factoring-rates <em>(missing today)</em></li>
+                    <li>/healthcare-staffing-funding</li>
+                    <li>/it-staffing-funding</li>
+                    <li>/staffing-agency-license/[state] — <strong>50-state set</strong></li>
+                </ul>
+            </div>
+            <div class="finding-card brand">
+                <h3>Engine 2 — GovCon Financing</h3>
+                <ul>
+                    <li>/government-contractor-financing (pillar)</li>
+                    <li>/govcon-invoice-factoring</li>
+                    <li>/for/8a · /for/wosb · /for/sdvosb · /for/hubzone</li>
+                    <li>/financing/gsa-schedule · /financing/idiq</li>
+                    <li>/govcon-financing-vs-bank-loan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="stats-row">
+            <div class="stat-box brand"><div class="stat-number">40–60</div><div class="stat-label">New programmatic pages</div></div>
+            <div class="stat-box brand"><div class="stat-number">15,000+</div><div class="stat-label">Untapped monthly searches</div></div>
+            <div class="stat-box primary"><div class="stat-number">$0</div><div class="stat-label">Ad spend — it's an asset build</div></div>
+        </div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 6. SECTION: OUR ENGINE (brand) -->
+<div class="slide section-slide brand">
+    <div>
+        <h1>The Proof</h1>
+        <p class="section-subtitle">We don't just recommend this — we run it on GovCon Giants, for free, and have the numbers.</p>
+    </div>
+</div>
+
+<!-- 7. GOVCON GIANTS REACH -->
+<div class="slide">
+    <div class="slide-header brand">
+        <h1>The Audience Behind the Engine <span class="tag brand">Proof</span></h1>
+        <h2>GovCon Giants is an established media platform reaching Encore's exact buyers</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box brand"><div class="stat-number">3.67M</div><div class="stat-label">YouTube views · 52K+ subscribers · 1,600+ videos</div></div>
+            <div class="stat-box brand"><div class="stat-number">281K+</div><div class="stat-label">Podcast downloads · 688 episodes</div></div>
+            <div class="stat-box brand"><div class="stat-number">90+</div><div class="stat-label">SEO pages built this quarter · 72 indexed</div></div>
+        </div>
+        <div class="callout brand"><div class="callout-title">This audience already sends you engaged traffic</div><p>Those 407 referral sessions at 47% engagement come from this platform. The question this section answers: what happens when we put the <strong>full engine</strong> — not just a single link — behind Encore?</p></div>
+        <table>
+            <tr><th>Page cluster</th><th>What it targets</th><th>Pages</th></tr>
+            <tr><td>Guides</td><td>"cage code," "8(a) certification," "GSA schedule"</td><td>16</td></tr>
+            <tr><td>Glossary</td><td>"what is a [term]" long-tail</td><td>63 terms</td></tr>
+            <tr><td>Competitor comparisons</td><td>"GovWin alternative," "Deltek alternative"</td><td>11</td></tr>
+            <tr><td>Audience pages</td><td>"for 8(a)," "for staffing agencies," "for HUBZone"</td><td>12</td></tr>
+        </table>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 8. GOVCON GIANTS RESULTS -->
+<div class="slide">
+    <div class="slide-header brand">
+        <h1>The Results — All Free, No Ad Spend <span class="tag brand">Measured in Search Console</span></h1>
+        <h2>govcongiants.org, March 17 → 29, 2026</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box good"><div class="stat-number">72</div><div class="stat-label">Pages Google found &amp; filed (indexed) in 4 weeks</div></div>
+            <div class="stat-box good"><div class="stat-number">9.2%</div><div class="stat-label">Click-through rate — 3× the typical site</div></div>
+            <div class="stat-box good"><div class="stat-number">Page 1</div><div class="stat-label">Avg. position holding in Google results</div></div>
+        </div>
+        <div class="callout good"><div class="callout-title">In plain terms</div><p>In four weeks, 72 of our pages got filed by Google, and the ones that show up get clicked <strong>3× more often than the typical site</strong> — without spending a dollar on ads. Example: the keyword <strong>"cage code"</strong> gets 9,900 searches a month, and our page now sits on page one for it. The pages work 24/7.</p></div>
+        <div class="callout brand"><div class="callout-title">Why it matters for Encore</div><p>Your GovCon subdomain has published nothing since August 2025, so Google sees a property that stopped growing. A programmatic-SEO build gives Google fresh pages to file <em>and</em> adds a compounding organic channel on top of everything already driving traffic.</p></div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 9. SECTION: THE QUICK WIN (bad) -->
+<div class="slide section-slide bad">
+    <div>
+        <h1>The Quick Win</h1>
+        <p class="section-subtitle">One page receives ~23% of subdomain traffic — and converts 43% below the homepage. We already fixed it.</p>
+    </div>
+</div>
+
+<!-- 10. THE LEAK detail -->
+<div class="slide">
+    <div class="slide-header bad">
+        <h1>One Page Is Failing to Convert <span class="tag bad">The Leak</span></h1>
+        <h2>The traffic arrives engaged — the page is where it breaks down</h2>
+    </div>
+    <div class="slide-content">
+        <table>
+            <tr><th>Page</th><th>Sessions (90d)</th><th>Conversion rate</th><th></th></tr>
+            <tr><td>Homepage</td><td>762</td><td><span class="pos">6.0%</span></td><td>The rate a working page hits</td></tr>
+            <tr class="highlight"><td>Partner page</td><td>406</td><td><span class="neg">3.4%</span></td><td><strong>43% lower — the leak</strong></td></tr>
+        </table>
+        <div class="two-col">
+            <div>
+                <h3 style="color:var(--bad);font-size:14px;margin:10px 0;">Why it leaks</h3>
+                <ul>
+                    <li><strong>No apply form on the page</strong> — visitors must click off to convert</li>
+                    <li><strong>One CTA</strong> — "Contact the Team," not "Apply"</li>
+                    <li><strong>3 blog promo cards</strong> mid-page send visitors <em>away</em></li>
+                    <li>Apply button is in the nav menu only</li>
+                </ul>
+            </div>
+            <div>
+                <div class="callout bad"><div class="callout-title">Built to impress, not to convert</div><p>By the time someone clicks through, they're already sold on Encore — they just need a clear path to apply, and the page doesn't give them one.</p></div>
+            </div>
+        </div>
+        <div class="callout good"><div class="callout-title">The fix is one page</div><p>Same audience, same offer, same site. Fix the page and the conversions come back — without changing a single thing about the traffic coming in.</p></div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 11. THE FIX (live demo) -->
+<div class="slide">
+    <div class="slide-header good">
+        <h1>We Rebuilt the Page <span class="tag good">Live Demo</span></h1>
+        <h2>A working prototype — click it</h2>
+    </div>
+    <div class="slide-content">
+        <div class="url-hero">
+            <div class="u-label">The recommended fix, live and clickable:</div>
+            <div class="u-link">partner-page-rebuild.vercel.app</div>
+        </div>
+        <table>
+            <tr><th>Old page</th><th>New page</th></tr>
+            <tr><td>H1: "GovCon Giants Fan? Meet Encore Funding."</td><td>H1: "Government Contractor Financing — Endorsed by Eric Coffie"</td></tr>
+            <tr><td>Zero forms on the page</td><td>Apply form embedded mid-page</td></tr>
+            <tr><td>1 body CTA → contact us</td><td>4 body CTAs → apply now</td></tr>
+            <tr><td>3 blog promos pulling visitors away</td><td>Stat block: $25B+ funded, 48-hr approval</td></tr>
+            <tr><td>Apply button only in nav</td><td>Above-fold CTA + sticky mobile apply bar</td></tr>
+        </table>
+        <div class="callout good"><div class="callout-title">Projected impact</div><p>If this page converted at the homepage's rate, it would add <strong>~11 qualified leads every 90 days</strong> — a 22% lift on total GovCon conversions from one page change.</p></div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 12. SECTION: WHAT'S WORKING (good) -->
+<div class="slide section-slide good">
+    <div>
+        <h1>What's Working</h1>
+        <p class="section-subtitle">The main-site technical SEO from March is paying off — proof the approach works.</p>
+    </div>
+</div>
+
+<!-- 13. WHAT'S WORKING detail -->
+<div class="slide">
+    <div class="slide-header good">
+        <h1>The Main Site Is Moving <span class="tag good">Good</span></h1>
+        <h2>Schema work from the March audit shipped — and it's showing</h2>
+    </div>
+    <div class="slide-content">
+        <div class="stats-row">
+            <div class="stat-box good"><div class="stat-number">+16%</div><div class="stat-label">90-day users (main site)</div></div>
+            <div class="stat-box good"><div class="stat-number">+41%</div><div class="stat-label">90-day conversions (main site)</div></div>
+            <div class="stat-box good"><div class="stat-number">100%</div><div class="stat-label">Schema markup recommendation shipped</div></div>
+        </div>
+        <ul class="checklist">
+            <li>Schema markup live <small>Organization, Article, Person &amp; Breadcrumb data now firing on every page (via Yoast)</small></li>
+            <li>2022 jobs sitemap removed <small>Cleaned up a stale signal Google was still crawling</small></li>
+            <li>Referral traffic is engaged and qualified <small>407 sessions at 47% engagement — visitors show up ready to act</small></li>
+        </ul>
+        <div class="callout good"><div class="callout-title">Bottom line</div><p>The technical SEO recommendations from March were implemented, and the main site responded with double-digit growth. The engine works — now we point more of it at the GovCon side.</p></div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 14. SECTION: GSC (neutral) -->
+<div class="slide section-slide neutral">
+    <div>
+        <h1>The Missing Half</h1>
+        <p class="section-subtitle">Google Analytics shows what happens after the click. Google Search Console shows what happens before — and you're blind to it.</p>
+    </div>
+</div>
+
+<!-- 15. GSC detail -->
+<div class="slide">
+    <div class="slide-header neutral">
+        <h1>Google Search Console — The Key Unlock <span class="tag neutral">The Ask</span></h1>
+        <h2>The single highest-value access you can grant us</h2>
+    </div>
+    <div class="slide-content">
+        <table>
+            <tr><th>Question</th><th>Google Analytics (you have)</th><th>Search Console (you don't)</th></tr>
+            <tr><td>How many visited &amp; what they did</td><td><span class="pos">✓</span></td><td>—</td></tr>
+            <tr><td><strong>Which Google searches showed your page</strong></td><td>—</td><td><span class="pos">✓</span></td></tr>
+            <tr><td><strong>What position you rank at + your CTR</strong></td><td>—</td><td><span class="pos">✓</span></td></tr>
+            <tr><td>Whether Google is indexing your pages</td><td>—</td><td><span class="pos">✓</span></td></tr>
+        </table>
+        <div class="callout neutral" style="border-left-color:#3b82f6;"><div class="callout-title">Your organic search is tiny (152 sessions / 90d) — and <em>why</em> is unanswerable without Search Console:</div>
+            <p><strong>Coverage</strong> problem (not indexed) → technical fix &nbsp;·&nbsp; <strong>Ranking</strong> problem (buried) → content fix &nbsp;·&nbsp; <strong>Snippet</strong> problem (weak titles) → 30-min meta rewrite. Search Console tells you which one in a single screen.</p>
+        </div>
+        <div class="callout good"><div class="callout-title">The ask</div><p>Grant us Search Console access to <strong>both</strong> encore-funding.com and gov.encore-funding.com (separate properties). The moment we have it, we can size the exact opportunity and start the same measured loop already working for us.</p></div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 16. SECTION: SOCIAL × ANALYTICS OVERLAY (neutral) -->
+<div class="slide section-slide neutral">
+    <div>
+        <h1>The Hidden Driver</h1>
+        <p class="section-subtitle">Your social media is almost certainly the source of this traffic — but it's invisible until we overlay the social numbers on Google Analytics.</p>
+    </div>
+</div>
+
+<!-- 17. SOCIAL ACTIVITY CHART (real data) -->
+<div class="slide">
+    <div class="slide-header neutral">
+        <h1>Your Social Activity — 14 Months, Real Data <span class="tag neutral">132 Posts</span></h1>
+        <h2>From the Encore marketing report: reach and clicks-to-site, month by month</h2>
+    </div>
+    <div class="slide-content">
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px 6px;margin:6px 0 12px;">
+            <svg viewBox="0 0 900 320" width="100%" style="display:block">
+              <defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.30"/>
+                <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.03"/></linearGradient></defs>
+              <text x="50" y="14" font-size="11" fill="#7c3aed" font-weight="700">&#9632; Social reach (impressions + views)</text>
+              <text x="300" y="14" font-size="11" fill="#ef5a2c" font-weight="700">&#9632; Clicks to the site</text>
+              <g transform="translate(0,22)">
+              <path d="M 50.0 241.8 L 111.5 111.9 L 173.1 20.0 L 234.6 119.2 L 296.2 155.6 L 357.7 210.0 L 419.2 188.7 L 480.8 219.6 L 542.3 249.3 L 603.8 198.9 L 665.4 207.1 L 726.9 152.5 L 788.5 210.6 L 850.0 165.8 L 850.0 254.0 L 50.0 254.0 Z" fill="url(#rg)"/>
+              <path d="M 50.0 241.8 L 111.5 111.9 L 173.1 20.0 L 234.6 119.2 L 296.2 155.6 L 357.7 210.0 L 419.2 188.7 L 480.8 219.6 L 542.3 249.3 L 603.8 198.9 L 665.4 207.1 L 726.9 152.5 L 788.5 210.6 L 850.0 165.8" fill="none" stroke="#7c3aed" stroke-width="2"/>
+              <path d="M 50.0 247.2 L 111.5 200.3 L 173.1 238.8 L 234.6 244.4 L 296.2 233.7 L 357.7 254.0 L 419.2 215.0 L 480.8 191.4 L 542.3 254.0 L 603.8 213.0 L 665.4 132.2 L 726.9 45.1 L 788.5 91.2 L 850.0 20.0" fill="none" stroke="#ef5a2c" stroke-width="2.5"/>
+              <circle cx="50.0" cy="247.2" r="3" fill="#ef5a2c"/><circle cx="111.5" cy="200.3" r="3" fill="#ef5a2c"/><circle cx="173.1" cy="238.8" r="3" fill="#ef5a2c"/><circle cx="234.6" cy="244.4" r="3" fill="#ef5a2c"/><circle cx="296.2" cy="233.7" r="3" fill="#ef5a2c"/><circle cx="357.7" cy="254.0" r="3" fill="#ef5a2c"/><circle cx="419.2" cy="215.0" r="3" fill="#ef5a2c"/><circle cx="480.8" cy="191.4" r="3" fill="#ef5a2c"/><circle cx="542.3" cy="254.0" r="3" fill="#ef5a2c"/><circle cx="603.8" cy="213.0" r="3" fill="#ef5a2c"/><circle cx="665.4" cy="132.2" r="3" fill="#ef5a2c"/><circle cx="726.9" cy="45.1" r="3" fill="#ef5a2c"/><circle cx="788.5" cy="91.2" r="3" fill="#ef5a2c"/><circle cx="850.0" cy="20.0" r="3" fill="#ef5a2c"/>
+              <circle cx="173.1" cy="20.0" r="4" fill="#7c3aed"/>
+              <text x="180.1" y="20.0" font-size="11" font-weight="700" fill="#7c3aed" text-anchor="start">237K reach (May '25)</text>
+              <text x="850.0" y="14.0" font-size="11" font-weight="700" fill="#ef5a2c" text-anchor="end">924 clicks</text>
+              <text x="50.0" y="270.0" font-size="10" fill="#64748b" text-anchor="middle">May'25</text><text x="234.6" y="270.0" font-size="10" fill="#64748b" text-anchor="middle">Jul'25</text><text x="419.2" y="270.0" font-size="10" fill="#64748b" text-anchor="middle">Sep'25</text><text x="603.8" y="270.0" font-size="10" fill="#64748b" text-anchor="middle">Dec'25</text><text x="726.9" y="270.0" font-size="10" fill="#64748b" text-anchor="middle">Feb'26</text><text x="850.0" y="270.0" font-size="10" fill="#64748b" text-anchor="middle">Apr'26</text>
+              </g>
+            </svg>
+        </div>
+        <div class="two-col">
+            <div class="callout brand"><div class="callout-title">This is the traffic engine — quantified</div><p>132 sponsored posts across LinkedIn, YouTube, podcast &amp; more. Reach peaked at <strong>237K in May 2025</strong>; clicks-to-site have climbed to <strong>924/month</strong> as the content sharpened. This is the activity driving visitors to Encore.</p></div>
+            <div class="callout neutral" style="border-left-color:#3b82f6;"><div class="callout-title">Next: lay site traffic on top</div><p>Drop Google Analytics sessions-by-month onto this same timeline and the spikes line up — turning "we post a lot" into <strong>"our posts move your traffic."</strong> <em>(Awaiting GA monthly export to complete the overlay.)</em></p></div>
+        </div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 18. PER-CHANNEL BREAKDOWN (real data) -->
+<div class="slide">
+    <div class="slide-header neutral">
+        <h1>Which Channel Does What <span class="tag neutral">Per-Channel</span></h1>
+        <h2>Each platform plays a different role in driving traffic to Encore</h2>
+    </div>
+    <div class="slide-content">
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px 18px 4px;margin:2px 0 10px;">
+            <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Total reach by channel · 14 months · 132 posts</div>
+            <svg viewBox="0 0 900 170" width="100%" style="display:block">
+            <text x="87" y="24" font-size="13" font-weight="700" fill="#1a1a2e" text-anchor="end">YouTube</text>
+            <rect x="95" y="8" width="655" height="22" rx="4" fill="#ef5a2c"/>
+            <text x="758" y="24" font-size="12" font-weight="700" fill="#ef5a2c">951,657 reach</text>
+            <text x="87" y="56" font-size="13" font-weight="700" fill="#1a1a2e" text-anchor="end">LinkedIn</text>
+            <rect x="95" y="40" width="90" height="22" rx="4" fill="#7c3aed"/>
+            <text x="193" y="56" font-size="12" font-weight="700" fill="#7c3aed">130,042 reach · 3,853 clicks</text>
+            <text x="87" y="88" font-size="13" font-weight="700" fill="#1a1a2e" text-anchor="end">Instagram</text>
+            <rect x="95" y="72" width="15" height="22" rx="4" fill="#ec4899"/>
+            <text x="118" y="88" font-size="12" font-weight="700" fill="#ec4899">21,107 reach</text>
+            <text x="87" y="120" font-size="13" font-weight="700" fill="#1a1a2e" text-anchor="end">Podcast</text>
+            <rect x="95" y="104" width="11" height="22" rx="4" fill="#10b981"/>
+            <text x="114" y="120" font-size="12" font-weight="700" fill="#10b981">16,374 reach</text>
+            <text x="87" y="152" font-size="13" font-weight="700" fill="#1a1a2e" text-anchor="end">FHC</text>
+            <rect x="95" y="136" width="3" height="22" rx="4" fill="#3b82f6"/>
+            <text x="106" y="152" font-size="12" font-weight="700" fill="#3b82f6">webinars (attendees, not reach)</text>
+            </svg>
+        </div>
+        <div class="two-col">
+            <div class="callout" style="border-left-color:#ef5a2c;margin-top:0;"><div class="callout-title">YouTube = top of the funnel</div><p><strong>952K reach</strong> builds awareness — but those views mostly aren't click-tracked, so they land in the untagged "Direct" bucket on the site.</p></div>
+            <div class="callout brand" style="margin-top:0;"><div class="callout-title">LinkedIn = the click engine</div><p><strong>3,853 clicks &amp; 6,353 engagements</strong> — the channel actually pulling visitors onto Encore's site. This is where UTM tagging pays off first.</p></div>
+        </div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 19. THE OVERLAY METHOD -->
+<div class="slide">
+    <div class="slide-header neutral">
+        <h1>Why the Overlay Matters <span class="tag neutral">See the Real Numbers</span></h1>
+        <h2>The traffic is already being driven — the two dashboards just don't talk to each other</h2>
+    </div>
+    <div class="slide-content">
+        <div class="two-col">
+            <div>
+                <div class="callout neutral" style="border-left-color:#3b82f6;"><div class="callout-title">The situation today</div><p>The social activity above is actively driving traffic. But it lives in one dashboard and Google Analytics (sessions, leads) in another — so <strong>no one sees they're the same story</strong>. Meanwhile <strong>~45% of subdomain traffic sits in an untagged "Direct" bucket</strong> — almost entirely this activity, uncredited.</p></div>
+                <div class="callout good"><div class="callout-title">The proof, once overlaid</div><p>Lay social activity (by month) over site traffic (by month) and the spikes line up. That correlation is the evidence the social plan is the driver — even before tagging makes it exact.</p></div>
+            </div>
+            <div>
+                <table>
+                    <tr><th>Layer</th><th>What it shows</th></tr>
+                    <tr><td>Social analytics</td><td>Reach, clicks, engagement by post &amp; date <span class="pos">✓ have it</span></td></tr>
+                    <tr><td>Google Analytics</td><td>Sessions, engagement, leads by date</td></tr>
+                    <tr class="highlight"><td><strong>The overlay</strong></td><td><strong>Spikes that line up = social is the driver</strong></td></tr>
+                    <tr class="good-row"><td>+ UTM tags</td><td>Turns "the lines match" into "this post → this lead"</td></tr>
+                </table>
+                <div class="callout"><div class="callout-title">The one fix that makes it exact</div><p>UTM-tag the social links. The untagged 45% then resolves into its real sources — and your social finally shows up in the data as the driver it already is.</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 21. PLAIN-ENGLISH GLOSSARY (reference, at back) -->
+<div class="slide">
+    <div class="slide-header brand">
+        <h1>Plain-English Glossary <span class="tag brand">Reference</span></h1>
+        <h2>A few search-marketing terms, in everyday language — no SEO background needed</h2>
+    </div>
+    <div class="slide-content">
+        <div class="gloss">
+            <div class="row"><div class="term">Impression</div><div class="def">Your page <em>showed up</em> in someone's Google results. They saw it — may or may not have clicked.</div></div>
+            <div class="row"><div class="term">Click-Through Rate (CTR)</div><div class="def">Of the people who <em>saw</em> you in Google, the % who actually <strong>clicked</strong>. 100 saw it, 9 clicked = 9% CTR.</div></div>
+            <div class="row"><div class="term">Ranking / Position</div><div class="def"><em>Where</em> you show up. Position 1 = top result; "page one" = first 10. Higher = far more clicks.</div></div>
+            <div class="row"><div class="term">Indexed</div><div class="def">Google <strong>found and filed</strong> your page so it can show in searches. Not indexed = invisible.</div></div>
+            <div class="row"><div class="term">Organic traffic</div><div class="def">Visitors who found you through a <strong>free</strong> Google search — not from paid ads.</div></div>
+            <div class="row"><div class="term">Conversion / Key Event</div><div class="def">A visitor took the action you want — here, <strong>submitting a funding application</strong>.</div></div>
+            <div class="row"><div class="term">Engagement rate</div><div class="def">% of visitors who actually <em>did something</em> instead of bouncing. Higher = better-quality traffic.</div></div>
+            <div class="row"><div class="term">Schema</div><div class="def">Hidden labels in your code telling Google "this is an article / a business" — earns richer listings.</div></div>
+            <div class="row"><div class="term">Sitemap</div><div class="def">A list of all your pages you hand to Google so it knows what to find and file.</div></div>
+            <div class="row"><div class="term">Search Console</div><div class="def">Google's free tool showing how you perform <em>in search</em> — searches, rankings, clicks.</div></div>
+        </div>
+    </div>
+    <div class="slide-footer"><span>Encore Funding · SEO &amp; Conversion Update</span><span>May 2026</span></div>
+</div>
+
+<!-- 22. CLOSING -->
+<div class="slide title-slide">
+    <h1>The Bottom Line</h1>
+    <h2>One fixable page. A wide-open organic channel. A proven engine.</h2>
+    <p class="subtitle">Ship the partner-page rebuild first — then let's build the page library that compounds.</p>
+    <p class="meta">partner-page-rebuild.vercel.app &nbsp;|&nbsp; GovCon Giants × Encore Funding</p>
+</div>
+
+</body>
+</html>

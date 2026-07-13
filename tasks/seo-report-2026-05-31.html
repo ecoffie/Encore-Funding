@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Encore Funding — SEO &amp; Conversion Audit</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="pdf-style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Encore Funding — SEO &amp; Conversion Audit</h1>
+<p class="subtitle">Full Technical Report · May 2026 · Prepared by
+GovCon Giants</p>
+</header>
+<h1 id="encore-funding-seo-conversion-audit">Encore Funding — SEO &amp;
+Conversion Audit</h1>
+<p><strong>Date:</strong> 2026-05-31 <strong>Properties:</strong>
+encore-funding.com (main) + gov.encore-funding.com (subdomain)
+<strong>Compared against:</strong> Original audit
+(<code>seo-audit-report.md</code>, 2026-03-17) <strong>Method:</strong>
+Live technical crawl + Google Analytics multi-window analysis (90d / 28d
+/ 7d) on both properties <strong>Data sources:</strong> curl/HTML
+parsing of public surfaces; Google Analytics home + Traffic Acquisition
++ Source/Medium + Landing pages + Generate Leads overview screenshots
+<strong>Not included:</strong> Google Search Console (no access this
+pass — see Section 9 for what GSC would add)</p>
+<h3 id="live-working-demo-of-the-recommended-partner-page-rebuild">🔗
+Live working demo of the recommended partner-page rebuild</h3>
+<h1
+id="httpspartner-page-rebuild.vercel.app"><strong>https://partner-page-rebuild.vercel.app/</strong></h1>
+<p>Resize narrower than 900px for the mobile layout. See Section 7 for
+full conversion plan and expected impact (+22% lift on gov subdomain key
+events).</p>
+<hr />
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li><strong>Live working prototype of the recommended partner-page
+rebuild:</strong>
+<strong>https://partner-page-rebuild.vercel.app/</strong> (see Section
+7)</li>
+<li><strong>Main site is healthy</strong> — users +16%, conversions +41%
+over 90 days</li>
+<li><strong>Gov subdomain is in active decline</strong> — users ▼47%,
+key events ▼47% over 30d and ▼57% over 7d</li>
+<li><strong>The conversion bleed is one specific page</strong>, not a
+broken referral link:
+<code>/govcon-giants-partner-government-contractor-funding/</code>
+brings 23% of gov sessions but converts at 3.4% vs the homepage’s 6.0% —
+<strong>43% lower</strong>. Fixing this single page is the
+highest-leverage move on the property.</li>
+<li><strong>Referral is the strongest non-paid channel</strong> for the
+gov subdomain (407 sessions / 47% engagement / 28% of all engaged
+sessions) — traffic quality is high; the conversion page is the
+constraint.</li>
+<li><strong>45.6% of gov traffic is “Direct” at 22.6%
+engagement</strong> — that’s untagged promo traffic, not brand recall.
+UTM tagging would reclassify most of it.</li>
+<li><strong>HubSpot email is the best channel by quality (65%
+engagement, 1m 07s avg time)</strong> but only 26 sessions in 90 days.
+Massive underutilization.</li>
+<li><strong>Schema markup work is done</strong> since March audit.
+Sitemap HTTPS issue, robots.txt, content staleness all still open. Two
+service URLs from the March audit now 404.</li>
+<li><strong>Proven growth engine, ready to transfer:</strong> we ran a
+programmatic-SEO build on GovCon Giants (90+ pages from keyword
+research, 72 indexed, page-one rankings, <strong>all free organic, no ad
+spend</strong> — see Section 9A) and have turned Encore’s March keyword
+research into a concrete page architecture for both staffing and GovCon
+— <strong>40–60 pages, ~15,000+ untapped monthly searches</strong>
+(Section 9B). The March report sized the market; this one shows the
+pages that capture it.</li>
+</ul>
+<hr />
+<h2 id="technical-re-crawl">1. Technical Re-Crawl</h2>
+<h3 id="what-changed-since-march-17">What changed since March 17</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Signal</th>
+<th>March 17</th>
+<th>May 31</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main sitemap protocol</td>
+<td>HTTP URLs in <code>&lt;loc&gt;</code></td>
+<td><strong>Still HTTP URLs</strong></td>
+<td>Not fixed</td>
+</tr>
+<tr>
+<td>Robots.txt</td>
+<td>Permissive, no sitemap</td>
+<td><strong>Unchanged</strong></td>
+<td>Not fixed</td>
+</tr>
+<tr>
+<td>Schema markup (homepage)</td>
+<td>None</td>
+<td><strong>Org + WebSite + Breadcrumb + WebPage</strong></td>
+<td>Fixed</td>
+</tr>
+<tr>
+<td>Schema markup (blog post)</td>
+<td>None</td>
+<td><strong>Article + Person + Breadcrumb + Org</strong></td>
+<td>Fixed</td>
+</tr>
+<tr>
+<td>Jobs sitemap (stale 2022)</td>
+<td>Present</td>
+<td><strong>Removed / 301</strong></td>
+<td>Fixed</td>
+</tr>
+<tr>
+<td>Main → gov subdomain links</td>
+<td>Weak</td>
+<td><strong>Zero from homepage</strong></td>
+<td>Worse</td>
+</tr>
+<tr>
+<td><code>/solutions/government-contract-financing/</code></td>
+<td>200 OK in audit</td>
+<td><strong>404</strong></td>
+<td>Broken</td>
+</tr>
+<tr>
+<td><code>/who-we-serve/government-contracting/</code></td>
+<td>Implied</td>
+<td><strong>404</strong></td>
+<td>Broken</td>
+</tr>
+<tr>
+<td>Post count (main)</td>
+<td>87 in audit</td>
+<td><strong>84 in sitemap</strong></td>
+<td>Slight decline</td>
+</tr>
+<tr>
+<td>Stale 2023 backdated posts</td>
+<td>28 posts</td>
+<td><strong>Still in sitemap (earliest lastmod 2023-03-21)</strong></td>
+<td>Not addressed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="headers-redirects">Headers &amp; redirects</h3>
+<p><strong>encore-funding.com</strong> -
+<code>https://encore-funding.com/</code> → 301 →
+<code>https://www.encore-funding.com/</code> (200) - Behind Sucuri
+Cloudproxy + Cloudflare -
+<code>content-security-policy: upgrade-insecure-requests</code> masks
+HTTP sitemap issue in browsers — but Google reads raw HTTP
+<code>&lt;loc&gt;</code> values - HTTP/2, HTTP/3 (alt-svc h3)</p>
+<p><strong>gov.encore-funding.com</strong> -
+<code>https://gov.encore-funding.com/</code> → 200 direct (no www
+variant) - Cloudflare only - Last-modified: active (May 2026)</p>
+<h3 id="robots.txt-unchanged">Robots.txt — UNCHANGED</h3>
+<p>Both domains still return:</p>
+<pre><code>User-Agent: *
+Disallow:</code></pre>
+<ul>
+<li>No <code>Sitemap:</code> line (audit recommendation #1 — still open
+after 10 weeks)</li>
+<li>No disallow for <code>/wp-admin/</code>, <code>/wp-includes/</code>,
+<code>/?s=</code> search results</li>
+</ul>
+<h3 id="sitemaps">Sitemaps</h3>
+<p><strong>Main site</strong> — sitemap index still lists
+<code>http://</code> URLs (Yoast setting never toggled):</p>
+<table>
+<thead>
+<tr>
+<th>Sub-sitemap</th>
+<th>Protocol</th>
+<th>lastmod</th>
+<th>URLs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>post-sitemap.xml</td>
+<td><strong>http://</strong></td>
+<td>2026-05-13</td>
+<td>84</td>
+</tr>
+<tr>
+<td>page-sitemap.xml</td>
+<td><strong>http://</strong></td>
+<td>2026-05-20</td>
+<td>53</td>
+</tr>
+<tr>
+<td>authors-sitemap.xml</td>
+<td><strong>http://</strong></td>
+<td>2026-05-13</td>
+<td>10</td>
+</tr>
+<tr>
+<td>category-sitemap.xml</td>
+<td><strong>http://</strong></td>
+<td>2026-05-13</td>
+<td>6</td>
+</tr>
+<tr>
+<td>post_tag-sitemap.xml</td>
+<td><strong>http://</strong></td>
+<td>2026-05-13</td>
+<td>—</td>
+</tr>
+<tr>
+<td>author-sitemap.xml</td>
+<td><strong>http://</strong></td>
+<td>2026-04-28</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Duplicate <code>authors-sitemap.xml</code> AND
+<code>author-sitemap.xml</code> still present (audit flagged this).</p>
+<p><strong>Gov subdomain</strong> — all HTTPS (cleaner):</p>
+<table>
+<thead>
+<tr>
+<th>Sub-sitemap</th>
+<th>lastmod</th>
+<th>URLs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>post-sitemap.xml</td>
+<td><strong>2025-08-26</strong></td>
+<td>18 (unchanged)</td>
+</tr>
+<tr>
+<td>page-sitemap.xml</td>
+<td>2026-05-20</td>
+<td>10</td>
+</tr>
+<tr>
+<td>category-sitemap.xml</td>
+<td>2025-08-26</td>
+<td>—</td>
+</tr>
+<tr>
+<td>post_tag-sitemap.xml</td>
+<td><strong>2024-11-21</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No new posts on gov subdomain since August 2025</strong> — 9
+months of content silence. Same author-sitemap duplication.</p>
+<h3 id="schema-markup-new-since-audit">Schema markup — NEW SINCE
+AUDIT</h3>
+<p>Major gap closed. Yoast deployed structured data across the main
+domain.</p>
+<p><strong>Main homepage <code>@graph</code>:</strong> - WebPage,
+ImageObject, BreadcrumbList, WebSite, <strong>Organization</strong> ←
+new</p>
+<p><strong>Gov homepage <code>@graph</code>:</strong> - WebPage,
+ImageObject, BreadcrumbList, WebSite (<strong>no
+Organization</strong>)</p>
+<p><strong>Blog post <code>@graph</code>:</strong> -
+<strong>Article</strong>, WebPage, ImageObject, BreadcrumbList, WebSite,
+Organization, <strong>Person</strong> ← new</p>
+<p><strong>Still missing:</strong> LocalBusiness (Pepper Pike OH
+office), FAQ, Service schema on solution pages, Review/AggregateRating
+for testimonials, and Organization on gov subdomain.</p>
+<h3 id="on-page">On-page</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Page</th>
+<th>Title</th>
+<th>Meta</th>
+<th>H1</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main <code>/</code></td>
+<td>“Payroll &amp; Invoice Factoring | Staffing Agency Funding | Encore
+Funding” (unchanged from March, still 3 pipes)</td>
+<td>Present</td>
+<td>Not in raw HTML (Beaver Builder dynamic)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Main <code>/apply-now/</code></td>
+<td>“Apply Now For Fast Staffing Factoring | Encore Funding”</td>
+<td>Generic</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Main <code>/government-contract-financing/</code></td>
+<td>200 OK (this is the new location)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Main <code>/solutions/government-contract-financing/</code></td>
+<td><strong>404</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Main <code>/who-we-serve/government-contracting/</code></td>
+<td><strong>404</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Gov <code>/</code></td>
+<td>“Government Contractor Financing | Encore Funding”</td>
+<td>Present</td>
+<td>—</td>
+<td>Yes (no Org)</td>
+</tr>
+<tr>
+<td>Gov
+<code>/govcon-giants-partner-government-contractor-funding/</code></td>
+<td>200 OK</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cross-property-linking-still-broken">Cross-property linking —
+STILL BROKEN</h3>
+<p>Main homepage HTML contains <strong>zero</strong> links to
+gov.encore-funding.com or any URL with “government” in it. Main grew 16%
+in users; passes none of it to gov. Authority flow is
+one-directional.</p>
+<hr />
+<h2 id="google-analytics-performance-snapshot">2. Google Analytics
+Performance Snapshot</h2>
+<h3 id="main-site-vs-gov-subdomain-last-90-days-mar-8-may-24-2026">Main
+site vs Gov subdomain — Last 90 days (Mar 8 – May 24, 2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Main</th>
+<th>Gov</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active users</td>
+<td><strong>4.3K</strong> ▲ 15.8%</td>
+<td><strong>1.4K</strong> ▼ 47.2%</td>
+</tr>
+<tr>
+<td>Event count</td>
+<td>31K ▲ 5.4%</td>
+<td>7.9K ▼ 42.1%</td>
+</tr>
+<tr>
+<td>Key events</td>
+<td><strong>371 ▲ 41.1%</strong></td>
+<td><strong>72 ▲ 2.9%</strong></td>
+</tr>
+<tr>
+<td>New users</td>
+<td>4.2K ▲ 16.5%</td>
+<td>1.4K ▼ 49.1%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="last-28-days-may-3-may-30-2026">Last 28 days (May 3 – May 30,
+2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Main</th>
+<th>Gov</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active users</td>
+<td>1.3K</td>
+<td>467</td>
+</tr>
+<tr>
+<td>New users</td>
+<td>1.2K</td>
+<td>452</td>
+</tr>
+<tr>
+<td>Avg engagement time / user</td>
+<td><strong>45s</strong></td>
+<td><strong>37s</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="gov-subdomain-recent-decay">Gov subdomain — recent decay</h3>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Active users</th>
+<th>Event count</th>
+<th><strong>Key events</strong></th>
+<th>New users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90d</td>
+<td>1.4K ▼ 47.2%</td>
+<td>7.9K ▼ 42.1%</td>
+<td><strong>72 ▲ 2.9%</strong></td>
+<td>1.4K ▼ 49.1%</td>
+</tr>
+<tr>
+<td>30d</td>
+<td>493 ▲ 13.3%</td>
+<td>2.9K ▲ 27.2%</td>
+<td><strong>16 ▼ 46.7%</strong></td>
+<td>478 ▲ 13.5%</td>
+</tr>
+<tr>
+<td>7d</td>
+<td>101 ▼ 12.9%</td>
+<td>519 ▼ 37.2%</td>
+<td><strong>3 ▼ 57.1%</strong></td>
+<td>97 ▼ 9.3%</td>
+</tr>
+</tbody>
+</table>
+<p>Volume came back in May (30d users +13%) but <strong>conversions fell
+off a cliff in the same window</strong> — 90d key events were +3%, then
+30d ▼47%, then 7d ▼57%. This is the smoking gun.</p>
+<p>7-day chart below the peer median/range band for Business
+Finance.</p>
+<hr />
+<h2 id="traffic-acquisition">3. Traffic Acquisition</h2>
+<h3 id="main-site-last-28d-may-330">Main site — Last 28d (May 3–30)</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Sessions</th>
+<th>%</th>
+<th>Engaged</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paid Search</td>
+<td><strong>601</strong></td>
+<td>22.0%</td>
+<td>360 (37.7%)</td>
+<td>Largest channel</td>
+</tr>
+<tr>
+<td>Direct</td>
+<td>472</td>
+<td>25.2%</td>
+<td>200</td>
+<td>Brand recall</td>
+</tr>
+<tr>
+<td>Organic Search</td>
+<td>317</td>
+<td>16.9%</td>
+<td>201 (21%)</td>
+<td>Down from 28% share in March</td>
+</tr>
+<tr>
+<td>Display</td>
+<td><strong>239</strong></td>
+<td>12.7%</td>
+<td>47 (<strong>4.9%</strong>)</td>
+<td>High volume, near-zero engagement — burning budget?</td>
+</tr>
+<tr>
+<td>Referral</td>
+<td>101</td>
+<td>5.4%</td>
+<td>66</td>
+<td></td>
+</tr>
+<tr>
+<td>Organic Social</td>
+<td>54</td>
+<td>2.9%</td>
+<td>35</td>
+<td></td>
+</tr>
+<tr>
+<td>Email</td>
+<td>31</td>
+<td>1.7%</td>
+<td>21</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1,876</strong></td>
+<td></td>
+<td>955</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Paid + Display ≈ 35% of sessions. Still paying for traffic SEO should
+be earning. Display anomaly worth investigating — 239 sessions at 4.9%
+engagement is retargeting or low-quality network burn.</p>
+<h3 id="gov-subdomain-channel-view-90d-vs-28d">Gov subdomain — Channel
+view (90d vs 28d)</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Channel</th>
+<th>90d sess</th>
+<th>90d eng rate</th>
+<th>28d sess</th>
+<th>28d eng rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct</td>
+<td>813 (45.6%)</td>
+<td><strong>22.6%</strong></td>
+<td>283 (48.1%)</td>
+<td><strong>20.1%</strong></td>
+</tr>
+<tr>
+<td><strong>Referral</strong></td>
+<td><strong>448</strong> (25.1%)</td>
+<td><strong>47.3%</strong></td>
+<td><strong>125</strong> (21.2%)</td>
+<td><strong>27.5%</strong> ⚠️</td>
+</tr>
+<tr>
+<td>Paid Search</td>
+<td>231 (12.9%)</td>
+<td>63.6%</td>
+<td>76 (12.9%)</td>
+<td>65.8%</td>
+</tr>
+<tr>
+<td>Organic Search</td>
+<td>199 (11.2%)</td>
+<td>55.3%</td>
+<td>73 (12.4%)</td>
+<td>54.8%</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>26 (1.5%)</td>
+<td>65.4%</td>
+<td>26 (4.4%)</td>
+<td>65.4%</td>
+</tr>
+<tr>
+<td>Organic Social</td>
+<td>4 (0.2%)</td>
+<td>—</td>
+<td>3 (0.5%)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1,784</strong></td>
+<td>38.7%</td>
+<td><strong>589</strong></td>
+<td>38.9%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Referral engagement rate fell 47.3% → 27.5% in the last 28
+days</strong> while volume stayed roughly flat. High-quality referrals
+partially replaced by junk.</p>
+<h3 id="gov-subdomain-sourcemedium-last-90d">Gov subdomain —
+Source/Medium (Last 90d)</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source / Medium</th>
+<th>Sessions</th>
+<th>%</th>
+<th>Engaged</th>
+<th>Eng. rate</th>
+<th>Avg time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(direct) / (none)</td>
+<td>813</td>
+<td>45.6%</td>
+<td>184</td>
+<td>22.6%</td>
+<td>21s</td>
+</tr>
+<tr>
+<td><strong>Eric Coffie / Referral</strong></td>
+<td><strong>407</strong></td>
+<td><strong>22.8%</strong></td>
+<td><strong>191</strong></td>
+<td><strong>46.9%</strong></td>
+<td><strong>29s</strong></td>
+</tr>
+<tr>
+<td>google / cpc</td>
+<td>231</td>
+<td>13.0%</td>
+<td>147</td>
+<td>63.6%</td>
+<td>37s</td>
+</tr>
+<tr>
+<td>google / organic</td>
+<td>152</td>
+<td>8.5%</td>
+<td>85</td>
+<td>12.3%</td>
+<td>37s</td>
+</tr>
+<tr>
+<td>(not set)</td>
+<td>59</td>
+<td>3.3%</td>
+<td>14</td>
+<td>23.7%</td>
+<td>21s</td>
+</tr>
+<tr>
+<td>bing / organic</td>
+<td>37</td>
+<td>2.1%</td>
+<td>22</td>
+<td>2.2%</td>
+<td>40s</td>
+</tr>
+<tr>
+<td><strong>hs_email / email</strong></td>
+<td><strong>26</strong></td>
+<td>1.5%</td>
+<td>17</td>
+<td><strong>65.4%</strong></td>
+<td><strong>1m 07s</strong></td>
+</tr>
+<tr>
+<td>statics.teams.cdn.office.net / referral</td>
+<td>10</td>
+<td>0.6%</td>
+<td>3</td>
+<td>0.4%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>yahoo / organic</td>
+<td>9</td>
+<td>0.5%</td>
+<td>2</td>
+<td>0.3%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Referral is the gov subdomain’s strongest non-paid
+channel.</strong> 407 sessions / 191 engaged sessions = 28% of all
+engaged sessions on the property, at a high 47% engagement rate.</p>
+<p><strong>Other signals:</strong> - <code>(direct) / (none)</code> at
+45.6% / 22.6% engagement is untagged email/social/referral
+misattributed. UTM tagging would reclassify most of it into its real
+sources. - <code>hs_email</code>: <strong>best channel by
+quality</strong> (65.4% engagement, 1m 07s avg) — only 26 sessions in 90
+days. Massive underuse. - <code>google/cpc</code>: cleanest paid channel
+at 63.6% engagement. - <code>bing/organic</code> at 2.2% engagement:
+almost certainly bots. Investigate. - <code>google/organic</code>: 152
+sessions / 90d at 12.3% engagement. SEO is not yet a real driver for
+gov.</p>
+<hr />
+<h2 id="landing-pages-gov-subdomain-last-90d">4. Landing Pages — Gov
+subdomain (Last 90d)</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Landing page</th>
+<th>Sessions</th>
+<th>%</th>
+<th>Avg eng. time</th>
+<th>Key events</th>
+<th>Conv. rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>/</code> (homepage)</td>
+<td>762</td>
+<td>42.7%</td>
+<td>39s</td>
+<td>46</td>
+<td><strong>6.0%</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong><code>/govcon-giants-partner-government-contractor-funding</code></strong></td>
+<td><strong>406</strong></td>
+<td><strong>22.8%</strong></td>
+<td>28s</td>
+<td>14</td>
+<td><strong>3.4%</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>(not set)</td>
+<td>111</td>
+<td>6.2%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/meet-the-team</code></td>
+<td>59</td>
+<td>3.3%</td>
+<td>40s</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>/resources/our-team/chad-eberly</code></td>
+<td>49</td>
+<td>2.8%</td>
+<td>47s</td>
+<td>2</td>
+<td>4.1%</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>/solutions</code></td>
+<td>35</td>
+<td>2.0%</td>
+<td>47s</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<p>(96 total landing pages)</p>
+<p><strong>The conversion leak is the partner page itself, not a broken
+referral.</strong></p>
+<ul>
+<li>Eric Coffie’s partner page brings <strong>23% of all gov
+sessions</strong> (406 of 1,784) — referral path is healthy</li>
+<li>But converts at <strong>3.4%</strong> vs homepage at
+<strong>6.0%</strong> — a <strong>43% lower conversion
+rate</strong></li>
+<li>406 sessions × (6.0% − 3.4%) = <strong>~11 missing key events per 90
+days</strong> the partner page should be producing if it converted like
+the homepage</li>
+<li>That’s nearly <strong>80% of the page’s actual key event output
+being left on the table</strong></li>
+</ul>
+<p><strong>This is the highest-leverage fix on the entire
+engagement.</strong></p>
+<p><strong>Other findings:</strong> -
+<code>/solutions/government-contract-financing/</code> and
+<code>/who-we-serve/government-contracting/</code> (the 404 URLs) do NOT
+appear in top landing pages — either nobody clicks legacy links anymore
+or those got updated externally. 301s are still a safety play. -
+<code>/meet-the-team</code> and <code>/solutions</code> produce zero key
+events from 94 combined sessions — entire sections with no conversion
+path - <code>(not set)</code> at 6.2% (~111 sessions) = Google Analytics
+tracking gap. Worth investigating gtag config.</p>
+<hr />
+<h2 id="lead-funnel-gov-subdomain-90d-from-generate-leads-overview">5.
+Lead Funnel — Gov subdomain (90d, from Generate Leads overview)</h2>
+<table>
+<thead>
+<tr>
+<th>Funnel stage</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New users</td>
+<td>1.4K</td>
+</tr>
+<tr>
+<td>Returning users</td>
+<td>139</td>
+</tr>
+<tr>
+<td><strong>Qualified leads</strong></td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td><strong>Converted leads</strong></td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The “Generate leads” business objective is configured but qualified
+leads and converted leads return <strong>zero over 90 days</strong>. The
+72 / 16 / 3 “key events” we saw are firing on upstream actions (form
+views, button clicks, scroll) — not actual form submits or apply-now
+completions.</p>
+<p><strong>Without lead-event wiring, attribution back to which referral
+source or landing page produces actual revenue is impossible.</strong>
+Eric’s traffic may be converting offline but Google Analytics can’t see
+it.</p>
+<p>Returning users / new users = 9% — most gov subdomain traffic is
+one-and-done.</p>
+<hr />
+<h2 id="the-conversion-diagnosis-synthesis">6. The Conversion Diagnosis
+(Synthesis)</h2>
+<p>The 30-day conversion crash on the gov subdomain is the result of
+<strong>three compounding factors</strong>, in order of impact:</p>
+<h3
+id="factor-1-erics-partner-page-leaks-43-of-its-conversion-potential">Factor
+1: Eric’s partner page leaks 43% of its conversion potential</h3>
+<p>The single biggest issue. 406 sessions × 2.6 percentage points of
+missed conversion = the property’s largest performance gap.</p>
+<p><strong>Likely cause:</strong> The page is optimized for
+<em>trust-building</em> and <em>credibility</em> (Eric Coffie
+partnership story) but not for <em>direct response</em>. Visitors read
+the story, get the credibility hit, leave. Homepage is the opposite:
+clear apply CTA above fold → 6.0% conversion.</p>
+<h3 id="factor-2-channel-concentration">Factor 2: Channel
+concentration</h3>
+<p>Eric Coffie referrals = 28% of engaged sessions. When Eric’s volume
+dipped slightly (or his page traffic mix shifted toward lower-intent
+visitors), the property’s overall conversion rate dropped because his
+page converts at half the rate of the homepage.</p>
+<h3 id="factor-3-45.6-untagged-direct-traffic">Factor 3: 45.6% untagged
+“Direct” traffic</h3>
+<p>Untagged Eric/email/social falls into Direct. This means: - Once
+UTM-tagged, referral’s true share likely resolves to ~35–40% of traffic
+- Email channel performance looks 4x worse than reality (since email
+blasts without UTMs become Direct) - Can’t optimize what can’t be
+measured</p>
+<p><strong>What’s NOT the cause:</strong> - The 404 URLs (not in top
+landing pages) - A specific referrer disappearing (Eric Coffie source is
+intact) - SEO collapse (organic was never large enough to crash the
+property)</p>
+<hr />
+<h2 id="recommended-fixes-partner-page-conversion-plan">7. Recommended
+Fixes — Partner Page Conversion Plan</h2>
+<h3 id="live-working-prototype-httpspartner-page-rebuild.vercel.app">🔗
+Live working prototype:
+<strong>https://partner-page-rebuild.vercel.app/</strong></h3>
+<p>Click through to see the rebuild in action. Resize the window
+narrower than 900px to see the mobile layout including the sticky bottom
+CTA. All CTAs are wired to scroll to the embedded form. Full source +
+build spec in <code>partner-page-rebuild/</code>.</p>
+<p><strong>Full rebuild spec lives in
+<code>partner-page-rebuild/</code></strong> — wireframe, copy,
+implementation guide, and HTML preview. Summary below.</p>
+<p>The single most valuable change to make this week. Target: lift
+<code>/govcon-giants-partner-government-contractor-funding/</code> from
+3.4% to 6.0% conversion = +11 key events / 90d = ~18% lift on total
+property conversions.</p>
+<p><strong>What the current page is missing (confirmed by HTML audit on
+2026-05-31):</strong> - Zero forms on the page (every conversion
+requires a click off) - Only one body CTA, and it points to
+<code>/contact-us/</code> (not <code>/apply-now/</code>) - H1 is “GovCon
+Giants Fan? Meet Encore Funding.” — filters out non-fans, doesn’t sell
+anything - 3 blog article promos in the middle send visitors
+<strong>away</strong> from the conversion path - No above-fold CTA in
+the page body (Apply Now exists only in the header nav)</p>
+<h3 id="above-the-fold-first-600px">Above-the-fold (first 600px)</h3>
+<p><strong>Current likely state:</strong> Header → “Eric Coffie + Encore
+Funding” hero → long credibility story <strong>Change to:</strong> -
+<strong>Headline:</strong> Conversion-focused, not partnership-focused -
+<em>Bad:</em> “Eric Coffie Partners With Encore Funding” -
+<em>Good:</em> “Government Contractor Financing — Endorsed by Eric
+Coffie” - <strong>Subhead:</strong> What it does + who it’s for in one
+line - <em>“Fast working capital for government contractors. Same-day
+approval, no equity, no personal guarantees.”</em> - <strong>Primary CTA
+button:</strong> Above the fold, contrasting color, action verb -
+<em>“Apply Now — Get Funded in 48 Hours”</em> (not “Learn More”) -
+<strong>Trust strip:</strong> Below CTA: “$25B+ funded · Founded by
+Advance Partners team · Eric Coffie–vetted” - <strong>Eric
+quote/photo:</strong> Right-side or below — supports the headline,
+doesn’t lead it</p>
+<h3 id="mid-page-the-credibility-block">Mid-page (the credibility
+block)</h3>
+<p>Keep the partnership story — it’s why people are there — but
+<strong>break it up with mid-content CTAs</strong>: - After Eric’s quote
+→ “Ready to apply? Start here” button - After case study → “See if you
+qualify” button (links to assessment tool) - After “About Encore” →
+repeat primary CTA</p>
+<p>The current page likely has one CTA at the bottom. Visitors land,
+read, leave before reaching it.</p>
+<h3 id="form-placement">Form placement</h3>
+<ul>
+<li><strong>Embed the apply-now form directly on the page</strong> —
+don’t make people click through to <code>/apply-now/</code>. Every click
+loses 20–30% of intent.</li>
+<li>Short form: name, email, phone, monthly invoice volume. Long-form
+fields can come on the next step.</li>
+<li>Right rail sticky form on desktop, sticky bottom bar on mobile</li>
+</ul>
+<h3 id="exit-intent-capture">Exit-intent capture</h3>
+<ul>
+<li>Modal on exit: “Before you go — get our Government Contractor
+Funding Guide” with email capture</li>
+<li>Routes captured leads into HubSpot for the email nurture sequence
+(which has the 65% engagement rate already)</li>
+</ul>
+<h3 id="trust-signals">Trust signals</h3>
+<ul>
+<li>Add LocalBusiness schema (Pepper Pike OH address)</li>
+<li>Add Review/AggregateRating schema for any existing testimonials</li>
+<li>BBB badge, Inc. 5000 mentions if applicable</li>
+<li>“As featured by Eric Coffie” video embed (high-engagement)</li>
+</ul>
+<h3 id="page-speed-ux">Page speed / UX</h3>
+<ul>
+<li>Confirm mobile experience — most Eric Coffie referrals likely come
+from YouTube/podcast on mobile</li>
+<li>Check that form fields work cleanly on mobile keyboards (autofocus,
+autocomplete attributes)</li>
+</ul>
+<hr />
+<h2 id="recommended-fixes-full-prioritized-list">8. Recommended Fixes —
+Full Prioritized List</h2>
+<h3 id="urgent-do-this-week">URGENT — do this week</h3>
+<ol type="1">
+<li><strong>Fix partner page conversion</strong> (see Section 7) —
+highest leverage on the property. 3.4% → 6.0% conversion = ~18% total
+property lift.</li>
+<li><strong>Audit every Eric Coffie referral link</strong> — YouTube
+descriptions, Federal Help Center, podcast show notes, LinkedIn, email
+signatures. Verify destinations are live.</li>
+<li><strong>Wire qualified/converted lead events to Google
+Analytics</strong> — the funnel currently reads 0 qualified / 0
+converted leads over 90 days. Until form submits fire as key events, no
+real attribution is possible.</li>
+<li><strong>Send HubSpot email blast this week</strong> — 65.4%
+engagement, 1m 07s avg time, currently 26 sessions in 90d. Cheapest
+highest-quality lever available. Topic: drive traffic to the (newly
+fixed) partner page or directly to homepage.</li>
+<li><strong>UTM tagging spec (deploy today, retrofit going
+forward):</strong>
+<ul>
+<li>YouTube descriptions:
+<code>?utm_source=youtube&amp;utm_medium=video&amp;utm_campaign=[video-slug]</code></li>
+<li>Podcast show notes:
+<code>?utm_source=podcast&amp;utm_medium=show-notes&amp;utm_campaign=[episode]</code></li>
+<li>LinkedIn posts:
+<code>?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=[topic]</code></li>
+<li>Email blasts:
+<code>?utm_source=encore&amp;utm_medium=email&amp;utm_campaign=[date-topic]</code></li>
+<li>Federal Help Center:
+<code>?utm_source=fhc&amp;utm_medium=referral&amp;utm_campaign=[placement]</code></li>
+<li>Sales decks/PDFs:
+<code>?utm_source=sales&amp;utm_medium=deck&amp;utm_campaign=[deck-name]</code></li>
+</ul></li>
+</ol>
+<h3 id="high-do-this-month">HIGH — do this month</h3>
+<ol start="6" type="1">
+<li><strong>Add 301 redirects</strong> from
+<code>/solutions/government-contract-financing/</code> and
+<code>/who-we-serve/government-contracting/</code> →
+<code>/government-contract-financing/</code></li>
+<li><strong>Add main → gov subdomain links</strong> on main homepage,
+footer, and “industries we serve” section</li>
+<li><strong>Restart gov subdomain content production</strong> — 9 months
+silent since Aug 2025. Target: 2 posts/month minimum.</li>
+<li><strong>Diversify gov subdomain referrals</strong> — second source
+besides Eric Coffie. Guest posts on adjacent GovCon publications,
+NAICS-relevant industry sites, GovCon Giants subscriber outreach.</li>
+<li><strong>Add lead-stage events on gov subdomain forms:</strong>
+<ul>
+<li><code>form_view</code> → <code>form_start</code> →
+<code>form_submit</code> → <code>apply_complete</code></li>
+<li>Mark <code>form_submit</code> as qualified lead,
+<code>apply_complete</code> as converted lead</li>
+</ul></li>
+</ol>
+<h3 id="medium-open-since-march-audit">MEDIUM — open since March
+audit</h3>
+<ol start="11" type="1">
+<li><strong>Flip Yoast sitemap to HTTPS</strong> — 2-minute fix in Yoast
+settings. Still not done.</li>
+<li><strong>Add <code>Sitemap:</code> line to robots.txt</strong> for
+both domains</li>
+<li><strong>Tighten robots.txt</strong> — disallow
+<code>/wp-admin/</code>, <code>/?s=</code>,
+<code>/wp-includes/</code></li>
+<li><strong>Consolidate duplicate author sitemaps</strong>
+(<code>authors-sitemap.xml</code> vs <code>author-sitemap.xml</code>) on
+both domains</li>
+<li><strong>Add LocalBusiness schema</strong> with Pepper Pike OH NAP
+data</li>
+<li><strong>Address 2023-backdated post <code>&lt;lastmod&gt;</code>
+values</strong> (28 posts flagged in March audit)</li>
+<li><strong>Add Organization schema to gov subdomain</strong> (main has
+it, gov doesn’t)</li>
+<li><strong>Refresh stale OG image</strong> on main homepage (uses 2022
+asset)</li>
+</ol>
+<h3 id="low-polish">LOW — polish</h3>
+<ol start="19" type="1">
+<li><strong>Investigate Display anomaly on main site</strong> — 239
+sessions at 4.9% engagement. Likely retargeting burn.</li>
+<li><strong>Investigate bing/organic on gov</strong> — 2.2% engagement =
+likely bots. Verify in GSC and block if confirmed.</li>
+<li><strong>Investigate <code>(not set)</code> landing pages</strong> —
+6.2% of gov sessions have no captured landing page. gtag/Google
+Analytics config issue.</li>
+</ol>
+<hr />
+<h2 id="google-search-console-data-needed">9. Google Search Console —
+Data Needed</h2>
+<p>Google Analytics tells us what happens <strong>after</strong> users
+land on the site. GSC tells us what happens <strong>before</strong> — in
+the Google search results themselves. The current report is blind on the
+second half.</p>
+<h3 id="how-gsc-differs-from-google-analytics">How GSC differs from
+Google Analytics</h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Google Analytics</th>
+<th>GSC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How many people visit</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>What they did once they arrived</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Which channel they came from</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Which Google searches showed our page</strong></td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>CTR by query and by page</strong></td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>What position we rank at for each query</strong></td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Whether Google is indexing our pages</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Whether Google accepted our sitemap</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Manual actions / penalties / security issues</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Core Web Vitals from real users</td>
+<td>Partial</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Mobile usability errors</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Schema validation (rich results)</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>One-line summary: <strong>Google Analytics = what happens after the
+click. GSC = what happens before the click.</strong></p>
+<h3 id="why-this-matters-for-the-current-findings">Why this matters for
+the current findings</h3>
+<p>Several conclusions in this report would sharpen significantly with
+GSC data:</p>
+<ol type="1">
+<li><strong>Why organic search is so small on gov subdomain</strong>
+(152 sessions / 90d at 12.3% engagement). GSC would tell us if the cause
+is:
+<ul>
+<li>Not indexed for the right queries → coverage problem</li>
+<li>Indexed but ranking poorly → ranking problem</li>
+<li>Ranking well but bad title/meta causing low CTR → snippet
+problem</li>
+<li>Currently we can only guess</li>
+</ul></li>
+<li><strong>Real keyword rankings</strong> — the March audit’s keyword
+list is aspirational. GSC shows the queries the sites <em>actually</em>
+rank for, at what position, with what CTR. This is the foundation for
+any real SEO strategy.</li>
+<li><strong>The 404 URLs</strong>
+(<code>/solutions/government-contract-financing/</code>) — GSC’s
+coverage report shows how many impressions Google still shows for those
+dead URLs, which sizes the 301 redirect priority. If Google still serves
+50 impressions/month for them, those clicks are landing on a 404
+page.</li>
+<li><strong>HTTP/HTTPS sitemap rejection</strong> — GSC explicitly flags
+whether Google accepted the main site’s sitemap with HTTP
+<code>&lt;loc&gt;</code> values or excluded URLs. Currently I’m
+inferring impact.</li>
+<li><strong>Schema validation</strong> — confirmed structurally present
+(Article, Person, Org, Breadcrumb) but GSC’s Rich Results report tells
+us if Google is <strong>accepting</strong> the markup and serving rich
+snippets in SERPs.</li>
+<li><strong>Core Web Vitals (real users)</strong> — PageSpeed anonymous
+quota was exhausted; GSC has CrUX field data permanently available,
+segmented mobile vs desktop.</li>
+<li><strong>Indexed page count</strong> — are all 84 main posts + 18 gov
+posts actually indexed? GSC answers in one screen.</li>
+</ol>
+<h3 id="specific-gsc-reports-to-pull">Specific GSC reports to pull</h3>
+<p><strong>For both properties (main + gov subdomain):</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Report</th>
+<th>Why</th>
+<th>Output to capture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance → Queries (last 3 months)</td>
+<td>Real keyword rankings + impressions + CTR</td>
+<td>Top 30 queries by clicks, top 30 by impressions, average
+position</td>
+</tr>
+<tr>
+<td>Performance → Pages (last 3 months)</td>
+<td>Which URLs Google sends traffic to</td>
+<td>Top 20 pages by clicks</td>
+</tr>
+<tr>
+<td>Performance → Devices</td>
+<td>Mobile vs desktop split</td>
+<td>Click split</td>
+</tr>
+<tr>
+<td>Performance → Countries</td>
+<td>Geographic distribution</td>
+<td>Top 10 countries</td>
+</tr>
+<tr>
+<td>Pages (Indexing) → Why pages aren’t indexed</td>
+<td>Coverage problems</td>
+<td>“Not indexed” reasons + counts</td>
+</tr>
+<tr>
+<td>Pages (Indexing) → Indexed pages</td>
+<td>Confirms full sitemap is in index</td>
+<td>Total indexed count vs sitemap count</td>
+</tr>
+<tr>
+<td>Sitemaps</td>
+<td>Did Google accept the sitemap</td>
+<td>Status + last read + URLs submitted vs indexed</td>
+</tr>
+<tr>
+<td>Page experience → Core Web Vitals</td>
+<td>LCP, CLS, INP from real users</td>
+<td>Mobile + desktop URL counts in Good/Needs Improvement/Poor</td>
+</tr>
+<tr>
+<td>Page experience → Mobile usability</td>
+<td>Mobile errors</td>
+<td>Error count and affected pages</td>
+</tr>
+<tr>
+<td>Enhancements → Each schema type</td>
+<td>Rich result validation</td>
+<td>Valid / Warning / Error counts</td>
+</tr>
+<tr>
+<td>Links → External</td>
+<td>Backlink count + top linking sites + top linked pages</td>
+<td>Top 20 referring sites</td>
+</tr>
+<tr>
+<td>Links → Internal</td>
+<td>Internal link distribution</td>
+<td>Top linked internal pages</td>
+</tr>
+<tr>
+<td>Manual actions</td>
+<td>Penalty check</td>
+<td>Should be empty</td>
+</tr>
+<tr>
+<td>Security issues</td>
+<td>Hacked/malware check</td>
+<td>Should be empty</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cross-references-against-this-report">Cross-references against
+this report</h3>
+<p>Once GSC data is available, these specific cells in the current
+report can be filled or corrected:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Currently in report</th>
+<th>GSC will resolve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Organic Search: 199 sessions / 90d at 12.3% engagement”</td>
+<td>Which queries drove those 199 — and whether the engagement issue is
+wrong queries or weak landing pages</td>
+</tr>
+<tr>
+<td>“Main → gov subdomain: zero links from homepage”</td>
+<td>Whether Google sees the gov subdomain as related to main (via
+internal/external links graph)</td>
+</tr>
+<tr>
+<td>“404 URLs: not in top landing pages”</td>
+<td>Whether Google still shows them in SERPs and how many
+impressions/month</td>
+</tr>
+<tr>
+<td>“google/organic at 152 sessions” on gov</td>
+<td>Which queries — likely brand (“encore funding”) vs non-brand
+(“government contractor financing”)</td>
+</tr>
+<tr>
+<td>“Schema deployed (Article, Person, Org)”</td>
+<td>Whether Google validated it and how many rich result eligible URLs
+exist</td>
+</tr>
+<tr>
+<td>“84 posts in main sitemap”</td>
+<td>How many are actually indexed</td>
+</tr>
+<tr>
+<td>“No new gov posts since Aug 2025”</td>
+<td>Whether those 18 posts still rank — and for what</td>
+</tr>
+<tr>
+<td>“google/cpc converts at 63.6% engagement”</td>
+<td>Paid CTR/position vs organic — should the gov subdomain bid less and
+rank more?</td>
+</tr>
+<tr>
+<td>“bing/organic at 2.2% engagement = likely bots”</td>
+<td>Confirm by checking if those queries exist in Bing Webmaster Tools
+(GSC’s bing equivalent)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="access-path">Access path</h3>
+<p>If GSC isn’t accessible: - <strong>Easiest:</strong> Eric or the
+Encore web admin grants access at search.google.com/search-console —
+both <code>encore-funding.com</code> and
+<code>gov.encore-funding.com</code> properties (separate properties;
+subdomain needs its own verification) - <strong>Google Analytics
+integration:</strong> the Google Analytics left nav already shows a
+“Search Console” section in the screenshots, so the properties may
+already be linked — you can pull most query data inside Google Analytics
+once linked - <strong>Minimum useful screenshots:</strong> Performance →
+Queries (last 3 months, both properties) + Indexing → Pages (both) +
+Page experience → Core Web Vitals (both)</p>
+<hr />
+<h2 id="a.-proof-of-method-the-govcon-giants-programmatic-seo-build">9A.
+Proof of Method — The GovCon Giants Programmatic-SEO Build</h2>
+<p>The recommendations in this report (especially Section 8’s “restart
+content” and the page-architecture in 9B below) are not theoretical. We
+ran the identical playbook on <strong>GovCon Giants
+(govcongiants.org)</strong> over Mar–May 2026, with <strong>zero ad
+spend</strong>, and have the GSC data to prove the outcome. This is the
+engine we’d bring to Encore.</p>
+<h3 id="method-research-first-pages-second">Method: research first,
+pages second</h3>
+<p>Every page was justified by a search-volume + difficulty pull for the
+government-contracting niche before it was built. The result is a set of
+programmatic clusters, each rendered from a template with per-page
+schema (Article + FAQPage on guides, DefinedTermSet on glossary, Service
+on service pages, VideoObject on video pages):</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Cluster</th>
+<th>Route pattern</th>
+<th>Targets</th>
+<th>Pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Guides</td>
+<td><code>/guides/[slug]</code></td>
+<td>“cage code” (9,900/mo), “8(a) certification,” “GSA schedule,”
+“SAM.gov registration” (5,400/mo)</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Glossary</td>
+<td><code>/glossary</code> (DefinedTermSet)</td>
+<td>“what is a [term]” long-tail — DCAA, BPA, PWS, SOW, FFP, CPFF…</td>
+<td>63 terms</td>
+</tr>
+<tr>
+<td>Competitor comparisons</td>
+<td><code>/compare/[competitor]</code></td>
+<td>“GovWin alternative” (1,300/mo),
+Deltek/GovTribe/HigherGov/Bloomberg/Sweetspot…</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Audience landing</td>
+<td><code>/for/[audience]</code></td>
+<td>“for 8(a) contractors,” “for staffing agencies,” “for HUBZone,” “for
+SDVOSB”…</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Jobs</td>
+<td><code>/jobs/[role]</code></td>
+<td>“capture manager jobs,” “proposal manager salary,” “/jobs/defense,”
+“/jobs/remote”</td>
+<td>9+</td>
+</tr>
+<tr>
+<td>Video SEO</td>
+<td><code>/videos/[slug]</code></td>
+<td>video-intent searches mapped to the YouTube library (~10,600/mo
+combined)</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>90+ indexable routes, one keyword-research pass, one
+developer.</strong> Sitemap grew from ~37 → ~82 URLs over the
+period.</p>
+<h3 id="measured-gsc-results-all-organic-no-ad-spend">Measured GSC
+results (all organic, no ad spend)</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Mar 17 (Wk 2)</th>
+<th>Mar 29 (Wk 4)</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total clicks (new pages)</td>
+<td>19</td>
+<td>—</td>
+<td>from a cold start</td>
+</tr>
+<tr>
+<td>Total impressions</td>
+<td>360</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Average CTR</td>
+<td><strong>5.3%</strong></td>
+<td>9.2% (homepage)</td>
+<td>vs ~3% benchmark — exceeding</td>
+</tr>
+<tr>
+<td>Average position</td>
+<td><strong>8.9</strong></td>
+<td>top-10 holding</td>
+<td>page 1</td>
+</tr>
+<tr>
+<td>Homepage</td>
+<td>—</td>
+<td><strong>96 clicks / 1,047 impr / 9.2% CTR</strong></td>
+<td>top performer</td>
+</tr>
+<tr>
+<td>CAGE-code cluster (guide + tool + blog redirect)</td>
+<td>—</td>
+<td><strong>46 clicks / 11,828 impressions</strong></td>
+<td>one topic, one month</td>
+</tr>
+<tr>
+<td>Pages indexed</td>
+<td>—</td>
+<td><strong>72</strong></td>
+<td>confirmed in GSC Coverage</td>
+</tr>
+</tbody>
+</table>
+<p>Indexing health managed in GSC throughout: 200+ legacy WordPress 404s
+fixed with 301/308 redirects (Mar 29), priority pages submitted for
+indexing in tiers, JSON-LD validated via Rich Results Test.</p>
+<h3 id="why-this-transfers-to-encore">Why this transfers to Encore</h3>
+<ul>
+<li>Encore’s gov subdomain has <strong>published nothing since Aug
+2025</strong> and carries only 18 thin posts — the same cold-start
+GovCon Giants began from.</li>
+<li>The <code>/for/[audience]</code> and
+<code>/compare/[competitor]</code> patterns map
+<strong>directly</strong> onto Encore’s set-aside audiences and
+financing-competitor set (Section 9B).</li>
+<li>It adds a <strong>compounding organic channel</strong> that earns
+its own traffic from Google — broadening the channel mix noted in
+Section 3.</li>
+</ul>
+<hr />
+<h2
+id="b.-the-encore-page-architecture-turning-marchs-market-size-into-pages">9B.
+The Encore Page Architecture — Turning March’s Market Size Into
+Pages</h2>
+<p>The March audit established the <strong>market size</strong> and
+surfaced the keyword matrices for both staffing and GovCon financing.
+This section converts that research into a concrete, buildable page set.
+Two engines.</p>
+<h3 id="engine-1-staffing-encore-funding.com">Engine 1 — Staffing
+(encore-funding.com)</h3>
+<p>Most of these queries currently resolve to a blog post or nothing.
+Each should be a dedicated service/resource page with schema, internal
+links, and a clear apply/contact CTA.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Page to build</th>
+<th>Target query</th>
+<th>Est. vol/mo</th>
+<th>Current state</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/payroll-funding</code> (pillar)</td>
+<td>payroll funding / payroll factoring</td>
+<td>500–800</td>
+<td>Thin</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td><code>/staffing-factoring-rates</code></td>
+<td>staffing factoring rates comparison</td>
+<td>high-intent</td>
+<td><strong>Missing</strong></td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td><code>/healthcare-staffing-funding</code></td>
+<td>healthcare staffing funding</td>
+<td>200–400</td>
+<td>Blog only</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td><code>/it-staffing-funding</code></td>
+<td>IT staffing funding</td>
+<td>100–200</td>
+<td>Blog only</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td><code>/how-to-start-a-staffing-agency</code> (pillar)</td>
+<td>how to start a staffing agency</td>
+<td>2,000–4,000</td>
+<td>Optimize existing</td>
+<td>MED</td>
+</tr>
+<tr>
+<td><code>/staffing-agency-business-plan</code> + template</td>
+<td>staffing agency business plan template</td>
+<td>1,000–2,000</td>
+<td>Competitor (Scale) owns it</td>
+<td>MED</td>
+</tr>
+<tr>
+<td><code>/staffing-agency-startup-costs</code></td>
+<td>how much to start a staffing agency</td>
+<td>~1,400</td>
+<td>Missing</td>
+<td>MED</td>
+</tr>
+<tr>
+<td><code>/staffing-agency-license/[state]</code></td>
+<td>staffing agency license [state]</td>
+<td>~2,000</td>
+<td><strong>Missing — 50-state programmatic set</strong></td>
+<td>HIGH (long-tail)</td>
+</tr>
+<tr>
+<td><code>/payroll-funding-vs-bank-loan</code></td>
+<td>payroll funding vs bank loans</td>
+<td>comparison</td>
+<td>Missing</td>
+<td>MED</td>
+</tr>
+</tbody>
+</table>
+<p>The state-licensing template alone yields <strong>~50 low-competition
+long-tail pages</strong> from one build — the highest-leverage
+programmatic play on the staffing side.</p>
+<h3 id="engine-2-govcon-financing-gov.encore-funding.com">Engine 2 —
+GovCon Financing (gov.encore-funding.com)</h3>
+<p>The clearest greenfield Encore owns. Financing-intent +
+certification-adjacent queries mirror the GovCon Giants
+<code>/for/</code> and <code>/compare/</code> patterns and align with
+the audience Eric already drives.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Page cluster</th>
+<th>Route</th>
+<th>Target query</th>
+<th>Conversion logic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pillar</td>
+<td><code>/government-contractor-financing</code></td>
+<td>government contractor financing</td>
+<td>core money term, high commercial intent; consolidate, don’t
+cannibalize</td>
+</tr>
+<tr>
+<td>Bottom-funnel</td>
+<td><code>/govcon-invoice-factoring</code>,
+<code>/federal-contract-factoring</code></td>
+<td>govcon invoice factoring</td>
+<td>buyers ready to apply</td>
+</tr>
+<tr>
+<td>Set-aside audience</td>
+<td><code>/for/8a</code>, <code>/for/wosb</code>,
+<code>/for/sdvosb</code>, <code>/for/hubzone</code></td>
+<td>“financing for 8(a) contractors,” etc.</td>
+<td>mirrors GCG <code>/for/</code>; matches Eric’s audience 1:1</td>
+</tr>
+<tr>
+<td>Contract-type</td>
+<td><code>/financing/idiq</code>, <code>/financing/gsa-schedule</code>,
+<code>/financing/prime-sub</code></td>
+<td>“funding a GSA schedule contract”</td>
+<td>captures contractors at award moment</td>
+</tr>
+<tr>
+<td>Comparison</td>
+<td><code>/govcon-financing-vs-bank-loan</code>,
+<code>/vs-line-of-credit</code>, <code>/vs-mca</code></td>
+<td>comparison queries</td>
+<td>high-intent buyers weighing options</td>
+</tr>
+<tr>
+<td>Case studies</td>
+<td><code>/case-studies/[slug]</code> (schema-marked)</td>
+<td>“[industry] govcon financing case study”</td>
+<td>2 already exist → repeatable template</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on architecture:</strong> the March audit recommended
+consolidating the subdomain to a subfolder
+(<code>encore-funding.com/govcon/</code>) to stop authority dilution.
+Whichever architecture Encore chooses, this page set is the content
+layer that goes on top of it. Build the pages on a subfolder and they
+inherit the main domain’s authority from day one.</p>
+<h3 id="sizing-the-opportunity">Sizing the opportunity</h3>
+<ul>
+<li><strong>40–60 new programmatic pages</strong> across both engines
+(staffing verticals + 50-state set + GovCon
+audience/contract-type/comparison clusters).</li>
+<li><strong>~15,000+ combined monthly searches</strong> the two
+properties do not currently capture in any meaningful position.</li>
+<li>Benchmark from the GovCon Giants build (9A): page-one rankings on
+validated terms within weeks, 72 pages indexed in ~4 weeks.</li>
+<li>Strategic payoff: a <strong>second compounding traffic source
+independent of Eric Coffie</strong> — directly mitigating the
+single-source dependency in Section 3 and the publishing silence in
+Section 8.</li>
+</ul>
+<p>The March report sold the <em>why</em> (market size). This is the
+<em>what</em> and <em>how</em> (the pages, the routes, the templates).
+The only missing input is a go-ahead to start producing them.</p>
+<hr />
+<h2 id="what-could-not-be-pulled-other">10. What Could NOT Be Pulled
+(Other)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Why</th>
+<th>How to get it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backlinks / DA / referring domains (full graph)</td>
+<td>Needs paid tool</td>
+<td>Ahrefs or SEMrush (GSC shows top 1000 but not the full graph)</td>
+</tr>
+<tr>
+<td>Keyword rankings outside top 1000 impressions</td>
+<td>GSC truncates long-tail</td>
+<td>Ahrefs/SEMrush rank tracker</td>
+</tr>
+<tr>
+<td>Referral source for the 30d quality drop</td>
+<td>Need 28d vs prior 28d source/medium comparison</td>
+<td>One more Google Analytics screenshot</td>
+</tr>
+<tr>
+<td>Core Web Vitals from synthetic test (PageSpeed)</td>
+<td>Anonymous quota exhausted today</td>
+<td>Google Cloud API key, or run tomorrow (GSC has the real-user CrUX
+data; PageSpeed is the synthetic complement)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="expected-impact-if-top-5-urgent-items-shipped">10. Expected
+Impact (If Top 5 URGENT Items Shipped)</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Fix</th>
+<th>Estimated 90d impact on gov subdomain key events</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Partner page conversion 3.4% → 6.0%</td>
+<td>+11 key events</td>
+</tr>
+<tr>
+<td>HubSpot email blast (1 send to gov segment)</td>
+<td>+5–8 key events (est. 200–300 quality sessions)</td>
+</tr>
+<tr>
+<td>UTM tagging (no direct lift, enables optimization)</td>
+<td>Indirect — unlocks ability to measure</td>
+</tr>
+<tr>
+<td>Lead-event wiring (no direct lift, enables attribution)</td>
+<td>Indirect — unlocks ROI reporting</td>
+</tr>
+<tr>
+<td>Eric Coffie link audit (defensive — prevents loss)</td>
+<td>Maintains current 14 key events from partner page</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total estimated lift over 90d: +16–19 key events (~22–26%
+lift on the 72-event 90d baseline)</strong></p>
+<p><strong>See the proposed partner-page rebuild live:</strong>
+<strong>https://partner-page-rebuild.vercel.app/</strong></p>
+<hr />
+<h2 id="raw-crawl-files">Raw Crawl Files</h2>
+<p>All HTTP crawl outputs saved to:</p>
+<pre><code>/Users/ericcoffie/Encore Funding/tasks/crawl-2026-05-31/
+  ├── home-main.html, home-gov.html
+  ├── robots-main.txt, robots-gov.txt
+  ├── sitemap-index-main.xml, sitemap-index-gov.xml
+  ├── post-sitemap-main.xml (84 URLs), page-sitemap-main.xml (53 URLs)
+  ├── authors-sitemap-main.xml, cat-sitemap-main.xml
+  ├── post-sitemap-gov.xml (18 URLs), page-sitemap-gov.xml (10 URLs)
+  ├── latest-post.html (Chad Eberly ABF Journal post — schema reference)
+  └── test-apply.html</code></pre>
+<p>Google Analytics screenshots referenced for this audit: - Both
+properties: Home, Reports snapshot - Main: Traffic Acquisition (28d) -
+Gov: Traffic Acquisition (28d, 90d), Source/Medium (90d), Landing pages
+(90d), Generate Leads overview (90d)</p>
+</body>
+</html>

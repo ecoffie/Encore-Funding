@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building for Scale — Run of Show (Panelist Prep)</title>
+<style>
+  @page { size: letter; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1e3a8a; --navy-dark: #16285e; --green: #10b981;
+    --orange: #F57C00; --ink: #1f2937; --muted: #6b7280;
+    --line: #e5e7eb; --bg-soft: #f8fafc;
+  }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 8.5in; height: 11in; padding: 0.42in 0.6in; position: relative; background: #fff; overflow: hidden; }
+  .page + .page { page-break-before: always; }
+
+  /* header band */
+  .head { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--green); padding-bottom: 10px; margin-bottom: 13px; }
+  .head .logos { display: flex; align-items: center; gap: 13px; }
+  .head .logos img { height: 26px; }
+  .head .logos .x { color: #cbd5e1; font-size: 15px; }
+  .head .meta { text-align: right; font-size: 10.5px; color: var(--muted); line-height: 1.5; }
+  .head .meta b { color: var(--navy-dark); }
+
+  .title-row { margin-bottom: 12px; }
+  .eyebrow { color: var(--orange); font-weight: 800; letter-spacing: 2px; font-size: 11.5px; text-transform: uppercase; }
+  h1 { font-size: 25px; font-weight: 800; color: var(--navy); letter-spacing: -.5px; margin: 4px 0 5px; }
+  .sub { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+
+  .audience-note { background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0; padding: 10px 15px; margin-bottom: 12px; }
+  .audience-note b { color: #92400e; font-size: 12.5px; }
+  .audience-note span { font-size: 12.5px; color: #78350f; line-height: 1.5; }
+
+  h2.sec { font-size: 14px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  h2.sec::before { content: ''; width: 20px; height: 3px; background: var(--green); border-radius: 2px; }
+
+  /* run of show timeline */
+  .ros { list-style: none; margin-bottom: 12px; }
+  .ros li { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .ros li:last-child { border-bottom: none; }
+  .ros .time { font-size: 13px; font-weight: 800; color: var(--orange); line-height: 1.3; }
+  .ros .what b { font-size: 14px; color: var(--navy-dark); display: block; margin-bottom: 2px; }
+  .ros .what span { font-size: 12px; color: var(--muted); line-height: 1.45; display:block; }
+  .ros .lead-tag { display: inline-block; font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; padding: 2px 8px; border-radius: 4px; background: #ecfdf5; color: #047857; margin-top: 4px; }
+
+  /* themes box */
+  .themes { border: 1px solid var(--line); border-radius: 10px; padding: 11px 18px; background: var(--bg-soft); }
+  .themes ol { margin: 0 0 0 18px; }
+  .themes ol li { font-size: 12.5px; line-height: 1.45; color: #374151; margin-bottom: 5px; }
+  .themes ol li:last-child { margin-bottom: 0; }
+  .themes .qa { color: var(--muted); }
+
+  /* panelist block */
+  .pan { border: 1px solid var(--line); border-radius: 10px; padding: 15px 20px; margin-bottom: 14px; }
+  .pan.lead { border-color: var(--orange); background: #fff8f1; }
+  .pan .ph { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .pan .nm { font-size: 17px; font-weight: 800; color: var(--navy-dark); }
+  .pan .pillar { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; color: var(--green); }
+  .pan .tt { font-size: 12px; color: var(--muted); margin-bottom: 10px; line-height: 1.45; }
+  .pan ol { margin: 0 0 0 18px; }
+  .pan ol li { font-size: 13px; line-height: 1.5; color: #374151; margin-bottom: 7px; }
+  .pan ol li:last-child { margin-bottom: 0; }
+  .pan ol li.story { color: var(--orange); font-weight: 600; }
+
+  .footer { position: absolute; bottom: 0.32in; left: 0.6in; right: 0.6in; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 7px; }
+  .footer .conf { color: var(--orange); font-weight: 700; letter-spacing: .5px; }
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1 — RUN OF SHOW ===================== -->
+<div class="page">
+
+  <div class="head">
+    <div class="logos">
+      <img src="file:///Users/ericcoffie/Encore%20Funding/images/GovconGiants-logo-black.png" alt="GovCon Giants">
+      <span class="x">×</span>
+      <img src="file:///Users/ericcoffie/Encore%20Funding/images/EncoreLogo_Primary_Color_CMYK.png" alt="Encore Funding">
+    </div>
+    <div class="meta">
+      <b>Tue, July 21, 2026 · 10:30 AM–12:00 PM</b><br>
+      2026 National HUBZone Conference · Westfields Marriott, Chantilly, VA<br>
+      Moderator: Eric Coffie
+    </div>
+  </div>
+
+  <div class="title-row">
+    <div class="eyebrow">Panelist Prep &amp; Run of Show</div>
+    <h1>Building for Scale: Innovative Growth &amp; Funding Strategies</h1>
+    <div class="sub">Roundtable conversation, not presentations. Audience = HUBZone small businesses ready to scale. Arc: access capital → attract investment → team strategically → pursue bigger contracts → scale sustainably. Goal: attendees leave with actionable ideas.</div>
+  </div>
+
+  <div class="audience-note">
+    <b>PREP-CALL NOTE:</b> <span>This is the working draft of our July 21 session. On our prep call we'll lock speaking order, confirm each panelist's pillar, and pick the one signature story each of you tells. Bring reactions — what to add, cut, or reframe. No slides; this is a conversation. Your panelist questions are on page 2.</span>
+  </div>
+
+  <h2 class="sec">Run of Show — 90 Minutes</h2>
+  <ul class="ros">
+    <li>
+      <div class="time">10:15 AM</div>
+      <div class="what"><b>Panelists meet at room</b><span>Arrive ~15 min early. Mic/seat check with A/V, confirm speaking order, meet Eric.</span></div>
+    </li>
+    <li>
+      <div class="time">10:30–10:36</div>
+      <div class="what"><b>Welcome &amp; Frame</b><span>Eric opens, frames "Building for Scale," sets the goal: leave with ideas you can act on.</span><span class="lead-tag">Eric</span></div>
+    </li>
+    <li>
+      <div class="time">10:36–10:51</div>
+      <div class="what"><b>Intros — ~5 min each</b><span>Teresa → Calvin → Joel. Quick, conversational — who you are + the scaling lens you bring.</span><span class="lead-tag">Teresa · Calvin · Joel</span></div>
+    </li>
+    <li>
+      <div class="time">10:51–11:40</div>
+      <div class="what"><b>Moderated Round-Robin</b><span>Eric drives 4–5 themes; each panelist weighs in from their pillar. Cross-talk &amp; real stories — the heart of the session.</span><span class="lead-tag">All</span></div>
+    </li>
+    <li>
+      <div class="time">11:40–11:50</div>
+      <div class="what"><b>Rapid-Fire / Cross-Talk</b><span>Fast back-and-forth to surface the questions attendees are thinking before we open the floor.</span><span class="lead-tag">All</span></div>
+    </li>
+    <li>
+      <div class="time">11:50–11:58</div>
+      <div class="what"><b>Live Q&amp;A</b><span>Audience questions. Eric routes to the right panelist; backup questions ready if quiet.</span><span class="lead-tag">All</span></div>
+    </li>
+    <li>
+      <div class="time">11:58–12:00</div>
+      <div class="what"><b>Close &amp; Next Steps</b><span>Eric — one actionable takeaway per panelist, thank the panel &amp; the HUBZone Council.</span><span class="lead-tag">Eric</span></div>
+    </li>
+  </ul>
+
+  <h2 class="sec">Cross-Panel &amp; Q&amp;A Backup</h2>
+  <div class="themes">
+    <ol>
+      <li><b>Roundtable:</b> A HUBZone firm has 90 days and limited cash — in what order do they tackle funding, partnerships, and going after bigger work? <span class="qa">(let all 3 argue their pillar)</span></li>
+      <li><b>Roundtable:</b> The most expensive scaling mistake each of you sees in your lane — do they overlap?</li>
+      <li class="qa"><b>Q&amp;A if quiet:</b> "How did you fund your first big jump?" · "Bootstrap or raise?" · "When am I ready for a prime to take me seriously?" · "Realistic timeline to the next level?"</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <span>GovCon Giants × Encore Funding · 2026 National HUBZone Conference — Panelist Prep</span>
+    <span class="conf">CONFIDENTIAL — PANELISTS ONLY</span>
+  </div>
+
+</div>
+
+<!-- ===================== PAGE 2 — PANELISTS ===================== -->
+<div class="page">
+
+  <div class="head">
+    <div class="logos">
+      <img src="file:///Users/ericcoffie/Encore%20Funding/images/GovconGiants-logo-black.png" alt="GovCon Giants">
+      <span class="x">×</span>
+      <img src="file:///Users/ericcoffie/Encore%20Funding/images/EncoreLogo_Primary_Color_CMYK.png" alt="Encore Funding">
+    </div>
+    <div class="meta">
+      <b>Tue, July 21, 2026 · 10:30 AM–12:00 PM</b><br>
+      Building for Scale: Innovative Growth &amp; Funding Strategies<br>
+      Moderator: Eric Coffie
+    </div>
+  </div>
+
+  <h2 class="sec">Panelist Questions</h2>
+  <div class="sub" style="margin-bottom:12px;">Each panelist owns a pillar. Eric will tee you up by name during the round-robin — answer conversationally and tell stories. The first (orange) question is your opener; the rest are directions Eric may steer.</div>
+
+  <div class="pan lead">
+    <div class="ph"><span class="nm">Teresa McBride</span><span class="pillar">🚀 Scaling &amp; Capital</span></div>
+    <div class="tt">Chairman, MCPM Inc. · Built a tech consulting firm to $197M &amp; 800+ consultants (1986–1999) · SBA Entrepreneur of the Year (awarded at the White House)</div>
+    <ol>
+      <li class="story">Open us up — you built a tech consulting firm from zero in 1986 to $197M by 1999. Take the room back to an inflection point where scale almost broke you.</li>
+      <li>You now lead project finance between $1B–$5B. From that seat, what do most small businesses misunderstand about capital?</li>
+      <li>What did access to capital unlock for you that hustle alone couldn't?</li>
+      <li>You've been on both sides — operator and now investor. What makes you back a company today?</li>
+      <li>Closer: the one discipline a HUBZone firm needs before it's ready to scale.</li>
+    </ol>
+  </div>
+
+  <div class="pan">
+    <div class="ph"><span class="nm">Calvin J. Mitchell Jr.</span><span class="pillar">🏛️ Buyer &amp; Prime Side</span></div>
+    <div class="tt">Sr. Director, Strategic Acquisition &amp; Engagement, GDIT · Former SES Procurement Executive · NCMA Board Advisor</div>
+    <ol>
+      <li class="story">Give the room the inside view — you've been a federal SES procurement exec and now sit on the prime side at GDIT. How do big buyers actually decide who's ready for bigger work?</li>
+      <li>Where's the gap between how a small business thinks it's evaluated and how primes/agencies really judge scale-readiness?</li>
+      <li>What makes a prime want to team with — or invest in — a smaller firm?</li>
+      <li>One operational thing a HUBZone firm must have in place before chasing larger, more complex contracts?</li>
+      <li>Closer: the fastest credibility signal a growing firm can build this year.</li>
+    </ol>
+  </div>
+
+  <div class="pan">
+    <div class="ph"><span class="nm">Joel Adelman</span><span class="pillar">💰 Funding / Access to Capital</span></div>
+    <div class="tt">CEO, Encore Funding · Managing Partner, AdCap Growth Partners · CEO, Transcap</div>
+    <ol>
+      <li class="story">Lead with the Encore story — you've built businesses whose whole job is to be "fuel for growth." What did you see that made you go all-in on funding growing companies?</li>
+      <li>A HUBZone firm just won bigger than they've ever won. What happens to their cash before the government pays — and what are their real options?</li>
+      <li>Why can't most growing contractors just lean on their bank to scale?</li>
+      <li>Receivables finance vs. asset-backed vs. investment capital — how should an owner think about which lever, and when?</li>
+      <li>Closer: when should a business owner talk to a funding partner — at the win, or well before?</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <span>GovCon Giants × Encore Funding · 2026 National HUBZone Conference — Panelist Prep</span>
+    <span class="conf">CONFIDENTIAL — PANELISTS ONLY</span>
+  </div>
+
+</div>
+
+</body>
+</html>
