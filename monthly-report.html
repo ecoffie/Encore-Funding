@@ -257,6 +257,97 @@
     }
     .export-btn:hover { border-color: var(--brand); color: var(--brand-600); }
 
+    /* Managed social content */
+    .social-plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .social-plan-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem 1.6rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .social-plan-head h2 { margin-bottom: 0.25rem; }
+    .social-plan-head p { color: var(--muted); font-size: 0.9rem; max-width: 650px; }
+    .social-links { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+    .social-link {
+      display: inline-flex;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--brand-600);
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .social-link:hover { border-color: var(--brand); text-decoration: none; }
+    .social-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      padding: 1.25rem 1.6rem;
+      background: var(--brand-50);
+      border-bottom: 1px solid var(--border);
+    }
+    .social-summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+    }
+    .social-summary-card .label {
+      color: var(--muted);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .social-summary-card .value {
+      color: var(--ink-strong);
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-top: 0.3rem;
+    }
+    .social-table-wrap { overflow-x: auto; }
+    .social-table { width: 100%; border-collapse: collapse; }
+    .social-table th, .social-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .social-table th {
+      color: var(--muted);
+      background: var(--surface-soft);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .social-table tr:last-child td { border-bottom: 0; }
+    .social-date { color: var(--ink); font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
+    .social-topic { color: var(--ink-strong); font-size: 0.86rem; font-weight: 700; min-width: 300px; }
+    .social-feedback { color: var(--muted); font-size: 0.8rem; min-width: 220px; }
+    .social-badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .social-type { color: var(--ink); background: var(--surface-soft); }
+    .social-status-uploaded { color: #047857; background: #D1FAE5; }
+    .social-status-approved { color: #1D4ED8; background: #DBEAFE; }
+
     footer {
       text-align: center; padding: 2.5rem 0 0; margin-top: 2.5rem;
       border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem;
@@ -269,6 +360,9 @@
       header h1 { font-size: 1.7rem; }
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
       .modal-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .social-plan-head { flex-direction: column; }
+      .social-links { justify-content: flex-start; }
+      .social-summary { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 400px) { .cards-grid { grid-template-columns: 1fr; } }
     @media print {
@@ -315,6 +409,8 @@
       </div>
     </div>
 
+    <div id="social-content-section"></div>
+
     <!-- Category sections -->
     <div id="category-sections"></div>
 
@@ -337,6 +433,7 @@
 
   <script src="report-data.js"></script>
   <script src="ga-data.js"></script>
+  <script src="social-content-data.js"></script>
   <script>
     const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -478,6 +575,60 @@
         '</div>' +
         '<div class="chart-sub" style="margin-top:0.5rem">Channel, page, and conversion detail is available period-wide on the main dashboard\u2019s Website Analytics tab.</div>' +
         '</div>';
+    })();
+
+    // ── Managed social media content ──
+    (function renderSocialContent() {
+      const social = window.SOCIAL_CONTENT_DATA;
+      if (!social || social.report_month !== monthKey || !social.items || !social.items.length) return;
+
+      const items = social.items;
+      const uploaded = items.filter(item => item.status === 'Uploaded').length;
+      const approved = items.filter(item => item.status === 'Approved').length;
+      const govcon = items.filter(item => item.type === 'GovCon Post').length;
+      const links = [
+        ['Content document ↗', social.content_document],
+        ['Asset folder ↗', social.asset_folder],
+        ['Source calendar ↗', social.source]
+      ].filter(link => link[1]);
+
+      const rows = items.map(item => {
+        const statusClass = item.status.toLowerCase().replace(/\s+/g, '-');
+        return '<tr>' +
+          '<td class="social-date">' + fmtDate(item.date) + '</td>' +
+          '<td><span class="social-badge social-type">' + esc(item.type) + '</span></td>' +
+          '<td class="social-topic">' + esc(item.topic) + '</td>' +
+          '<td><span class="social-badge social-status-' + statusClass + '">' + esc(item.status) + '</span></td>' +
+          '<td class="social-feedback">' + (item.feedback ? esc(item.feedback) : '—') + '</td>' +
+        '</tr>';
+      }).join('');
+
+      document.getElementById('social-content-section').innerHTML =
+        '<section class="section">' +
+          '<div class="social-plan">' +
+            '<div class="social-plan-head">' +
+              '<div>' +
+                '<h2>Managed social media content</h2>' +
+                '<p>New Encore-owned social content developed by GovCon Giants, including the current production schedule and approval status.</p>' +
+              '</div>' +
+              '<div class="social-links">' +
+                links.map(link => '<a class="social-link" href="' + esc(link[1]) + '" target="_blank" rel="noopener">' + link[0] + '</a>').join('') +
+              '</div>' +
+            '</div>' +
+            '<div class="social-summary">' +
+              '<div class="social-summary-card"><div class="label">Content pieces</div><div class="value">' + items.length + '</div></div>' +
+              '<div class="social-summary-card"><div class="label">Uploaded</div><div class="value">' + uploaded + '</div></div>' +
+              '<div class="social-summary-card"><div class="label">Approved</div><div class="value">' + approved + '</div></div>' +
+              '<div class="social-summary-card"><div class="label">GovCon posts</div><div class="value">' + govcon + '</div></div>' +
+            '</div>' +
+            '<div class="social-table-wrap">' +
+              '<table class="social-table">' +
+                '<thead><tr><th>Date</th><th>Format</th><th>Content topic</th><th>Status</th><th>Feedback / selection</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody>' +
+              '</table>' +
+            '</div>' +
+          '</div>' +
+        '</section>';
     })();
 
     // ── Trend Charts ──
