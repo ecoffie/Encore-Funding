@@ -257,6 +257,119 @@
     }
     .export-btn:hover { border-color: var(--brand); color: var(--brand-600); }
 
+    /* Client strategy summary */
+    .strategy-summary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .strategy-summary-head {
+      padding: 1.6rem;
+      background: linear-gradient(135deg, var(--ink-strong), var(--ink));
+      color: #fff;
+    }
+    .strategy-summary-head .eyebrow {
+      color: #FED7AA;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .strategy-summary-head h2 {
+      color: #fff;
+      margin: 0.25rem 0 0.65rem;
+    }
+    .strategy-summary-head p {
+      color: #CBD5E1;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      max-width: 980px;
+    }
+    .strategy-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      padding: 1.25rem 1.6rem;
+      background: var(--brand-50);
+      border-bottom: 1px solid var(--border);
+    }
+    .strategy-kpi {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+    .strategy-kpi .value {
+      color: var(--brand-600);
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .strategy-kpi .label {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-top: 0.35rem;
+    }
+    .strategy-body { padding: 1.5rem 1.6rem 1.6rem; }
+    .strategy-context {
+      color: var(--ink);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+    }
+    .strategy-context strong { color: var(--ink-strong); }
+    .strategy-subhead {
+      color: var(--ink-strong);
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+    .client-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .client-highlight {
+      background: var(--surface-soft);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+    }
+    .client-highlight h3 {
+      color: var(--ink-strong);
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+    .client-highlight p { color: var(--muted); font-size: 0.82rem; line-height: 1.55; }
+    .priority-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      list-style: none;
+    }
+    .priority-list li {
+      position: relative;
+      padding: 0.75rem 0.9rem 0.75rem 2rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--ink);
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+    .priority-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0.8rem;
+      color: var(--brand);
+      font-weight: 800;
+    }
+
     /* Managed social content */
     .social-plan {
       background: var(--surface);
@@ -360,6 +473,8 @@
       header h1 { font-size: 1.7rem; }
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
       .modal-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .strategy-kpis { grid-template-columns: repeat(2, 1fr); }
+      .client-highlights, .priority-list { grid-template-columns: 1fr; }
       .social-plan-head { flex-direction: column; }
       .social-links { justify-content: flex-start; }
       .social-summary { grid-template-columns: repeat(2, 1fr); }
@@ -392,6 +507,8 @@
     <div id="metrics" class="metrics-row"></div>
 
     <div id="ga-month-section"></div>
+
+    <div id="partnership-summary-section"></div>
 
     <div class="section">
       <h2>Month-to-month performance</h2>
@@ -575,6 +692,45 @@
         '</div>' +
         '<div class="chart-sub" style="margin-top:0.5rem">Channel, page, and conversion detail is available period-wide on the main dashboard\u2019s Website Analytics tab.</div>' +
         '</div>';
+    })();
+
+    // ── October client strategy and funding summary ──
+    (function renderPartnershipSummary() {
+      if (monthKey !== '2026-10') return;
+
+      document.getElementById('partnership-summary-section').innerHTML =
+        '<section class="section">' +
+          '<div class="strategy-summary">' +
+            '<div class="strategy-summary-head">' +
+              '<div class="eyebrow">Partnership impact · October 2026</div>' +
+              '<h2>Client strategy &amp; funding opportunities</h2>' +
+              '<p>GovCon Giants supported seven Encore clients and introductions from EPIC Nashville: Bresa Tech, CS Contract Solutions, Vertek Solutions, Tech Pros, TextClock, Impact Employment Solutions (Liberty Staffing USA), and Acrobat Staff. Each client completed a strategy meeting and received a federal plan built with Mindy, our market intelligence platform. We delivered 15 strategy documents, including market maps, strategy plans, a rebuilt capability statement, and a funding brief Vertek used in its conversation with Encore. Vertek, Tech Pros, and Acrobat Staff also received proposals for a GovCon Giants engagement.</p>' +
+            '</div>' +
+            '<div class="strategy-kpis">' +
+              '<div class="strategy-kpi"><div class="value">7</div><div class="label">Clients supported</div></div>' +
+              '<div class="strategy-kpi"><div class="value">15</div><div class="label">Strategy documents</div></div>' +
+              '<div class="strategy-kpi"><div class="value">3</div><div class="label">Engagement proposals</div></div>' +
+              '<div class="strategy-kpi"><div class="value">6 of 7</div><div class="label">Hourly-workforce clients</div></div>' +
+            '</div>' +
+            '<div class="strategy-body">' +
+              '<p class="strategy-context"><strong>The Encore fit:</strong> Six of the seven clients bill for people by the hour—healthcare coders, staffing crews, telecom technicians, and IT engineers. They pay employees weekly or biweekly, then wait 30–60 days or more for federal payment, with longer cycles when working as subcontractors. That working-capital gap is where Encore fits.</p>' +
+              '<div class="strategy-subhead">Highlights</div>' +
+              '<div class="client-highlights">' +
+                '<article class="client-highlight"><h3>Vertek Solutions</h3><p>Registered in SAM.gov and received its Unique Entity ID. We delivered a brief on $230.7 million in federal medical coding demand awarded in fiscal 2023–2025 for its conversation with Encore.</p></article>' +
+                '<article class="client-highlight"><h3>Acrobat Staff &amp; Liberty Staffing USA</h3><p>Both received complete regional market plans. Liberty is registering in SAM.gov and brings 15 years of disaster-relief staffing experience to FEMA-related work.</p></article>' +
+                '<article class="client-highlight"><h3>CS Contract Solutions</h3><p>Registered to attend two VA hospital industry days in Maine and Connecticut.</p></article>' +
+                '<article class="client-highlight"><h3>Bresa Tech</h3><p>Received a follow-up strategy covering new case-management buys, with a team meeting set for the week of November 9.</p></article>' +
+              '</div>' +
+              '<div class="strategy-subhead">November priorities</div>' +
+              '<ul class="priority-list">' +
+                '<li>Register the remaining clients in SAM.gov.</li>' +
+                '<li>Introduce clients to companies already holding the work.</li>' +
+                '<li>Support sources sought responses and bids.</li>' +
+                '<li>Hold the November 11 program review with Encore.</li>' +
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</section>';
     })();
 
     // ── Managed social media content ──
